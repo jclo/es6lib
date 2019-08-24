@@ -1,27 +1,4 @@
-# ES6lib
-
-[![NPM version][npm-image]][npm-url]
-[![Travis CI][travis-image]][travis-url]
-[![Test coverage][coveralls-image]][coveralls-url]
-[![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url]
-[![License][license-image]](LICENSE.md)
-<!--- [![node version][node-image]][node-url] -->
-
-[![NPM install][npm-install-image]][npm-install-url]
-
-ES6lib is a template for writing micro ES6 Javascript libraries that run both on Node.js and inside the browser.
-
-ES6lib encapsulates all the library contents inside an UMD module. You can ship your entire library inside a unique file and you can minify it.
-
-This template does not include a transpiler like babel or a module bundler like browserify/webpack or rollup. It relies on Gulp to build your library from the source files. Thus, it keeps your library pure (without extra code due to the transpiler or the module bundler).
-
-This template is useful if your library is intended to run on ECMAScript 2015 (ES6) compliant browser.
-
-ES6lib relies on [Mocha](https://mochajs.org) and [Chai](http://chaijs.com) for unitary testing. It relies on [Istanbul](https://gotwarlost.github.io/istanbul/) for code coverage.
-
-ES6lib uses [Travis CI](https://travis-ci.org) for continuous integration and [Coveralls.io](https://coveralls.io) to display test coverage.
-
+# Guide
 
 ## Quick Startup
 
@@ -45,7 +22,7 @@ Now populate your empty folder and create your first UMD library:
 // populate
 es6lib populate -n myapp
 // Or, if you installed the package locally:
-./node_modules/.bin/es6lib populate -n myapp
+./node_modules/es6lib/bin/eslib.js populate -n myapp
 // Install Node.js packages
 npm install
 ```
@@ -128,13 +105,13 @@ undefined
 >
 ```
 
-On the browser, pick-up the JS file `lib/es6jslib.js` and add it as a script in your HTML file. `es6jslib` is an immediately-invoked function expression. It attaches the `es6jslib` variable to the current context.
+On the browser, pick-up the JS file `lib/es6lib.js` and add it as a script in your HTML file. `es6lib` is an immediately-invoked function expression. It attaches the `ES6lib` variable to the current context.
 
 ```html
 <!DOCTYPE html>
 <html>
   <body>
-    <script src="es6jslib.js"></script>
+    <script src="es6lib.js"></script>
     <script>
     	console.log(ES6Lib.VERSION);
     </script>
@@ -143,29 +120,3 @@ On the browser, pick-up the JS file `lib/es6jslib.js` and add it as a script in 
 ```
 
 Enjoy!
-
-## License
-
-[MIT](LICENSE.md).
-
-<!--- URls -->
-
-[npm-image]: https://img.shields.io/npm/v/@mobilabs/es6lib.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/@mobilabs/es6lib.png?compact=true
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@mobilabs/es6lib.svg?style=flat-square
-[travis-image]: https://img.shields.io/travis/jclo/es6lib.svg?style=flat-square
-[coveralls-image]: https://img.shields.io/coveralls/jclo/es6lib/master.svg?style=flat-square
-[dependencies-image]: https://david-dm.org/jclo/es6lib/status.svg?theme=shields.io
-[devdependencies-image]: https://david-dm.org/jclo/es6lib/dev-status.svg?theme=shields.io
-[license-image]: https://img.shields.io/npm/l/@mobilabs/es6lib.svg?style=flat-square
-
-[npm-url]: https://www.npmjs.com/package/@mobilabs/es6lib
-[npm-install-url]: https://nodei.co/npm/@mobilabs/es6lib
-[node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/@mobilabs/es6lib
-[travis-url]: https://travis-ci.org/jclo/es6jslib
-[coveralls-url]: https://coveralls.io/github/jclo/es6jslib?branch=master
-[dependencies-url]: https://david-dm.org/jclo/es6jslib
-[devdependencies-url]: https://david-dm.org/jclo/es6jslib?type=dev
-[license-url]: http://opensource.org/licenses/MIT

@@ -1,0 +1,33 @@
+// Based on ES6.lib template v{{template:version}}
+// ESLint declarations
+/* global define */
+/* eslint strict: ["error", "function"] */
+(function(root, factory) {
+  'use strict';
+
+  /* istanbul ignore next */
+  if (typeof define === 'function' && define.amd) {
+    // AMD. Register as an anonymous module.
+    define([''], factory);
+  } else if (typeof exports === 'object') {
+    // Node. Does not work with strict CommonJS, but
+    // only CommonJS-like environments that support module.exports,
+    // like Node.
+    module.exports = factory(root);
+  } else {
+    // Browser globals.
+    /* eslint-disable-next-line no-param-reassign */
+    root.ES6lib = factory(root);
+  }
+}({{lib:parent}}, (root) => {
+  'use strict';
+
+  // This is the list of the constants that are defined at the global level of
+  // this module and are accessible to all. So, they are considered as reserved
+  // words for this library.
+  // const Tree
+  /* eslint-disable one-var, semi-style */
+  let ES6lib
+    , extend
+    ;
+  /* eslint-enable one-var, semi-style */

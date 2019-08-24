@@ -1,0 +1,3 @@
+  // Returns the library name:
+  return ES6lib;
+}));

@@ -1,23 +1,23 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "bin": {
-    "es6jslib": "./bin/es6jslib.js"
+    "es6lib": "./bin/es6lib.js"
   },
   "scripts": {
     "build": "gulp build",
+    "watch": "gulp watch",
+    "makedist": "gulp makedist",
+    "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
+    "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
-    "doc": "vuepress dev docs",
-    "makedist": "gulp makedist",
-    "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
-    "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
-    "report": "nyc report",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
-    "watch": "gulp watch"
+    "report": "nyc report",
+    "doc": "vuepress dev docs"
   },
   "repository": {
     "type": "git",
@@ -43,7 +43,7 @@
     "coveralls": "3.0.6",
     "cross-env": "5.2.0",
     "del": "5.1.0",
-    "eslint": "6.2.1",
+    "eslint": "6.2.2",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
     "gulp": "4.0.2",
@@ -56,6 +56,9 @@
     "mocha": "6.2.0",
     "nyc": "14.1.1",
     "opener": "1.5.1"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "private": false,
   "husky": {

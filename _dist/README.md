@@ -10,7 +10,7 @@
 
 [![NPM install][npm-install-image]][npm-install-url]
 
-ES6lib is a template for writing micro ES6 Javascript libraries that run both on Node.js and inside the browser.
+ES6lib is a template for writing ES6 Javascript libraries that run both on Node.js and inside ECMAScript 2015 compliant browsers.
 
 ES6lib encapsulates all the library contents inside an UMD module. You can ship your entire library inside a unique file and you can minify it.
 
@@ -65,6 +65,7 @@ Your project Folder
       |   |_ ...              // The Gulp tasks to build your project,
       |_  test
       |     |_ main.js        // Your Mocha, Chai test file,
+      |_ .eslintignore        // Files to be ignored by ESLint,
       |_ .eslintrc            // A Configuration file for the ESLint linter tool (if you use it),
       |_ .gitignore           // Files that Git must ignore (if you use git),
       |_ .travis.yml          // A configuration file for Travis CI (if you use it),
@@ -119,7 +120,7 @@ On Node.js, your project folder is viewed as a NPM package. Choose a working dir
 
 ```js
 node
-> var mylib = require('toto');
+> var mylib = require('mylib');
 undefined
 > mylib.getString();
 'I am a string!'
@@ -128,15 +129,15 @@ undefined
 >
 ```
 
-On the browser, pick-up the JS file `lib/es6jslib.js` and add it as a script in your HTML file. `es6jslib` is an immediately-invoked function expression. It attaches the `es6jslib` variable to the current context.
+On the browser, pick-up the JS file `lib/mylib.js` and add it as a script in your HTML file. `mylib` is an immediately-invoked function expression. It attaches the `mylib` variable to the current context.
 
 ```html
 <!DOCTYPE html>
 <html>
   <body>
-    <script src="es6jslib.js"></script>
+    <script src="mylib.js"></script>
     <script>
-    	console.log(ES6Lib.VERSION);
+    	console.log(mylib.VERSION);
     </script>
   </body>
 </html>
@@ -164,8 +165,8 @@ Enjoy!
 [npm-install-url]: https://nodei.co/npm/@mobilabs/es6lib
 [node-url]: http://nodejs.org/download
 [download-url]: https://www.npmjs.com/package/@mobilabs/es6lib
-[travis-url]: https://travis-ci.org/jclo/es6jslib
-[coveralls-url]: https://coveralls.io/github/jclo/es6jslib?branch=master
-[dependencies-url]: https://david-dm.org/jclo/es6jslib
-[devdependencies-url]: https://david-dm.org/jclo/es6jslib?type=dev
+[travis-url]: https://travis-ci.org/jclo/es6lib
+[coveralls-url]: https://coveralls.io/github/jclo/es6lib?branch=master
+[dependencies-url]: https://david-dm.org/jclo/es6lib
+[devdependencies-url]: https://david-dm.org/jclo/es6lib?type=dev
 [license-url]: http://opensource.org/licenses/MIT

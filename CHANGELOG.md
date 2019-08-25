@@ -3,7 +3,7 @@
 ### 0.0.2 (August 25, 2019)
 
   * A few small improvements,
-  * ...,
+  * Release.
 
 
 ### 0.0.1 (August 24, 2019)

@@ -16,7 +16,7 @@ module.exports = {
   // 'pseudoclassical-auto.js' are mutually exclusives.
   /* eslint-disable no-multi-spaces */
   src: [
-    // These three files (_haeder, tree.js and extend.js) must be declared in
+    // These three files (_header, tree.js and extend.js) must be declared in
     // this order as they create the umd module, define the object tree and
     // the function to fill the tree!
     './src/_header',

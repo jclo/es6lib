@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.1
+ * ES6lib v0.0.2
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -247,6 +247,10 @@
    *  . none,
    *
    *
+   * Constructor:
+   *  . ES6lib                      creates and returns the ES6lib object,
+   *
+   *
    * Public Static Methods:
    *  . noConflict                  returns a reference to this ES6lib object,
    *
@@ -308,7 +312,7 @@
     };
 
     // Attaches a constant to ESLib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.1';
+    ES6lib.VERSION = '0.0.2';
 
 
     // -- Public Static Methods ------------------------------------------------

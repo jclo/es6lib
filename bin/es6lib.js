@@ -302,6 +302,7 @@ function _customizeApp(locbaseumdlib, locbaseapp, locappname, owner) {
     pack.homepage = `https://github.com/${owner.acronym}/${locappname.toLowerCase()}`;
     pack.dependencies = obj.dependencies;
     pack.devDependencies = obj.devDependencies;
+    pack.publishConfig = obj.publishConfig;
     pack.private = obj.private;
     pack.husky = obj.husky;
 

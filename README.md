@@ -10,7 +10,7 @@
 
 [![NPM install][npm-install-image]][npm-install-url]
 
-ES6lib is a template for writing ES6 Javascript libraries that run both on Node.js and inside ECMAScript 2015 compliant browsers.
+ES6lib is a template for writing ES6 Javascript libraries that run on both Node.js and ECMAScript 2015 (ES6) compliant browsers.
 
 ES6lib encapsulates all the library contents inside an UMD module. You can ship your entire library inside a unique file and you can minify it.
 

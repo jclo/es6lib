@@ -11,6 +11,10 @@
  *  . none,
  *
  *
+ * Constructor:
+ *  . ES6lib                      creates and returns the ES6lib object,
+ *
+ *
  * Public Static Methods:
  *  . noConflict                  returns a reference to this ES6lib object,
  *

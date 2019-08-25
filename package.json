@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "bin": {
@@ -23,7 +23,16 @@
     "type": "git",
     "url": "https://github.com/jclo/es6lib.git"
   },
-  "keywords": [],
+  "keywords": [
+    "es6",
+    "umd",
+    "library",
+    "template",
+    "boilerplate",
+    "gulp",
+    "mocha",
+    "istanbul"
+  ],
   "author": {
     "name": "Mobilabs",
     "email": "contact@mobilabs.fr",

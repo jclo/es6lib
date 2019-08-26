@@ -108,7 +108,8 @@ const changelog = [
   '',
   '### 0.0.0 (Month Day, Year)',
   '',
-  '  * Initial build.',
+  '  * Initial commit,',
+  '  * ...,',
   ''].join('\n');
 
 const index = [

@@ -62,7 +62,7 @@
    * Returns the ES6lib object.
    * (Functional Instantiation Pattern)
    *
-   * @constructor ()
+   * @constructor (arg1)
    * @public
    * @param {String}        the argument to be saved as an object variable,
    * @returns {Object}      returns the ES6lib object,

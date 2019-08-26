@@ -62,7 +62,7 @@
    * Returns the ES6lib object.
    * (Pseudoclassical Instantation Pattern with auto instantatiation - no need for new)
    *
-   * @constructor ()
+   * @constructor (arg1)
    * @public
    * @param {String}        the argument to be saved as an object variable,
    * @returns {Object}      returns the ES6lib object,

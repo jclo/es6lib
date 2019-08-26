@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.2
+ * ES6lib v0.0.3
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -302,7 +302,7 @@
      * Returns the ES6lib object.
      * (Functional Instantiation Pattern)
      *
-     * @constructor ()
+     * @constructor (arg1)
      * @public
      * @param {String}        the argument to be saved as an object variable,
      * @returns {Object}      returns the ES6lib object,
@@ -316,7 +316,7 @@
     };
 
     // Attaches a constant to ESLib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.2';
+    ES6lib.VERSION = '0.0.3';
 
 
     // -- Public Static Methods ------------------------------------------------

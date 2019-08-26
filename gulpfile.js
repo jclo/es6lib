@@ -7,7 +7,7 @@ const { watch, series } = require('gulp')
     ;
 
 // -- Local constants
-const filesToWatch = 'src/**/*.js'
+const filesToWatch = ['src/**/*.js', 'src/_header', 'src/_footer']
     ;
 
 // -- Local variables

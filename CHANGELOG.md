@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.4 (September 18, 2019)
+
+  * Removed the package vuepress,
+  * ...,
+
+
 ### 0.0.3 (August 26, 2019)
 
   * Fixed a few typos,

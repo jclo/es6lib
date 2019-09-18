@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "bin": {
@@ -13,11 +13,11 @@
     "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
     "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
-    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
+    "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "report": "nyc report",
-    "doc": "vuepress dev docs"
+    "doc": ""
   },
   "repository": {
     "type": "git",
@@ -44,15 +44,14 @@
   },
   "homepage": "https://github.com/jclo/es6lib",
   "dependencies": {
-    "nopt": "4.0.1",
-    "vuepress": "1.0.3"
+    "nopt": "4.0.1"
   },
   "devDependencies": {
     "chai": "4.2.0",
     "coveralls": "3.0.6",
-    "cross-env": "5.2.0",
+    "cross-env": "6.0.0",
     "del": "5.1.0",
-    "eslint": "6.2.2",
+    "eslint": "6.4.0",
     "eslint-config-airbnb-base": "14.0.0",
     "eslint-plugin-import": "2.18.2",
     "gulp": "4.0.2",
@@ -61,7 +60,7 @@
     "gulp-header": "2.0.9",
     "gulp-replace": "1.0.0",
     "gulp-uglify-es": "1.0.4",
-    "husky": "3.0.4",
+    "husky": "3.0.5",
     "mocha": "6.2.0",
     "nyc": "14.1.1",
     "opener": "1.5.1"

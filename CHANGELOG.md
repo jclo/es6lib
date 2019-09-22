@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.5 (September 22, 2019)
+
+  * Fixed a small regression in the script es6lib,
+  * ...,
+
+
 ### 0.0.4 (September 18, 2019)
 
   * Removed the package vuepress,

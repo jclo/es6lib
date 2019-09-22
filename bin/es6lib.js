@@ -398,7 +398,7 @@ function _populate(locopts) {
   _copyRecursiveSync(path.join(baseumdlib, test), path.join(baseapp, test), app, `${baseapp}/`);
 
   // Copy Doc Files:
-  _copyRecursiveSync(path.join(baseumdlib, docs), path.join(baseapp, docs), app, `${baseapp}/`, exludeDocs, true);
+  // _copyRecursiveSync(path.join(baseumdlib, docs), path.join(baseapp, docs), app, `${baseapp}/`, exludeDocs, true);
 
   // Copy Source Files:
   _copyRecursiveSync(path.join(baseumdlib, src), path.join(baseapp, src), app, `${baseapp}/`, excluSrc);

@@ -55,7 +55,7 @@
      *
      * Nota:
      * Running ES6lib in noConflic mode, returns the ES6lib variable to its
-     _ previous owner.
+     * _ previous owner.
      *
      * @method ()
      * @public
@@ -97,7 +97,7 @@
     },
   };
 
-  // Attaches a constant to ESLib that provides the version of the lib.
+  // Attaches a constant to ES6lib that provides the version of the lib.
   ES6lib.VERSION = '{{lib:version}}';
 }());
 /* - */

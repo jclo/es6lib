@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.5
+ * ES6lib v0.0.6
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -311,8 +311,8 @@
       return obj;
     };
 
-    // Attaches a constant to ESLib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.5';
+    // Attaches a constant to ES6lib that provides the version of the lib.
+    ES6lib.VERSION = '0.0.6';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -321,8 +321,8 @@
      * Returns a reference to this ES6lib object.
      *
      * Nota:
-     * Running ES6lib in noConflic mode, returns the ES6lib variable to its
-     _ previous owner.
+     * Running ES6lib in noConflict mode, returns the ES6lib variable to its
+     * _ previous owner.
      *
      * @method ()
      * @public

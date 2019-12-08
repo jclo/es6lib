@@ -56,8 +56,8 @@
      * Returns a reference to this ES6lib object.
      *
      * Nota:
-     * Running ES6lib in noConflic mode, returns the ES6lib variable to its
-     _ previous owner.
+     * Running ES6lib in noConflict mode, returns the ES6lib variable to its
+     * _ previous owner.
      *
      * @function ()
      * @public
@@ -73,7 +73,7 @@
     },
   };
 
-  // Attaches a constant to ESLib that provides the version of the lib.
+  // Attaches a constant to ES6lib that provides the version of the lib.
   ES6lib.VERSION = '{{lib:version}}';
 
 
@@ -107,3 +107,4 @@
     },
   });
 }());
+/* eslint-enable one-var, semi-style */

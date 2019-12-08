@@ -135,3 +135,4 @@
     },
   };
 }());
+/* eslint-enable one-var, semi-style */

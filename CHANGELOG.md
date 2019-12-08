@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.6 (December 8, 2019)
+
+  * Fixed a few typos,
+  * Updated the dependencies,
+  * ...,
+
+
 ### 0.0.5 (September 22, 2019)
 
   * Fixed a small regression in the script es6lib,

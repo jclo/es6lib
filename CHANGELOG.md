@@ -4,7 +4,7 @@
 
   * Fixed a few typos,
   * Updated the dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.0.5 (September 22, 2019)

@@ -1,5 +1,12 @@
 ### HEAD
 
+### 0.0.7 (March 14, 2020)
+
+  * Updated the dependency packages,
+  * Removed the package gulp-footer as it has major vulnerabilities not fixed,
+  * ...,
+
+
 ### 0.0.6 (December 8, 2019)
 
   * Fixed a few typos,

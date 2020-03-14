@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,24 +24,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * ************************************************************************** */
-/* eslint one-var: 0,semi-style: 0 */
+/* eslint one-var: 0,semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Node modules
-const fs           = require('fs')
-    , { Readable } = require('stream')
-    , nopt         = require('nopt')
-    , path         = require('path')
+const fs    = require('fs')
+    , nopt  = require('nopt')
+    , path  = require('path')
+    , shell = require('shelljs')
     ;
+
 
 // -- Global variables
 const boilerlib   = 'ES6lib'
     /* eslint-disable-next-line object-curly-newline */
     , author = { name: 'John Doe', acronym: 'jdo', email: 'jdo@johndoe.com', url: 'http://www.johndoe.com' }
-    , copyright   = 'Copyright (c) 2019 {{author:name}} <{{author:email}}> ({{author:url}})'
+    , copyright   = 'Copyright (c) 2020 {{author:name}} <{{author:email}}> ({{author:url}})'
     , baseapp     = process.cwd()
-    , baseumdlib  = __dirname.replace('/bin', '')
+    , baseboiler  = __dirname.replace('/bin', '')
     , { version } = require('../package.json')
     , src         = 'src'
     , test        = 'test'
@@ -51,19 +52,18 @@ const boilerlib   = 'ES6lib'
     , opts = {
       help: [Boolean, false],
       version: [String, null],
-      collection: [Boolean, false],
       path,
       name: [String, null],
     }
     , shortOpts = {
       h: ['--help'],
       v: ['--version', version],
-      c: ['--collection'],
       p: ['--path'],
       n: ['--name'],
     }
     , parsed = nopt(opts, shortOpts, process.argv, 2)
     ;
+
 
 // -- Templates
 const readme = [
@@ -120,206 +120,10 @@ const index = [
 
 const gitignore = '';
 const eslintignore = '';
+const npmignore = '';
 
 
-// -- Private functions --------------------------------------------------------
-/* eslint-disable no-underscore-dangle */
-
-/**
- * Removes the cached files and returns the array.
- *
- * @function (arg1)
- * @private
- * @param {Array}     an array of files,
- * @returns {Array}   returns the filtered array,
- */
-function _filter(files) {
-  const filtered = []
-    ;
-
-  for (let i = 0; i < files.length; i++) {
-    if (!files[i].match(/^\./)) {
-      filtered.push(files[i]);
-    }
-  }
-
-  return filtered;
-}
-
-/**
- * Copies source file to destination.
- *
- * @function (arg1, arg2)
- * @private
- * @param {String}    the source file,
- * @param {String}    the destination file,
- * @returns {}        -,
- */
-function _copyFile(source, dest) {
-  fs.createReadStream(source).pipe(fs.createWriteStream(dest));
-}
-
-/**
- * Copies source file to destination with a filtering.
- *
- * @function (arg1, arg2, arg3)
- * @private
- * @param {String}    the source path,
- * @param {String}    the destination path,
- * @param {String}    the name of the library,
- * @returns {}        -,
- */
-function _copyFileAndReplace(source, dest, app) {
-  const re  = new RegExp(boilerlib, 'g')
-      , re2 = new RegExp('{{template:version}}')
-      ;
-  let s
-    ;
-
-  fs.readFile(source, 'utf8', (error, data) => {
-    if (error) { throw error; }
-    s = data.replace(re, app).replace(re2, version);
-    fs.writeFile(dest, s, 'utf8', (err) => {
-      if (err) { throw err; }
-    });
-  });
-}
-
-/**
- * Recursively copies source to destination.
- *
- * @function (arg1, arg2, arg3, arg4, arg5, arg6)
- * @private
- * @param {String}    the source folder/file,
- * @param {String}    the destination folder/file,
- * @param {String}    the name of the library,
- * @param {String}    the relative path,
- * @param {Array}     the files not to copy,
- * @param {Boolean}   add or not chached files,
- * @returns {}        -,
- */
-function _copyRecursiveSync(source, dest, app, destpath, excluFiles, addCachedFiles) {
-  if (fs.statSync(source).isDirectory()) {
-    fs.mkdirSync(dest);
-
-    let files;
-    if (addCachedFiles) {
-      files = fs.readdirSync(source);
-    } else {
-      files = _filter(fs.readdirSync(source));
-    }
-    for (let i = 0; i < files.length; i++) {
-      if (fs.statSync(`${source}/${files[i]}`).isDirectory()) {
-        if (!excluFiles || excluFiles.indexOf(files[i]) === -1) {
-          _copyRecursiveSync(`${source}/${files[i]}`, `${dest}/${files[i]}`, app, destpath, excluFiles, addCachedFiles);
-        }
-      } else {
-        const lopath = destpath ? dest.replace(destpath, '') : dest;
-
-        if (!excluFiles || excluFiles.indexOf(files[i]) === -1) {
-          process.stdout.write(`  ${lopath}/${files[i]}\n`);
-          _copyFileAndReplace(`${source}/${files[i]}`, `${dest}/${files[i]}`, app);
-        }
-      }
-    }
-  } else {
-    _copyFileAndReplace(source, dest, app);
-  }
-}
-
-/**
- * Copies source data to destination file.
- *
- * @function (arg1, arg2)
- * @private
- * @param {String}    the destination path,
- * @param {Array}     the files to create and their contents,
- * @returns {}        -,
- */
-function _createFiles(destpath, files, app, owner, cpright) {
-  let input
-    , s
-    ;
-
-  for (let i = 0; i < files[0].length; i++) {
-    input = files[0][i]
-      .replace('{{lib:name}}', app)
-      .replace('{{lib:lowname}}', app.toLowerCase())
-      .replace('{{lib:copyright}}', cpright)
-      .replace('{{author:name}}', owner.name)
-      .replace('{{author:email}}', owner.email)
-      .replace('{{author:url}}', owner.url)
-    ;
-
-    // Convert the string to a readable stream:
-    s = new Readable();
-    s.push(input);
-    s.push(null);
-    // Write the stream to the destination file:
-    s.pipe(fs.createWriteStream(path.join(destpath, files[1][i])));
-    process.stdout.write(`  ${files[1][i]}\n`);
-  }
-}
-
-/**
- * Removes UMDLib dependencies to package.json.
- *
- * @function (arg1, arg2, arg3)
- * @private
- * @param {String}    the root path of UMDLib,
- * @param {String}    the root path of UMD library,
- * @param {String}    the name of the UMD library,
- * @returns {}        -,
- */
-function _customizeApp(locbaseumdlib, locbaseapp, locappname, owner) {
-  const npm   = 'package.json'
-    ;
-
-  // Read package.json:
-  fs.readFile(path.join(locbaseumdlib, npm), 'utf8', (error, data) => {
-    if (error) {
-      throw error;
-    }
-
-    // Fix package.json:
-    const obj = JSON.parse(data);
-    const pack = {};
-    pack.name = locappname.toLowerCase();
-    pack.version = '0.0.0';
-    pack.description = `${locappname} ...`;
-    pack.main = obj.main;
-    pack.bin = {};
-    pack.scripts = obj.scripts;
-    pack.repository = obj.repository;
-    pack.repository.url = `https://github.com/${owner.acronym}/${locappname.toLowerCase()}.git`;
-    pack.keywords = [];
-    pack.author = obj.author;
-    pack.author.name = owner.name;
-    pack.author.email = owner.email;
-    pack.author.url = owner.url;
-    pack.license = obj.license;
-    pack.bugs = obj.bugs;
-    pack.bugs.url = `https://github.com/${owner.acronym}/${locappname.toLowerCase()}/issues`;
-    pack.homepage = `https://github.com/${owner.acronym}/${locappname.toLowerCase()}`;
-    pack.dependencies = obj.dependencies;
-    pack.devDependencies = obj.devDependencies;
-    pack.publishConfig = obj.publishConfig;
-    pack.private = obj.private;
-    pack.husky = obj.husky;
-
-    delete pack.dependencies.nopt;
-    delete pack.dependencies.path;
-
-    // Write the updated package.json:
-    fs.writeFile(path.join(locbaseapp, npm), JSON.stringify(pack, null, 2), 'utf8', (err) => {
-      if (err) {
-        throw err;
-      }
-
-      process.stdout.write(`  ${npm}\n`);
-    });
-  });
-}
+// -- Private Functions --------------------------------------------------------
 
 /**
  * Displays help message.
@@ -346,6 +150,242 @@ function _help() {
 }
 
 /**
+ * Removes the cached files and returns the array.
+ *
+ * @function (arg1)
+ * @private
+ * @param {Array}           an array of files,
+ * @returns {Array}         returns the filtered array,
+ */
+function _filter(files) {
+  const filtered = []
+    ;
+
+  for (let i = 0; i < files.length; i++) {
+    if (!files[i].match(/^\./)) {
+      filtered.push(files[i]);
+    }
+  }
+
+  return filtered;
+}
+
+/**
+ * Checks if the application folder is empty.
+ *
+ * @function (arg1)
+ * @private
+ * @param {String}          the folder path,
+ * @returns {Boolean}       returns true if empty,
+ */
+function _isFolderEmpty(folder) {
+  const authFiles = ['etc', 'package.json', 'package-lock.json', 'node_modules'];
+
+  let files = _filter(fs.readdirSync(folder));
+  files = files.filter((file) => authFiles.indexOf(file) === -1);
+  return !files.length;
+}
+
+/**
+ * Creates the App skeleton.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the App name,
+ * @param {Object}          the author credentials,
+ * @param {String}          the copyright text,
+ * @returns {}              -,
+ */
+function _addSkeleton(base, app, owner, cright) {
+  const newFiles = [
+    [readme, license, changelog, gitignore, eslintignore, npmignore, index],
+    [
+      'README.md', 'LICENSE.md', 'CHANGELOG.md', '.gitignore', '.eslintignore',
+      '.npmignore', 'index.js',
+    ],
+  ];
+
+  let input;
+  let s;
+  for (let i = 0; i < newFiles[0].length; i++) {
+    input = newFiles[0][i]
+      .replace('{{lib:name}}', app)
+      .replace('{{lib:lowname}}', app.toLowerCase())
+      .replace('{{lib:copyright}}', cright)
+      .replace('{{author:name}}', owner.name)
+      .replace('{{author:email}}', owner.email)
+      .replace('{{author:url}}', owner.url)
+    ;
+
+    process.stdout.write(`  added ${newFiles[1][i]}\n`);
+    s = new shell.ShellString(input);
+    s.to(`${base}/${newFiles[1][i]}`);
+  }
+}
+
+/**
+ * Duplicates generic files.
+ *
+ * @function (arg1, arg2)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the destination path,
+ * @returns {}              -,
+ */
+function _duplicate(source, dest) {
+  const dupFiles = ['.eslintrc', '.travis.yml', 'gulpfile.js'];
+
+  for (let i = 0; i < dupFiles.length; i++) {
+    process.stdout.write(`  copied ${dupFiles[i]}\n`);
+    shell.cp(`${source}/${dupFiles[i]}`, `${dest}/.`);
+  }
+}
+
+/**
+ * Customizes 'Package.json'.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the destination path,
+ * @param {Object}          the author credentials,
+ * @returns {}              -,
+ */
+function _customize(source, dest, app, owner) {
+  const npm = 'package.json';
+
+  const json = shell.cat(`${source}/${npm}`);
+  const obj = JSON.parse(json.stdout);
+
+  const pack = {};
+  pack.name = app.toLowerCase();
+  pack.version = '0.0.0-alpha.0';
+  pack.description = `${app} ...`;
+  pack.main = `_dist/lib/${app.toLowerCase()}.js`;
+  pack.bin = {};
+  pack.scripts = obj.scripts;
+  pack.repository = obj.repository;
+  pack.repository.url = `https://github.com/${owner.acronym}/${app.toLowerCase()}.git`;
+  pack.keywords = ['ES6'];
+  pack.author = obj.author;
+  pack.author.name = owner.name;
+  pack.author.email = owner.email;
+  pack.author.url = owner.url;
+  pack.license = obj.license;
+  pack.bugs = obj.bugs;
+  pack.bugs.url = `https://github.com/${owner.acronym}/${app.toLowerCase()}/issues`;
+  pack.homepage = `https://github.com/${owner.acronym}/${app.toLowerCase()}`;
+  pack.dependencies = obj.dependencies;
+  pack.devDependencies = obj.devDependencies;
+  pack.publishConfig = obj.publishConfig;
+  pack.private = obj.private;
+  pack.husky = obj.husky;
+
+  delete pack.dependencies.nopt;
+  delete pack.dependencies.shelljs;
+
+  process.stdout.write(`  updated ${npm}\n`);
+  json.stdout = JSON.stringify(pack, null, 2);
+  json.to(`${baseapp}/${npm}`);
+}
+
+/**
+ * Adds the source files.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the destination path,
+ * @param {String}          the destination folder,
+ * @param {String}          the name of the app,
+ * @returns {}              -,
+ */
+function _addSrc(source, dest, folder, app) {
+  const exclude = [];
+
+  // Copy contents of source folder recursively to dest:
+  process.stdout.write(`  duplicated the contents of ${folder}\n`);
+  shell.mkdir('-p', `${dest}/${folder}`);
+  shell.cp('-r', `${source}/${folder}/*`, `${dest}/${folder}/.`);
+
+  for (let i = 0; i < exclude.length; i++) {
+    shell.rm('-f', `${dest}/${folder}/${exclude[i]}`);
+  }
+
+  // Replace the name 'boilerlib' by 'app' to dest:
+  const re = new RegExp(boilerlib, 'g');
+  const f = shell.find(`${dest}/${folder}`).filter((file) => file.match(/(\.js)|(_header)|(_footer)/));
+  for (let i = 0; i < f.length; i++) {
+    shell.sed('-i', re, app, f[i]);
+  }
+
+  // shell.sed('-i', /{{template:version}}/, version, `${dest}/${folder}/_header`);
+}
+
+/**
+ * Adds the task files.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the destination path,
+ * @param {String}          the destination folder,
+ * @param {String}          the App name,
+ * @returns {}              -,
+ */
+function _addTasks(source, dest, folder, app) {
+  const exclude = []
+      , boiler  = '{{boiler:name}}'
+      , ver     = '{{boiler:name:version}}'
+      ;
+
+  process.stdout.write(`  duplicated the contents of ${folder}\n`);
+  shell.mkdir('-p', `${dest}/${folder}`);
+  shell.cp('-r', `${source}/${folder}/*`, `${dest}/${folder}/.`);
+
+  for (let i = 0; i < exclude.length; i++) {
+    shell.rm('-f', `${dest}/${folder}/${exclude[i]}`);
+  }
+
+  // Replace 'boilerlib' by 'app' to config.js and add the version
+  // of the boilerplate:
+  shell.sed('-i', boilerlib, app, `${dest}/${folder}/config.js`);
+  shell.sed('-i', boiler, boilerlib, `${dest}/${folder}/config.js`);
+  shell.sed('-i', ver, version, `${dest}/${folder}/config.js`);
+}
+
+/**
+ * Adds the test files.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the source path,
+ * @param {String}          the destination path,
+ * @param {String}          the destination folder,
+ * @param {String}          the name of the app,
+ * @returns {}              -,
+ */
+function _addTest(source, dest, folder, app) {
+  const exclude = [];
+
+  process.stdout.write(`  duplicated the contents of ${folder}\n`);
+  shell.mkdir('-p', `${dest}/${folder}`);
+  shell.cp('-r', `${source}/${folder}/*`, `${dest}/${folder}/.`);
+
+  for (let i = 0; i < exclude.length; i++) {
+    shell.rm('-f', `${dest}/${folder}/${exclude[i]}`);
+  }
+
+  // Replace the name 'boilerlib' by 'app' to dest:
+  const re = new RegExp(boilerlib, 'g');
+  const f = shell.find(`${dest}/${folder}`).filter((file) => file.match(/\.js$/));
+  for (let i = 0; i < f.length; i++) {
+    shell.sed('-i', re, app, f[i]);
+  }
+}
+
+/**
  * Creates and populates the web app.
  *
  * @function (arg1)
@@ -355,59 +395,36 @@ function _help() {
  */
 function _populate(locopts) {
   const app = locopts.name || 'myApp'
-      , authFiles = ['etc', 'package.json', 'package-lock.json', 'node_modules', 'private_repo']
-
-      , newFiles = [
-        [readme, license, changelog, gitignore, eslintignore, index],
-        ['README.md', 'LICENSE.md', 'CHANGELOG.md', '.gitignore', '.eslintignore', 'index.js'],
-      ]
-      , dupFiles = ['.travis.yml', '.eslintrc', 'gulpfile.js']
-      , excludeTasks = []
-      , excluSrc = []
-      , exludeDocs = []
       ;
 
-  // Check the folder app is empty:
-  process.stdout.write('Checks that the folder app is empty...\n');
-  let files = _filter(fs.readdirSync(baseapp));
-  files = files.filter((file) => authFiles.indexOf(file) === -1);
-  if (files.length) {
+  const resp = _isFolderEmpty(baseapp);
+  if (!resp) {
     process.stdout.write('This folder already contains files and/or folders. Clean it up first! Process aborted...\n');
     process.exit(1);
   }
 
-  // Ok. Populate it:
-  process.stdout.write('Populates the folder with:\n');
-
   // Create README.md, LICENSE.md, CHANGELOG.md, etc.:
-  _createFiles(baseapp, newFiles, app, author, copyright);
+  process.stdout.write('Ok, the folder is empty\n');
+  _addSkeleton(baseapp, app, author, copyright);
 
-  // Duplicate gulpfile, ...
-  for (let i = 0; i < dupFiles.length; i++) {
-    process.stdout.write(`  ${dupFiles[i]}\n`);
-    _copyFile(path.join(baseumdlib, dupFiles[i]), path.join(baseapp, dupFiles[i]));
-  }
+  // Copy files:
+  _duplicate(baseboiler, baseapp);
 
   // Add and customize package.json:
-  _customizeApp(baseumdlib, baseapp, app, author);
+  _customize(baseboiler, baseapp, app, author);
 
-  // Copy Gulp Task files:
-  _copyRecursiveSync(path.join(baseumdlib, tasks), path.join(baseapp, tasks), app, `${baseapp}/`, excludeTasks);
+  // Copy the src files:
+  _addSrc(baseboiler, baseapp, src, app);
+
+  // Add tasks:
+  _addTasks(baseboiler, baseapp, tasks, app);
 
   // Copy Test Files:
-  _copyRecursiveSync(path.join(baseumdlib, test), path.join(baseapp, test), app, `${baseapp}/`);
+  _addTest(baseboiler, baseapp, test, app);
 
-  // Copy Doc Files:
-  // _copyRecursiveSync(path.join(baseumdlib, docs), path.join(baseapp, docs), app, `${baseapp}/`, exludeDocs, true);
-
-  // Copy Source Files:
-  _copyRecursiveSync(path.join(baseumdlib, src), path.join(baseapp, src), app, `${baseapp}/`, excluSrc);
-
-  setTimeout(() => {
-    process.stdout.write('Done. Enjoy!\n');
-  }, 1000);
+  process.stdout.write('Done. Enjoy!\n');
 }
-/* eslint-disable no-underscore-dangle */
+
 
 // -- Main
 if (parsed.help) {
@@ -415,7 +432,6 @@ if (parsed.help) {
 }
 
 if (parsed.version) {
-  // console.log('umdlib version: ' + parsed.version);
   process.stdout.write(`${boilerlib} version: ${parsed.version}\n`);
   process.exit(0);
 }

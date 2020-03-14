@@ -1,13 +1,13 @@
 /*! ****************************************************************************
- * ES6lib v0.0.6
+ * ES6lib v0.0.7
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2019 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr/).
+ * Copyright (c) 2020 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr/).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
+ * Built from {{boiler:name}} v{{boiler:name:version}}.
  * ************************************************************************** */
-// Based on ES6.lib template v{{template:version}}
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
@@ -63,7 +63,6 @@
     },
   };
   /* - */
-
 
   /* ***************************************************************************
    *
@@ -131,7 +130,6 @@
     };
   }());
   /* - */
-
 
   /* ***************************************************************************
    *
@@ -238,7 +236,6 @@
   }());
   /* eslint-enable no-underscore-dangle */
 
-
   /* ***************************************************************************
    *
    * A ...
@@ -316,7 +313,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.6';
+    ES6lib.VERSION = '{{lib:version}}';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -374,7 +371,6 @@
     };
   }());
   /* eslint-enable one-var, semi-style */
-
 
   // Returns the library name:
   return ES6lib;

@@ -6,7 +6,6 @@
 const { src, dest, series } = require('gulp')
     , del     = require('del')
     , concat  = require('gulp-concat')
-    , footer  = require('gulp-footer')
     , replace = require('gulp-replace')
     ;
 
@@ -49,11 +48,6 @@ function docore() {
     .pipe(replace(/^/g, '  '))
     // indent each other lines with 2 spaces:
     .pipe(replace(/\n/g, '\n  '))
-    // remove the indent added to the blanck lines:
-    // (we need to add an extra line otherwise the indent isn't removed
-    // from the last line!)
-    .pipe(footer('\n'))
-    .pipe(replace(/\s\s\n/g, '\n'))
     .pipe(concat('core.js'))
     .pipe(dest(destination));
 }
@@ -63,6 +57,8 @@ function dolibnoparent() {
   return src([head, `${destination}/core.js`, foot])
     .pipe(replace('{{lib:name}}', lib))
     .pipe(concat(`${name}${noparent}.js`))
+    // fix the blanck lines we indented too:
+    .pipe(replace(/\s{2}\n/g, '\n'))
     .pipe(dest(destination));
 }
 

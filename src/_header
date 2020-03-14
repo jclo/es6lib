@@ -1,4 +1,3 @@
-// Based on ES6.lib template v{{template:version}}
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "bin": {
@@ -9,7 +9,9 @@
   "scripts": {
     "build": "gulp build",
     "watch": "gulp watch",
+    "dev": "gulp rundev",
     "makedist": "gulp makedist",
+    "app": "gulp runapp",
     "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
     "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
@@ -57,12 +59,14 @@
     "eslint-plugin-import": "^2.20.1",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
     "gulp-header": "^2.0.9",
     "gulp-replace": "^1.0.0",
     "gulp-uglify-es": "^2.0.0",
     "husky": "^4.2.3",
     "mocha": "^7.1.0",
     "nyc": "^15.0.0",
+    "open": "^7.0.3",
     "opener": "^1.5.1"
   },
   "publishConfig": {

@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.7
+ * ES6lib v0.0.8
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)

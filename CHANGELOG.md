@@ -3,7 +3,7 @@
 ### 0.0.8 (March 15, 2020)
 
   * Added the capability to start an http server,
-  * ...,
+  * Release.
 
 
 ### 0.0.7 (March 14, 2020)

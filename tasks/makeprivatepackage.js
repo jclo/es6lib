@@ -15,9 +15,6 @@ const config = require('./config')
     ;
 
 
-// -- Release version:
-
-
 // -- Local constants
 const tmppriv      = './private_repo/tmp'
     , libname      = config.libname.replace(/\s+/g, '').toLowerCase()

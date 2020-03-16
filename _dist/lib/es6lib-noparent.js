@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * ES6lib v0.0.8
+ * ES6lib v0.0.9
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -20,6 +20,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
+    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
   } else {
     // Browser globals.

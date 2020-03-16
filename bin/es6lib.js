@@ -319,8 +319,6 @@ function _addSrc(source, dest, folder, app) {
   for (let i = 0; i < f.length; i++) {
     shell.sed('-i', re, app, f[i]);
   }
-
-  // shell.sed('-i', /{{template:version}}/, version, `${dest}/${folder}/_header`);
 }
 
 /**

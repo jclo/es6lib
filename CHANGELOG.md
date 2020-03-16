@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.9 (March 16, 2020)
+
+  * Fixed some minor typos,
+  * Release.
+
+
 ### 0.0.8 (March 15, 2020)
 
   * Added the capability to start an http server,

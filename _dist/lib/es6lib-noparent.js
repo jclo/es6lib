@@ -1,5 +1,5 @@
 /** ****************************************************************************
- * ES6lib v0.0.9
+ * ES6lib v0.0.10
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -310,7 +310,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '{{lib:version}}';
+    ES6lib.VERSION = '0.0.10';
 
 
     // -- Public Static Methods ------------------------------------------------

@@ -11,7 +11,8 @@ const { src, dest, series } = require('gulp')
 
 
 // -- Local modules
-const config = require('./config')
+const pack   = require('../package.json')
+    , config = require('./config')
    ;
 
 
@@ -25,6 +26,7 @@ const destination  = config.libdir
     , head         = source[0]
     , core         = source.slice(1, -1)
     , foot         = source[source.length - 1]
+    , { version }  = pack
     ;
 
 
@@ -49,17 +51,19 @@ function docore() {
     // indent each other lines with 2 spaces:
     .pipe(replace(/\n/g, '\n  '))
     .pipe(concat('core.js'))
-    .pipe(dest(destination));
+    .pipe(dest(destination))
+  ;
 }
 
 // Creates the library without 'this'.
 function dolibnoparent() {
   return src([head, `${destination}/core.js`, foot])
-    .pipe(replace('{{lib:name}}', lib))
     .pipe(concat(`${name}${noparent}.js`))
     // fix the blanck lines we indented too:
     .pipe(replace(/\s{2}\n/g, '\n'))
-    .pipe(dest(destination));
+    .pipe(replace('{{lib:version}}', version))
+    .pipe(dest(destination))
+  ;
 }
 
 // Creates the library.
@@ -67,7 +71,8 @@ function dolib() {
   return src(`${destination}/${name}${noparent}.js`)
     .pipe(replace('{{lib:parent}}', parent))
     .pipe(concat(`${name}.js`))
-    .pipe(dest(destination));
+    .pipe(dest(destination))
+  ;
 }
 
 // Removes the temp file(s).

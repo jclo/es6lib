@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * A ...
  *
@@ -23,12 +23,13 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global */
 /* eslint-disable no-underscore-dangle */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
   const Root = Tree.Util.Public;
@@ -102,5 +103,7 @@
       return _getArray();
     },
   });
+
+  // IIFE_END
 }());
 /* eslint-enable no-underscore-dangle */

@@ -44,7 +44,9 @@ function clean(done) {
 // Creates the indented content.
 function docore() {
   return src(core)
-    // remove the extra 'use strict':
+    .pipe(replace('{{lib:version}}', version))
+    // remove the extra global and 'use strict':
+    .pipe(replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */'))
     .pipe(replace(/\n'use strict';\n/, ''))
     // indent the first line with 2 spaces:
     .pipe(replace(/^/g, '  '))
@@ -61,7 +63,6 @@ function dolibnoparent() {
     .pipe(concat(`${name}${noparent}.js`))
     // fix the blanck lines we indented too:
     .pipe(replace(/\s{2}\n/g, '\n'))
-    .pipe(replace('{{lib:version}}', version))
     .pipe(dest(destination))
   ;
 }

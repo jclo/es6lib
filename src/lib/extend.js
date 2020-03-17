@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * Provides the function 'extend' that is used to fill the object tree with
  * the public static or object methods when the Javascript VM browses the
@@ -23,12 +23,13 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global */
 /* - */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -64,5 +65,7 @@
       object[keys[i]] = methods[keys[i]];
     }
   };
+
+  // IIFE_END
 }());
 /* - */

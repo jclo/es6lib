@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.10
+ * ES6lib v0.0.11-beta.1
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -42,7 +42,7 @@
     ;
   /* eslint-enable one-var, semi-style */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * Tree is an internal object that links all the internal modules.
    *
@@ -65,7 +65,7 @@
   };
   /* - */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * Provides the function 'extend' that is used to fill the object tree with
    * the public static or object methods when the Javascript VM browses the
@@ -91,9 +91,10 @@
    * @version      -
    * ************************************************************************ */
   /* - */
+  /* - */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -129,10 +130,12 @@
         object[keys[i]] = methods[keys[i]];
       }
     };
+
+    // IIFE_END
   }());
   /* - */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * A ...
    *
@@ -157,10 +160,11 @@
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable no-underscore-dangle */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
     const Root = Tree.Util.Public;
@@ -234,10 +238,12 @@
         return _getArray();
       },
     });
+
+    // IIFE_END
   }());
   /* eslint-enable no-underscore-dangle */
 
-  /* ***************************************************************************
+  /** **************************************************************************
    *
    * A ...
    *
@@ -270,10 +276,11 @@
    * @since        0.0.0
    * @version      -
    * ************************************************************************ */
+  /* - */
   /* eslint-disable one-var, semi-style */
 
   (function() {
-    // IIFE
+    // IIFE_START
 
     // -- Module path
 
@@ -314,7 +321,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.10';
+    ES6lib.VERSION = '0.0.11-beta.1';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -370,6 +377,8 @@
         return Util.getArray();
       },
     };
+
+    // IIFE_END
   }());
   /* eslint-enable one-var, semi-style */
 

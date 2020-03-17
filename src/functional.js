@@ -1,4 +1,4 @@
-/* ***************************************************************************
+/** **************************************************************************
  *
  * A ...
  *
@@ -31,12 +31,13 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
+/* global Tree, root */
 /* eslint-disable one-var, semi-style */
 
 'use strict';
 
 (function() {
-  // IIFE
+  // IIFE_START
 
   // -- Module path
 
@@ -127,5 +128,7 @@
   obj.getArray = function() {
     return Util.getArray();
   };
+
+  // IIFE_END
 }());
 /* eslint-enable one-var, semi-style */

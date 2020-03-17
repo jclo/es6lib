@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.11 (March 17, 2020)
+
+  * Made some cosmetics changes,
+  * ...,
+
+
 ### 0.0.10 (March 17, 2020)
 
   * Fixed an annoying mistake, in the script makejs.js, that prevents updating the release number,

@@ -3,7 +3,7 @@
 ### 0.0.10 (March 17, 2020)
 
   * Fixed an annoying mistake, in the script makejs.js, that prevents updating the release number,
-  * ...,
+  * Release.
 
 
 ### 0.0.9 (March 16, 2020)

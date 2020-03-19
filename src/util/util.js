@@ -23,7 +23,7 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************ */
-/* global */
+/* global Tree, extend */
 /* eslint-disable no-underscore-dangle */
 
 'use strict';
@@ -31,17 +31,18 @@
 (function() {
   // IIFE_START
 
-  // -- Module path
+
+  // -- Module Path
   const Root = Tree.Util.Public;
 
 
-  // -- Local modules
+  // -- Local Modules
 
 
-  // -- Local constants
+  // -- Local Constants
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
   // -- Private Functions ----------------------------------------------------

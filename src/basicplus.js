@@ -33,20 +33,21 @@
 (function() {
   // IIFE_START
 
-  // -- Module path
+
+  // -- Module Path
 
 
-  // -- Local modules
+  // -- Local Modules
   const Util = Tree.Util.Public;
 
 
-  // -- Local constants
+  // -- Local Constants
   // Saves the previous value of the library variable, so that it can be
   // restored later on, if noConflict is used.
   const previousES6lib = root.ES6lib;
 
 
-  // -- Local variables
+  // -- Local Variables
 
 
   // -- Public Static Methods ------------------------------------------------

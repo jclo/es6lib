@@ -3,7 +3,7 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const { src, dest, series, parallel } = require('gulp')
     , del     = require('del')
     , concat  = require('gulp-concat')
@@ -13,12 +13,12 @@ const { src, dest, series, parallel } = require('gulp')
     ;
 
 
-// -- Local modules
+// -- Local Modules
 const config = require('./config')
     ;
 
 
-// -- Local constants
+// -- Local Constants
 const { dist }     = config
     , { libdir }   = config
     , { libname }  = config
@@ -28,7 +28,7 @@ const { dist }     = config
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Gulp Private Tasks
@@ -56,8 +56,6 @@ function copydev() {
 function makenoparentlib() {
   return src(`${libdir}/${name}${noparent}.js`)
     .pipe(header(license))
-    .pipe(replace('/*! *', '/** *'))
-    .pipe(replace('/* global define */', '/* global */'))
     .pipe(replace(/ {2}'use strict';\n\n/g, ''))
     .pipe(dest(`${dist}/lib`));
 }
@@ -65,6 +63,7 @@ function makenoparentlib() {
 // Creates the minified version.
 function makeminified() {
   return src(`${libdir}/${name}.js`)
+    .pipe(replace('/*! ***', '/** ***'))
     .pipe(uglify())
     .pipe(header(license))
     .pipe(concat(`${name}.min.js`))

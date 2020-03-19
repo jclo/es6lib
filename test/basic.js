@@ -4,18 +4,21 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const should     = require('chai').should()
     , { expect } = require('chai')
     ;
 
-// -- Local modules
+
+// -- Local Modules
 const ES6lib = require('../index.js')
     ;
 
-// -- Local constants
 
-// -- Local variables
+// -- Local Constants
+
+
+// -- Local Variables
 
 
 // -- Main

@@ -2,20 +2,20 @@
 
 'use strict';
 
-// -- Vendor modules
+// -- Vendor Modules
 
 
-// -- Local modules
+// -- Local Modules
 const pack = require('../package.json');
 
 
-// -- Local constants
+// -- Local Constants
 const libname = 'ES6lib'
     , name    = libname.replace(/\s+/g, '').toLowerCase()
     ;
 
 
-// -- Local variables
+// -- Local Variables
 
 
 // -- Main

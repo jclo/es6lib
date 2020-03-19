@@ -1,5 +1,5 @@
-/** ****************************************************************************
- * ES6lib v0.0.11-beta.1
+/*! ****************************************************************************
+ * ES6lib v0.0.11
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -9,7 +9,7 @@
  * Built from {{boiler:name}} v{{boiler:name:version}}.
  * ************************************************************************** */
 // ESLint declarations
-/* global */
+/* global define */
 /* eslint strict: ["error", "function"] */
 (function(root, factory) {
   /* istanbul ignore next */
@@ -92,16 +92,17 @@
   (function() {
     // IIFE_START
 
-    // -- Module path
+
+    // -- Module Path
 
 
-    // -- Local modules
+    // -- Local Modules
 
 
-    // -- Local constants
+    // -- Local Constants
 
 
-    // -- Local variables
+    // -- Local Variables
 
 
     // -- Public function ------------------------------------------------------
@@ -162,17 +163,18 @@
   (function() {
     // IIFE_START
 
-    // -- Module path
+
+    // -- Module Path
     const Root = Tree.Util.Public;
 
 
-    // -- Local modules
+    // -- Local Modules
 
 
-    // -- Local constants
+    // -- Local Constants
 
 
-    // -- Local variables
+    // -- Local Variables
 
 
     // -- Private Functions ----------------------------------------------------
@@ -278,21 +280,22 @@
   (function() {
     // IIFE_START
 
-    // -- Module path
+
+    // -- Module Path
 
 
-    // -- Local modules
+    // -- Local Modules
     const Util = Tree.Util.Public;
 
 
-    // -- Local constants
+    // -- Local Constants
     // Saves the previous value of the library variable, so that it can be
     // restored later on, if noConflict is used.
     const previousES6lib = root.ES6lib
         ;
 
 
-    // -- Local variables
+    // -- Local Variables
     let methods
       ;
 
@@ -317,7 +320,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.11-beta.1';
+    ES6lib.VERSION = '0.0.11';
 
 
     // -- Public Static Methods ------------------------------------------------

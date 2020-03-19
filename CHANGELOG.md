@@ -4,7 +4,7 @@
 
   * Made some cosmetics changes,
   * Fixed a few minor typos,
-  * ...,
+  * Release.
 
 
 ### 0.0.10 (March 17, 2020)

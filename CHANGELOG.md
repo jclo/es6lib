@@ -1,5 +1,11 @@
 ### HEAD
 
+### 0.0.12 (March 19, 2020)
+
+  * Fixed a cohabitation conflict with ES6libplus,
+  * ...,
+
+
 ### 0.0.11 (March 19, 2020)
 
   * Made some cosmetics changes,

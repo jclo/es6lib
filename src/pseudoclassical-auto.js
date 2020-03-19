@@ -38,7 +38,7 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
 
 
   // -- Module Path
@@ -137,6 +137,6 @@
     },
   };
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* eslint-enable one-var, semi-style */

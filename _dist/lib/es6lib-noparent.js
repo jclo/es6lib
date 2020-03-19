@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.11
+ * ES6lib v0.0.12-beta.1
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -90,7 +90,7 @@
   /* - */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
 
 
     // -- Module Path
@@ -128,7 +128,7 @@
       }
     };
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* - */
 
@@ -161,7 +161,7 @@
   /* eslint-disable no-underscore-dangle */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
 
 
     // -- Module Path
@@ -237,7 +237,7 @@
       },
     });
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* eslint-enable no-underscore-dangle */
 
@@ -278,7 +278,7 @@
   /* eslint-disable one-var, semi-style */
 
   (function() {
-    // IIFE_START
+    // START OF IIFE
 
 
     // -- Module Path
@@ -320,7 +320,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.11';
+    ES6lib.VERSION = '0.0.12-beta.1';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -377,7 +377,7 @@
       },
     };
 
-    // IIFE_END
+    // END OF IIFE
   }());
   /* eslint-enable one-var, semi-style */
 

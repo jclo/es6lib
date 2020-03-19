@@ -29,7 +29,7 @@
 'use strict';
 
 (function() {
-  // IIFE_START
+  // START OF IIFE
 
 
   // -- Module Path
@@ -102,6 +102,6 @@
   // Attaches a constant to ES6lib that provides the version of the lib.
   ES6lib.VERSION = '{{lib:version}}';
 
-  // IIFE_END
+  // END OF IIFE
 }());
 /* - */

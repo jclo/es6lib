@@ -4,7 +4,7 @@
 
   * Fixed a cohabitation conflict with ES6libplus,
   * Fixed a minor issue to the script es6lib.js,
-  * ...,
+  * Release.
 
 
 ### 0.0.11 (March 19, 2020)

@@ -1,8 +1,9 @@
 ### HEAD
 
-### 0.0.12 (March 19, 2020)
+### 0.0.12 (March 20, 2020)
 
   * Fixed a cohabitation conflict with ES6libplus,
+  * Fixed a minor issue to the script es6lib.js,
   * ...,
 
 

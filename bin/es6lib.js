@@ -391,9 +391,10 @@ function _addTest(source, dest, folder, app) {
  * @param {Object}    the command line options,
  * @returns {}        -,
  */
-function _populate(locopts) {
-  const app = locopts.name || 'myApp'
-      ;
+function _populate(options) {
+  const app = !options.name || options.name === 'true'
+    ? 'myApp'
+    : options.name;
 
   const resp = _isFolderEmpty(baseapp);
   if (!resp) {

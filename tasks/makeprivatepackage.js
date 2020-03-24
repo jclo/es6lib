@@ -17,7 +17,7 @@ const config = require('./config')
 
 // -- Local Constants
 const tmppriv      = './private_repo/tmp'
-    , libname      = config.libname.replace(/\s+/g, '').toLowerCase()
+    , { name }     = config
     , { index }    = config
     , { distlink } = config
     ;
@@ -37,7 +37,7 @@ function clear(done) {
 // Copies the modified index.
 function copyindex() {
   return src(index)
-    .pipe(replace(`./lib/${libname}`, distlink))
+    .pipe(replace(`./lib/${name}`, distlink))
     .pipe(dest(tmppriv))
   ;
 }

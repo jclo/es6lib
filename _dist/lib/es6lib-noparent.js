@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v0.0.12
+ * ES6lib v1.0.0-beta.1
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -27,7 +27,7 @@
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
-}({{lib:parent}}, (root) => {
+}({{lib:parent}}, (root) => /* istanbul ignore next */ {
   // This is the list of the constants that are defined at the global level of
   // this module and are accessible to all. So, they are considered as reserved
   // words for this library.
@@ -320,7 +320,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '0.0.12';
+    ES6lib.VERSION = '1.0.0-beta.1';
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -335,7 +335,7 @@
      * @method ()
      * @public
      * @param {}              -,
-     * @returns {String}      returns the ES6lib object,
+     * @returns {Object}      returns the ES6lib object,
      * @since 0.0.0
      */
     /* istanbul ignore next */

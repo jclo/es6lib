@@ -24,6 +24,7 @@ module.exports = {
   dist: './_dist',
   libdir: './lib',
   libname,
+  name,
   parent: 'this',
   noparent: '-noparent',
   index: './index.js',

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.0 (March 24, 2020)
+
+  * Fixed a few minor issues,
+  * ...,
+
+
 ### 0.0.12 (March 20, 2020)
 
   * Fixed a cohabitation conflict with ES6libplus,

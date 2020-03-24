@@ -19,8 +19,7 @@ const pack   = require('../package.json')
 // -- Local Constants
 const destination  = config.libdir
     , source       = config.src
-    , lib          = config.libname
-    , name         = lib.replace(/\s+/g, '').toLowerCase()
+    , { name }     = config
     , { parent }   = config
     , { noparent } = config
     , head         = source[0]

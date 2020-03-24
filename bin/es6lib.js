@@ -28,7 +28,7 @@
 
 'use strict';
 
-// -- Node modules
+// -- Vendor Modules
 const fs    = require('fs')
     , nopt  = require('nopt')
     , path  = require('path')
@@ -36,7 +36,7 @@ const fs    = require('fs')
     ;
 
 
-// -- Global variables
+// -- Local Variables
 const boilerlib   = 'ES6lib'
     /* eslint-disable-next-line object-curly-newline */
     , author = { name: 'John Doe', acronym: 'jdo', email: 'jdo@johndoe.com', url: 'http://www.johndoe.com' }

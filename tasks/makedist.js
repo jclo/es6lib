@@ -21,9 +21,8 @@ const config = require('./config')
 // -- Local Constants
 const { dist }     = config
     , { libdir }   = config
-    , { libname }  = config
+    , { name }     = config
     , { noparent } = config
-    , name         = libname.replace(/\s+/g, '').toLowerCase()
     , { license }  = config
     ;
 
@@ -48,6 +47,7 @@ function doskeleton() {
 // Copies the development version.
 function copydev() {
   return src(`${libdir}/${name}.js`)
+    .pipe(replace(/}\(this, \(root\) => {/, '}(this, (root) => /* istanbul ignore next */ {'))
     .pipe(header(license))
     .pipe(dest(`${dist}/lib`));
 }
@@ -55,6 +55,7 @@ function copydev() {
 // Copies the development version without parent.
 function makenoparentlib() {
   return src(`${libdir}/${name}${noparent}.js`)
+    .pipe(replace(/}\({{lib:parent}}, \(root\) => {/, '}({{lib:parent}}, (root) => /* istanbul ignore next */ {'))
     .pipe(header(license))
     .pipe(replace(/ {2}'use strict';\n\n/g, ''))
     .pipe(dest(`${dist}/lib`));

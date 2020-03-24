@@ -93,7 +93,7 @@
    * @method ()
    * @public
    * @param {}              -,
-   * @returns {String}      returns the ES6lib object,
+   * @returns {Object}      returns the ES6lib object,
    * @since 0.0.0
    */
   /* istanbul ignore next */

@@ -1,8 +1,9 @@
 ### HEAD
 
-### 1.0.0 (March 24, 2020)
+### 1.0.0 (March 25, 2020)
 
   * Fixed a few minor issues,
+  * Removed a not useful feature from makedist.js,
   * ...,
 
 

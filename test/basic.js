@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, no-unused-vars: 0, semi-style: 0 */
+/* eslint one-var: 0, no-unused-vars: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
@@ -24,11 +24,20 @@ const ES6lib = require('../index.js')
 // -- Main
 describe('Test ES6lib:', () => {
   // Test the lib:
-  describe('Test ES6lib.VERSION and ES6lib.noConflict:', () => {
+  describe('Test ES6lib.VERSION, ES6lib._setTestMode and ES6lib.noConflict:', () => {
     it('Expects ES6lib.VERSION to return a string.', () => {
       expect(ES6lib.VERSION).to.be.a('string');
     });
-    it('Expects ES6lib.noConflict to return a function.', () => {
+
+    it('Expects ES6lib._setTestMode to be a function.', () => {
+      expect(ES6lib._setTestMode).to.be.a('function');
+    });
+
+    it('Expects ES6lib._setTestMode() to return an array.', () => {
+      expect(ES6lib._setTestMode()).to.be.an('array');
+    });
+
+    it('Expects ES6lib.noConflict to be a function.', () => {
       expect(ES6lib.noConflict).to.be.a('function');
     });
   });

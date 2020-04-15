@@ -15,6 +15,10 @@
  *  . ES6lib                      creates and returns the ES6lib object,
  *
  *
+ * Private Static Methods:
+ *  . _setTestMode                returns internal objects for testing purpose,
+ *
+ *
  * Public Static Methods:
  *  . noConflict                  returns a reference to this ES6lib object,
  *
@@ -25,7 +29,7 @@
  *
  *
  *
- * @namespace    ES6lib
+ * @namespace    -
  * @dependencies none
  * @exports      -
  * @author       -
@@ -33,7 +37,7 @@
  * @version      -
  * ************************************************************************ */
 /* global Tree, root */
-/* eslint-disable one-var, semi-style */
+/* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
@@ -72,6 +76,10 @@
    */
   ES6lib = function(name) {
     if (this instanceof ES6lib) {
+      this.library = {
+        name: '{{lib:name}}',
+        version: '{{lib:version}}',
+      };
       this.name = name;
     } else {
       return new ES6lib(name);
@@ -81,6 +89,22 @@
 
   // Attaches a constant to ES6lib that provides the version of the lib.
   ES6lib.VERSION = '{{lib:version}}';
+
+
+  // -- Private Static Methods -----------------------------------------------
+
+  /**
+   * Returns the internal objects for testing purpose.
+   *
+   * @method ()
+   * @private
+   * @param {}              -,
+   * @returns {Object}      returns a list of internal objects,
+   * @since 0.0.0
+   */
+  ES6lib._setTestMode = function() {
+    return [];
+  };
 
 
   // -- Public Static Methods ------------------------------------------------
@@ -139,4 +163,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style */
+/* eslint-enable one-var, semi-style, no-underscore-dangle */

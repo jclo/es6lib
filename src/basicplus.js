@@ -11,6 +11,10 @@
  *  . none,
  *
  *
+ * Private Static Methods:
+ *  . _setTestMode                returns internal objects for testing purpose,
+ *
+ *
  * Public Static Methods:
  *  . noConflict                  returns a reference to this ES6lib object,
  *  . getString                   returns a string,
@@ -18,7 +22,7 @@
  *
  *
  *
- * @namespace    ES6lib
+ * @namespace    -
  * @dependencies none
  * @exports      -
  * @author       -
@@ -26,7 +30,7 @@
  * @version      -
  * ************************************************************************ */
 /* global Tree, root, extend */
-/* eslint-disable one-var, semi-style */
+/* eslint-disable one-var, semi-style, no-underscore-dangle */
 
 'use strict';
 
@@ -50,9 +54,32 @@
   // -- Local Variables
 
 
-  // -- Public Static Methods ------------------------------------------------
+  // -- Public ---------------------------------------------------------------
 
   ES6lib = {
+
+    // Useful to retrieve the library name and version when it is
+    // embedded in another library as an object:
+    library: { name: '{{lib:name}}', version: '{{lib:version}}' },
+
+
+    // -- Private Static Methods ---------------------------------------------
+
+    /**
+     * Returns the internal objects for testing purpose.
+     *
+     * @method ()
+     * @private
+     * @param {}            -,
+     * @returns {Object}    returns a list of internal objects,
+     * @since 0.0.0
+     */
+    _setTestMode() {
+      return [];
+    },
+
+
+    // -- Public Static Methods ----------------------------------------------
 
     /**
      * Returns a reference to this ES6lib object.
@@ -111,4 +138,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style */
+/* eslint-enable one-var, semi-style, no-underscore-dangle */

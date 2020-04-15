@@ -6,7 +6,7 @@
  * can't be intantiated.
  *
  *
- * @namespace ES6lib
+ * @namespace -
  * @exports   -
  * @author    -
  * @since     0.0.0

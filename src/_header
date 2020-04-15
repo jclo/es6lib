@@ -19,7 +19,7 @@
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
-}({{lib:parent}}, (root) => {
+}(this, (root) => {
   'use strict';
 
   // This is the list of the constants that are defined at the global level of

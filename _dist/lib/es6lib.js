@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.0-beta.2
+ * ES6lib v1.0.0-beta.3
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -50,7 +50,7 @@
    * can't be intantiated.
    *
    *
-   * @namespace ES6lib
+   * @namespace -
    * @exports   -
    * @author    -
    * @since     0.0.0
@@ -154,7 +154,7 @@
    *
    *
    *
-   * @namespace    Tree.Util.Public
+   * @namespace    -
    * @dependencies none
    * @exports      -
    * @author       -
@@ -261,6 +261,10 @@
    *  . ES6lib                      creates and returns the ES6lib object,
    *
    *
+   * Private Static Methods:
+   *  . _setTestMode                returns internal objects for testing purpose,
+   *
+   *
    * Public Static Methods:
    *  . noConflict                  returns a reference to this ES6lib object,
    *
@@ -271,7 +275,7 @@
    *
    *
    *
-   * @namespace    ES6lib
+   * @namespace    -
    * @dependencies none
    * @exports      -
    * @author       -
@@ -279,7 +283,7 @@
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable one-var, semi-style */
+  /* eslint-disable one-var, semi-style, no-underscore-dangle */
 
   (function() {
     // START OF IIFE
@@ -318,13 +322,33 @@
      */
     ES6lib = function(name) {
       const obj = {};
+      obj.library = {
+        name: 'ES6lib',
+        version: '1.0.0-beta.3',
+      };
       obj.name = name;
       extend(obj, methods);
       return obj;
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '1.0.0-beta.2';
+    ES6lib.VERSION = '1.0.0-beta.3';
+
+
+    // -- Private Static Methods -----------------------------------------------
+
+    /**
+     * Returns the internal objects for testing purpose.
+     *
+     * @method ()
+     * @private
+     * @param {}              -,
+     * @returns {Object}      returns a list of internal objects,
+     * @since 0.0.0
+     */
+    ES6lib._setTestMode = function() {
+      return [];
+    };
 
 
     // -- Public Static Methods ------------------------------------------------
@@ -383,7 +407,7 @@
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style */
+  /* eslint-enable one-var, semi-style, no-underscore-dangle */
 
   // Returns the library name:
   return ES6lib;

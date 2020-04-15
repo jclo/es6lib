@@ -25,8 +25,6 @@ module.exports = {
   libdir: './lib',
   libname,
   name,
-  parent: 'this',
-  noparent: '-noparent',
   index: './index.js',
   distlink: `./_dist/lib/${name}.js`,
 

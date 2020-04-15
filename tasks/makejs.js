@@ -19,9 +19,8 @@ const pack   = require('../package.json')
 // -- Local Constants
 const destination  = config.libdir
     , source       = config.src
+    , { libname }  = config
     , { name }     = config
-    , { parent }   = config
-    , { noparent } = config
     , head         = source[0]
     , core         = source.slice(1, -1)
     , foot         = source[source.length - 1]
@@ -43,6 +42,7 @@ function clean(done) {
 // Creates the indented content.
 function docore() {
   return src(core)
+    .pipe(replace('{{lib:name}}', libname))
     .pipe(replace('{{lib:version}}', version))
     // remove the extra global and 'use strict':
     .pipe(replace(/\/\* global[\w$_\s,]+\*\//g, '/* - */'))
@@ -57,20 +57,11 @@ function docore() {
 }
 
 // Creates the library without 'this'.
-function dolibnoparent() {
+function dolib() {
   return src([head, `${destination}/core.js`, foot])
-    .pipe(concat(`${name}${noparent}.js`))
+    .pipe(concat(`${name}.js`))
     // fix the blanck lines we indented too:
     .pipe(replace(/\s{2}\n/g, '\n'))
-    .pipe(dest(destination))
-  ;
-}
-
-// Creates the library.
-function dolib() {
-  return src(`${destination}/${name}${noparent}.js`)
-    .pipe(replace('{{lib:parent}}', parent))
-    .pipe(concat(`${name}.js`))
     .pipe(dest(destination))
   ;
 }
@@ -83,4 +74,4 @@ function delcore(done) {
 
 
 // -- Gulp Public Task(s)
-module.exports = series(clean, docore, dolibnoparent, dolib, delcore);
+module.exports = series(clean, docore, dolib, delcore);

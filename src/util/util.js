@@ -16,7 +16,7 @@
  *
  *
  *
- * @namespace    Tree.Util.Public
+ * @namespace    -
  * @dependencies none
  * @exports      -
  * @author       -

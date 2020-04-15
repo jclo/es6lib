@@ -1,9 +1,11 @@
 ### HEAD
 
-### 1.0.0 (March 25, 2020)
+### 1.0.0 (April 15, 2020)
 
   * Fixed a few minor issues,
   * Removed a not useful feature from makedist.js,
+  * Added a private method for helping to test the internal objects,
+  * Added two properties to access to the library name and version,
   * ...,
 
 

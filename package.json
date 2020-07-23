@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "1.0.0-beta.3",
+  "version": "1.0.0-beta.4",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "bin": {
@@ -54,7 +54,7 @@
     "coveralls": "^3.0.9",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "eslint": "^6.8.0",
+    "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.1",
     "gulp": "^4.0.2",
@@ -64,7 +64,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-uglify-es": "^2.0.0",
     "husky": "^4.2.3",
-    "mocha": "^7.1.0",
+    "mocha": "^8.0.1",
     "nyc": "^15.0.0",
     "open": "^7.0.3",
     "opener": "^1.5.1"

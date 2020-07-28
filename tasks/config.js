@@ -21,6 +21,7 @@ const libname = 'ES6lib'
 // -- Main
 
 module.exports = {
+  ES6GLOB: '$__ES6GLOB',
   dist: './_dist',
   libdir: './lib',
   libname,
@@ -35,11 +36,12 @@ module.exports = {
   // 'pseudoclassical-auto.js' are mutually exclusives.
   /* eslint-disable no-multi-spaces */
   src: [
-    // These three files (_header, tree.js and extend.js) must be declared in
-    // this order as they create the umd module, define the object tree and
-    // the function to fill the tree!
+    // These three files (_header, _head.js and extend.js) must be declared
+    // in this order as they create the umd module, define the global
+    // constants/variables, the object tree and the function to fill
+    // the tree!
     './src/_header',
-    './src/tree.js',
+    './src/_head.js',
     './src/lib/extend.js',
 
     './src/util/util.js',
@@ -51,7 +53,7 @@ module.exports = {
     // './src/pseudoclassical.js',
     // './src/pseudoclassical-auto.js',
 
-    // This file must always be the last one as it closes the umd module.
+    // This file must always be the last one as it  closes the umd module.
     './src/_footer',
   ],
   /* eslint-enable no-multi-spaces */

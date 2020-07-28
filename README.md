@@ -10,9 +10,12 @@
 
 [![NPM install][npm-install-image]][npm-install-url]
 
-ES6lib is a template for writing ES6 Javascript libraries that run on both Node.js and ECMAScript 2015 (ES6) compliant browsers.
+ES6lib is a template for writing ES6 Javascript libraries and ES6 modules that run on both Node.js and ECMAScript 2015 (ES6) compliant browsers.
 
-ES6lib encapsulates all the library contents inside an UMD module. You can ship your entire library inside a unique file and you can minify it.
+The ES6lib build produces two libraries:
+
+  * a library packaged in an UMD module that could be used on both the browser and Node.js,
+  * a library packaged as an ES6 module that can be imported with the keyword `import` (import ES6lib from '../../es6lib.mjs').
 
 This template does not include a transpiler like babel or a module bundler like browserify/webpack or rollup. It relies on Gulp to build your library from the source files. Thus, it keeps your library pure (without extra code due to the transpiler or the module bundler).
 
@@ -54,9 +57,9 @@ Now your folder contains the following files:
 
 ```bash
 Your project Folder
-      |_ docs                 // The VuePress documentation of your project,
       |_ lib
-      |   |_ lib.js           // Your built ES6 module,
+      |   |_ lib.js            // Your built ES6 UMD library,
+      |   |_ lib.mjs           // Your built ES6 Module,   
       |_ src
       |   |_ _footer           // The UMD footer,
       |   |_ _header           // The UMD header,
@@ -68,6 +71,7 @@ Your project Folder
       |_ .eslintignore        // Files to be ignored by ESLint,
       |_ .eslintrc            // A Configuration file for the ESLint linter tool (if you use it),
       |_ .gitignore           // Files that Git must ignore (if you use git),
+      |_ .npmignore           // Files that are ignored by npm publish,
       |_ .travis.yml          // A configuration file for Travis CI (if you use it),
       |_ .CHANGELOG.md        // The changes between your different versions,
       |_ .gulpfile.js         // The main Gulp task,
@@ -138,6 +142,21 @@ On the browser, pick-up the JS file `lib/mylib.js` and add it as a script in you
     <script src="mylib.js"></script>
     <script>
     	console.log(mylib.VERSION);
+    </script>
+  </body>
+</html>
+```
+
+Or,
+
+```html
+<!DOCTYPE html>
+<html>
+  <body>
+    <script type="module">
+      import mylib from './<path_to_the_lib>/mylib.mjs';
+
+      console.log(mylib.VERSION);
     </script>
   </body>
 </html>

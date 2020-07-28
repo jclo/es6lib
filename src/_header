@@ -1,6 +1,7 @@
 // ESLint declarations
 /* global define */
 /* eslint strict: ["error", "function"] */
+{{lib:es6:define}}
 (function(root, factory) {
   'use strict';
 
@@ -19,15 +20,5 @@
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
-}(this, (root) => {
+}({{lib:es6:link}}, (root) => {
   'use strict';
-
-  // This is the list of the constants that are defined at the global level of
-  // this module and are accessible to all. So, they are considered as reserved
-  // words for this library.
-  // const Tree
-  /* eslint-disable one-var, semi-style */
-  let ES6lib
-    , extend
-    ;
-  /* eslint-enable one-var, semi-style */

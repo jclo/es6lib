@@ -1,6 +1,6 @@
 ### HEAD
 
-### 1.0.0 (July 23, 2020)
+### 1.0.0 (July 27, 2020)
 
   * Fixed a few minor issues,
   * Removed a not useful feature from makedist.js,
@@ -8,6 +8,7 @@
   * Added two properties to access to the library name and version,
   * Updated the dependencies,
   * Fourth release candidate,
+  * Added the option to import the library as an ES6 module,
   * ...,
 
 

@@ -1,3 +1,4 @@
   // Returns the library name:
   return ES6lib;
 }));
+{{lib:es6:export}}

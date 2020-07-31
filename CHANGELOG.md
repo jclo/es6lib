@@ -11,6 +11,7 @@
   * Added the option to import the library as an ES6 module,
   * Fifth release candidate,
   * Updated the dependencies,
+  * Sixth release candidate,
   * ...,
 
 

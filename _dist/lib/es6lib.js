@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.0-beta.5
+ * ES6lib v1.0.0-beta.6
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -311,7 +311,7 @@
       const obj = {};
       obj.library = {
         name: 'ES6lib',
-        version: '1.0.0-beta.5',
+        version: '1.0.0-beta.6',
       };
       obj.name = name;
       extend(obj, methods);
@@ -319,7 +319,7 @@
     };
 
     // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '1.0.0-beta.5';
+    ES6lib.VERSION = '1.0.0-beta.6';
 
 
     // -- Private Static Methods -----------------------------------------------

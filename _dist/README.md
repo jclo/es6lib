@@ -139,7 +139,7 @@ On the browser, pick-up the JS file `lib/mylib.js` and add it as a script in you
 <!DOCTYPE html>
 <html>
   <body>
-    <script src="mylib.js"></script>
+    <script src="./<path_to_the_lib>/mylib.js"></script>
     <script>
     	console.log(mylib.VERSION);
     </script>

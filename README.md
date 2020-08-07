@@ -1,14 +1,13 @@
 # ES6lib
 
 [![NPM version][npm-image]][npm-url]
+[![GitHub last commit][commit-image]][commit-url]
 [![Travis CI][travis-image]][travis-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![Dependencies status][dependencies-image]][dependencies-url]
 [![Dev Dependencies status][devdependencies-image]][devdependencies-url]
+[![npm bundle size][npm-bundle-size-image]][npm-bundle-size-url]
 [![License][license-image]](LICENSE.md)
-<!--- [![node version][node-image]][node-url] -->
-
-[![NPM install][npm-install-image]][npm-install-url]
 
 ES6lib is a template for writing ES6 Javascript libraries and ES6 modules that run on both Node.js and ECMAScript 2015 (ES6) compliant browsers.
 
@@ -171,21 +170,21 @@ Enjoy!
 <!--- URls -->
 
 [npm-image]: https://img.shields.io/npm/v/@mobilabs/es6lib.svg?style=flat-square
-[npm-install-image]: https://nodei.co/npm/@mobilabs/es6lib.png?compact=true
-[node-image]: https://img.shields.io/badge/node.js-%3E=_0.10-green.svg?style=flat-square
-[download-image]: https://img.shields.io/npm/dm/@mobilabs/es6lib.svg?style=flat-square
+[release-image]: https://img.shields.io/github/release/jclo/es6lib.svg?include_prereleases&style=flat-square
+[commit-image]: https://img.shields.io/github/last-commit/jclo/es6lib.svg?style=flat-square
 [travis-image]: https://img.shields.io/travis/jclo/es6lib.svg?style=flat-square
 [coveralls-image]: https://img.shields.io/coveralls/jclo/es6lib/master.svg?style=flat-square
 [dependencies-image]: https://david-dm.org/jclo/es6lib/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/es6lib/dev-status.svg?theme=shields.io
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib.svg?style=flat-square
 [license-image]: https://img.shields.io/npm/l/@mobilabs/es6lib.svg?style=flat-square
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/es6lib
-[npm-install-url]: https://nodei.co/npm/@mobilabs/es6lib
-[node-url]: http://nodejs.org/download
-[download-url]: https://www.npmjs.com/package/@mobilabs/es6lib
+[release-url]: https://github.com/jclo/es6lib/tags
+[commit-url]: https://github.com/jclo/es6lib/commits/master
 [travis-url]: https://travis-ci.org/jclo/es6lib
 [coveralls-url]: https://coveralls.io/github/jclo/es6lib?branch=master
 [dependencies-url]: https://david-dm.org/jclo/es6lib
 [devdependencies-url]: https://david-dm.org/jclo/es6lib?type=dev
 [license-url]: http://opensource.org/licenses/MIT
+[npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib

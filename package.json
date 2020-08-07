@@ -1,9 +1,10 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "1.0.0-beta.6",
+  "version": "1.0.0-beta.7",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
-  "unpkg": "_dist/lib/es6lib.min.js",
+  "minified": "_dist/lib/es6lib.min.js",
+  "unpkg": "_dist/lib/es6lib.mjs",
   "module": "_dist/lib/es6lib.min.mjs",
   "bin": {
     "es6lib": "./bin/es6lib.js"
@@ -56,7 +57,7 @@
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "eslint": "^7.5.0",
+    "eslint": "^7.6.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "gulp": "^4.0.2",
@@ -66,7 +67,7 @@
     "gulp-replace": "^1.0.0",
     "gulp-uglify-es": "^2.0.0",
     "husky": "^4.2.5",
-    "mocha": "^8.1.0",
+    "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "open": "^7.1.0",
     "opener": "^1.5.1"

@@ -1,6 +1,6 @@
 ### HEAD
 
-### 1.0.0 (July 31, 2020)
+### 1.0.0 (August 7, 2020)
 
   * Fixed a few minor issues,
   * Removed a not useful feature from makedist.js,
@@ -12,6 +12,7 @@
   * Fifth release candidate,
   * Updated the dependencies,
   * Sixth release candidate,
+  * Updated the Shields.io badges,
   * ...,
 
 

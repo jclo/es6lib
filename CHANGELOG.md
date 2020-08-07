@@ -13,6 +13,7 @@
   * Updated the dependencies,
   * Sixth release candidate,
   * Updated the Shields.io badges,
+  * Seventh release candidate,
   * ...,
 
 

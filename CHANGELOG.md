@@ -15,6 +15,7 @@
   * Updated the Shields.io badges,
   * Seventh release candidate,
   * Added the method "whoami",
+  * Eighth release candidate,
   * ...,
 
 

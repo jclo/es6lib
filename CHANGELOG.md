@@ -19,6 +19,7 @@
   * Reorganised the test folder,
   * Ninth release candidate,
   * Fixed a few minor issues,
+  * Tenth release candidate,
   * ...,
 
 

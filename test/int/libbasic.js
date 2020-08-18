@@ -64,11 +64,11 @@ module.exports = function(ES6lib, libname, version) {
         expect(Object.keys(ES6lib.whoami())).to.be.an('array').that.has.lengthOf(2);
       });
 
-      it('Expects this object to own the property "name".', () => {
+      it(`Expects this object to own the property "name" whose value is "${libname}".`, () => {
         expect(ES6lib.whoami()).to.own.property('name').that.is.equal(libname);
       });
 
-      it('Expects this object to own the property "version".', () => {
+      it(`Expects this object to own the property "version" whose value is "${version}".`, () => {
         expect(ES6lib.whoami()).to.own.property('version').that.is.equal(version);
       });
     });

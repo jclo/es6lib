@@ -18,6 +18,7 @@
   * Eighth release candidate,
   * Reorganised the test folder,
   * Ninth release candidate,
+  * Fixed a few minor issues,
   * ...,
 
 

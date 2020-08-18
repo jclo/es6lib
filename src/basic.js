@@ -86,7 +86,7 @@
      * (must not be deleted)
      *
      * Nota:
-     * Running ES6lib in noConflic mode, returns the ES6lib variable to its
+     * Running ES6lib in no conflict mode, returns the ES6lib variable to its
      * _ previous owner.
      *
      * @method ()

@@ -40,21 +40,24 @@ function deldist(done) {
 // Copies README and LICENSE.
 function doskeleton() {
   return src(['README.md', 'LICENSE.md'])
-    .pipe(dest(dist));
+    .pipe(dest(dist))
+  ;
 }
 
 // Copies the development version.
 function copydev() {
   return src(`${libdir}/${name}.js`)
     .pipe(header(license))
-    .pipe(dest(`${dist}/lib`));
+    .pipe(dest(`${dist}/lib`))
+  ;
 }
 
 // Copies the module development version.
 function copydevm() {
   return src(`${libdir}/${name}.mjs`)
     .pipe(header(license))
-    .pipe(dest(`${dist}/lib`));
+    .pipe(dest(`${dist}/lib`))
+  ;
 }
 
 // Creates the minified version.
@@ -64,7 +67,8 @@ function makeminified() {
     .pipe(uglify())
     .pipe(header(license))
     .pipe(concat(`${name}.min.js`))
-    .pipe(dest(`${dist}/lib`));
+    .pipe(dest(`${dist}/lib`))
+  ;
 }
 
 // Creates the module minified version.
@@ -74,7 +78,8 @@ function makeminifiedm() {
     .pipe(uglify())
     .pipe(header(license))
     .pipe(concat(`${name}.min.mjs`))
-    .pipe(dest(`${dist}/lib`));
+    .pipe(dest(`${dist}/lib`))
+  ;
 }
 
 

@@ -17,6 +17,7 @@
   * Added the method "whoami",
   * Eighth release candidate,
   * Reorganised the test folder,
+  * Ninth release candidate,
   * ...,
 
 

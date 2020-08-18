@@ -1,6 +1,6 @@
 ### HEAD
 
-### 1.0.0 (August 7, 2020)
+### 1.0.0 (August 18, 2020)
 
   * Fixed a few minor issues,
   * Removed a not useful feature from makedist.js,
@@ -14,6 +14,7 @@
   * Sixth release candidate,
   * Updated the Shields.io badges,
   * Seventh release candidate,
+  * Added the method "whoami",
   * ...,
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "1.0.0-beta.7",
+  "version": "1.0.0-beta.8",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "minified": "_dist/lib/es6lib.min.js",
@@ -13,15 +13,15 @@
     "build": "gulp build",
     "watch": "gulp watch",
     "dev": "gulp rundev",
-    "makedist": "gulp makedist",
-    "app": "gulp runapp",
-    "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
-    "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
     "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
     "display-coverage": "opener ./coverage/lcov-report/index.html",
     "check-coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
     "report-coverage": "nyc report --reporter=text-lcov | coveralls",
     "report": "nyc report",
+    "makedist": "gulp makedist",
+    "app": "gulp runapp",
+    "makeprivate": "gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "makelib": "gulp build && gulp makedist && gulp makeprivate && sh tasks/compress.sh ${npm_package_name} ${npm_package_version}",
     "doc": ""
   },
   "repository": {
@@ -49,7 +49,7 @@
   },
   "homepage": "https://github.com/jclo/es6lib",
   "dependencies": {
-    "nopt": "^4.0.3",
+    "nopt": "^5.0.0",
     "shelljs": "^0.8.4"
   },
   "devDependencies": {
@@ -57,7 +57,7 @@
     "coveralls": "^3.1.0",
     "cross-env": "^7.0.2",
     "del": "^5.1.0",
-    "eslint": "^7.6.0",
+    "eslint": "^7.7.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-plugin-import": "^2.22.0",
     "gulp": "^4.0.2",

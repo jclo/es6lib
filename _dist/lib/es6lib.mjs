@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.0-beta.7
+ * ES6lib v1.0.0-beta.8
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -237,9 +237,9 @@ const $__ES6GLOB = {};
    *
    * A ...
    *
-   * functional-shared.js is built upon the Functional Shared Instantiation
-   * pattern. It returns an object by calling its constructor. It doesn't use
-   * the new keyword.
+   * prototypal.js is built upon the Prototypal Instantiation pattern. It
+   * returns an object by calling its constructor. It doesn't use the new
+   * keyword.
    *
    * Private Functions:
    *  . none,
@@ -258,6 +258,7 @@ const $__ES6GLOB = {};
    *
    *
    * Public Methods:
+   *  . whoami                      returns the library name and version,
    *  . getString                   returns a string,
    *  . getArray                    returns an array,
    *
@@ -300,7 +301,7 @@ const $__ES6GLOB = {};
 
     /**
      * Returns the ES6lib object.
-     * (Functional Instantiation Pattern)
+     * (Prototypal Instantiation Pattern)
      *
      * @constructor (arg1)
      * @public
@@ -309,24 +310,25 @@ const $__ES6GLOB = {};
      * @since 0.0.0
      */
     ES6lib = function(name) {
-      const obj = {};
-      obj.library = {
+      const obj = Object.create(methods);
+      obj._library = {
         name: 'ES6lib',
-        version: '1.0.0-beta.7',
+        version: '1.0.0-beta.8',
       };
       obj.name = name;
-      extend(obj, methods);
       return obj;
     };
 
-    // Attaches a constant to ES6lib that provides the version of the lib.
-    ES6lib.VERSION = '1.0.0-beta.7';
+    // Attaches constants to ES6lib that provide name and version of the lib.
+    ES6lib.NAME = 'ES6lib';
+    ES6lib.VERSION = '1.0.0-beta.8';
 
 
     // -- Private Static Methods -----------------------------------------------
 
     /**
      * Returns the internal objects for testing purpose.
+     * (must not be deleted)
      *
      * @method ()
      * @private
@@ -343,6 +345,7 @@ const $__ES6GLOB = {};
 
     /**
      * Returns a reference to this ES6lib object.
+     * (must not be deleted)
      *
      * Nota:
      * Running ES6lib in noConflict mode, returns the ES6lib variable to its
@@ -354,7 +357,6 @@ const $__ES6GLOB = {};
      * @returns {Object}      returns the ES6lib object,
      * @since 0.0.0
      */
-    /* istanbul ignore next */
     ES6lib.noConflict = function() {
       /* eslint-disable-next-line no-param-reassign */
       root.ES6lib = previousES6lib;
@@ -365,6 +367,20 @@ const $__ES6GLOB = {};
     // -- Public Methods -------------------------------------------------------
 
     methods = {
+
+      /**
+       * Returns the library name and version.
+       * (must not be deleted)
+       *
+       * @method ()
+       * @public
+       * @param {}            -,
+       * @returns {Object}    returns the library name and version,
+       * @since 0.0.0
+       */
+      whoami() {
+        return this._library;
+      },
 
       /**
        * Returns a string.

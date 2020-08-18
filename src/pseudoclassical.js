@@ -23,6 +23,7 @@
  *
  *
  * Public Methods:
+ *  . whoami                      returns the library name and version,
  *  . getString                   returns a string,
  *  . getArray                    returns an array,
  *
@@ -77,14 +78,15 @@
     if (!(this instanceof ES6lib)) {
       throw new Error('ES6lib needs to be called with the new keyword!');
     }
-    this.library = {
+    this._library = {
       name: '{{lib:name}}',
       version: '{{lib:version}}',
     };
     this.name = name;
   };
 
-  // Attaches a constant to ES6lib that provides the version of the lib.
+  // Attaches constants to ES6lib that provide name and version of the lib.
+  ES6lib.NAME = '{{lib:name}}';
   ES6lib.VERSION = '{{lib:version}}';
 
 
@@ -92,6 +94,7 @@
 
   /**
    * Returns the internal objects for testing purpose.
+   * (must not be deleted)
    *
    * @method ()
    * @private
@@ -108,6 +111,7 @@
 
   /**
    * Returns a reference to this ES6lib object.
+   * (must not be deleted)
    *
    * Nota:
    * Running ES6lib in noConflict mode, returns the ES6lib variable to its
@@ -119,7 +123,6 @@
    * @returns {Object}      returns the ES6lib object,
    * @since 0.0.0
    */
-  /* istanbul ignore next */
   ES6lib.noConflict = function() {
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = previousES6lib;
@@ -130,6 +133,20 @@
   // -- Public Methods -------------------------------------------------------
 
   ES6lib.prototype = {
+
+    /**
+     * Returns the library name and version.
+     * (must not be deleted)
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns the library name and version,
+     * @since 0.0.0
+     */
+    whoami() {
+      return this._library;
+    },
 
     /**
      * Returns a string.

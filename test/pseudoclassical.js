@@ -12,10 +12,12 @@ const should     = require('chai').should()
 
 // -- Local Modules
 const ES6lib = require('../index.js')
+    , pack   = require('../package.json')
     ;
 
 
 // -- Local Constants
+const libname = 'ES6lib';
 
 
 // -- Local Variables
@@ -23,36 +25,90 @@ const ES6lib = require('../index.js')
 
 // -- Main
 describe('Test ES6lib:', () => {
-  // Test the lib:
-  describe('Test ES6lib.VERSION, ES6lib._setTestMode and ES6lib.noConflict:', () => {
+  describe('Test ES6lib.NAME and ES6lib.VERSION:', () => {
+    it(`Expects ES6lib.NAME to return the string "${libname}".`, () => {
+      expect(ES6lib.NAME).to.be.a('string').that.is.equal(libname);
+    });
+
     it('Expects ES6lib.VERSION to return a string.', () => {
-      expect(ES6lib.VERSION).to.be.a('string');
-    });
-
-    it('Expects ES6lib._setTestMode to be a function.', () => {
-      expect(ES6lib._setTestMode).to.be.a('function');
-    });
-
-    it('Expects ES6lib._setTestMode() to return an array.', () => {
-      expect(ES6lib._setTestMode()).to.be.an('array');
-    });
-
-    it('Expects ES6lib.noConflict to be a function.', () => {
-      expect(ES6lib.noConflict).to.be.a('function');
+      expect(ES6lib.VERSION).to.be.a('string').that.is.equal(pack.version);
     });
   });
 
-  describe('Test ES6lib constructor and methods:', () => {
-    const o = new ES6lib('name');
-    it('Expects new ES6lib("name") to return an object.', () => {
+  describe('Test ES6lib private static methods:', () => {
+    it('Expects ES6lib._setTestMode to be a function.', () => {
+      expect(ES6lib).own.property('_setTestMode').that.is.a('function');
+    });
+
+    it('Expects ES6lib._setTestMode() to return an empty array.', () => {
+      expect(ES6lib._setTestMode()).to.be.an('array').that.has.lengthOf(0);
+    });
+  });
+
+  describe('Test ES6lib public static methods::', () => {
+    it('Expects ES6lib.noConflict to be a function.', () => {
+      expect(ES6lib).to.own.property('noConflict').that.is.a('function');
+    });
+
+    it('Expects ES6lib.noConflict() to return a function.', () => {
+      expect(ES6lib.noConflict()).to.be.a('function');
+    });
+  });
+
+  describe('Test ES6lib constructor and generic public methods:', () => {
+    const o = new ES6lib();
+    const op = Object.getOwnPropertyNames(o);
+    const io = Object.keys(Object.getPrototypeOf(o));
+
+    it('Expects ES6lib() without the operator "new" to throw an error.', () => {
+      try {
+        const oo = ES6lib();
+      } catch (e) {
+        expect(e.message).to.be.a('string').that.is.equal('ES6lib needs to be called with the new keyword!');
+      }
+    });
+
+    it('Expects new ES6lib() to return an object.', () => {
       expect(o).to.be.an('object');
     });
 
-    it('Expects this object to own the property "getString" that is a function.', () => {
+    it('Expects this object to own 2 properties.', () => {
+      expect(op).to.be.an('array').that.has.lengthOf(2);
+    });
+
+    it('Expects this object to inherit 3 properties.', () => {
+      expect(io).to.be.an('array').that.has.lengthOf(3);
+    });
+
+    it('Expects this object to inherit the property "whoami" that is a function.', () => {
+      expect(o).to.have.property('whoami').that.is.a('function');
+    });
+
+    it('Expects ES6lib.whoami() to return an object.', () => {
+      expect(o.whoami()).to.be.an('object');
+    });
+
+    it('Expects this object to own two properties.', () => {
+      expect(Object.keys(o.whoami())).to.be.an('array').that.has.lengthOf(2);
+    });
+
+    it('Expects this object to own the property "name".', () => {
+      expect(o.whoami()).to.own.property('name').that.is.equal(libname);
+    });
+
+    it('Expects this object to own the property "version".', () => {
+      expect(o.whoami()).to.own.property('version').that.is.equal(pack.version);
+    });
+  });
+
+  describe('Test ES6lib specific public methods:', () => {
+    const o = new ES6lib();
+
+    it('Expects this object to inherit the property "getString" that is a function.', () => {
       expect(o).to.have.property('getString').that.is.a('function');
     });
 
-    it('Expects this object to own the property "getArray" that is a function.', () => {
+    it('Expects this object to inherit the property "getArray" that is a function.', () => {
       expect(o).to.have.property('getArray').that.is.a('function');
     });
 

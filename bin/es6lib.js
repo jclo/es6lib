@@ -118,9 +118,22 @@ const index = [
   "module.exports = require('./lib/{{lib:lowname}}');",
   ''].join('\n');
 
-const gitignore = '';
-const eslintignore = '';
-const npmignore = '';
+const gitignore = [
+  '.DS_Store',
+  '',
+  '.nyc_output',
+  'coverage',
+  'node_modules',
+  ''].join('\n');
+
+const eslintignore = [
+  '_dist/lib/{{lib:lowname}}.min.*',
+  ''].join('\n');
+
+const npmignore = [
+  '*',
+  '!_dist/**/*',
+  ''].join('\n');
 
 
 // -- Private Functions --------------------------------------------------------

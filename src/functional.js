@@ -23,6 +23,7 @@
  *
  *
  * Public Methods:
+ *  . whoami                      returns the library name and version,
  *  . getString                   returns a string,
  *  . getArray                    returns an array,
  *
@@ -75,7 +76,7 @@
    * @since 0.0.0
    */
   ES6lib = function(name) {
-    obj.library = {
+    obj._library = {
       name: '{{lib:name}}',
       version: '{{lib:version}}',
     };
@@ -83,7 +84,8 @@
     return obj;
   };
 
-  // Attaches a constant to ES6lib that provides the version of the lib.
+  // Attaches constants to ES6lib that provide name and version of the lib.
+  ES6lib.NAME = '{{lib:name}}';
   ES6lib.VERSION = '{{lib:version}}';
 
 
@@ -91,6 +93,7 @@
 
   /**
    * Returns the internal objects for testing purpose.
+   * (must not be deleted)
    *
    * @method ()
    * @private
@@ -107,6 +110,7 @@
 
   /**
    * Returns a reference to this ES6lib object.
+   * (must not be deleted)
    *
    * Nota:
    * Running ES6lib in noConflict mode, returns the ES6lib variable to its
@@ -118,7 +122,6 @@
    * @returns {Object}      returns the ES6lib object,
    * @since 0.0.0
    */
-  /* istanbul ignore next */
   ES6lib.noConflict = function() {
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = previousES6lib;
@@ -127,6 +130,20 @@
 
 
   // -- Public Methods -------------------------------------------------------
+
+  /**
+   * Returns the library name and version.
+   * (must not be deleted)
+   *
+   * @method ()
+   * @public
+   * @param {}            -,
+   * @returns {Object}    returns the library name and version,
+   * @since 0.0.0
+   */
+  obj.whoami = function() {
+    return obj._library;
+  };
 
   /**
    * Returns a string.

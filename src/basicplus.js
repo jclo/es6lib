@@ -17,6 +17,7 @@
  *
  * Public Static Methods:
  *  . noConflict                  returns a reference to this ES6lib object,
+ *  . whoami                      returns the library name and version,
  *  . getString                   returns a string,
  *  . getArray                    returns an array,
  *
@@ -60,13 +61,14 @@
 
     // Useful to retrieve the library name and version when it is
     // embedded in another library as an object:
-    library: { name: '{{lib:name}}', version: '{{lib:version}}' },
+    _library: { name: '{{lib:name}}', version: '{{lib:version}}' },
 
 
     // -- Private Static Methods ---------------------------------------------
 
     /**
      * Returns the internal objects for testing purpose.
+     * (must not be deleted)
      *
      * @method ()
      * @private
@@ -83,6 +85,7 @@
 
     /**
      * Returns a reference to this ES6lib object.
+     * (must not be deleted)
      *
      * Nota:
      * Running ES6lib in noConflict mode, returns the ES6lib variable to its
@@ -94,15 +97,29 @@
      * @returns {Object}    returns the ES6lib object,
      * @since 0.0.0
      */
-    /* istanbul ignore next */
     noConflict() {
       /* eslint-disable-next-line no-param-reassign */
       root.ES6lib = previousES6lib;
       return this;
     },
+
+    /**
+     * Returns the library name and version.
+     * (must not be deleted)
+     *
+     * @method ()
+     * @public
+     * @param {}            -,
+     * @returns {Object}    returns the library name and version,
+     * @since 0.0.0
+     */
+    whoami() {
+      return this._library;
+    },
   };
 
-  // Attaches a constant to ES6lib that provides the version of the lib.
+  // Attaches constants to ES6lib that provide name and version of the lib.
+  ES6lib.NAME = '{{lib:name}}';
   ES6lib.VERSION = '{{lib:version}}';
 
 

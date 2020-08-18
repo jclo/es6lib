@@ -48,12 +48,12 @@ module.exports = {
     // './src/basic.js',
     // './src/basicplus.js',
     // './src/functional.js',
-    './src/functional-shared.js',
-    // './src/prototypal.js',
+    // './src/functional-shared.js',
+    './src/prototypal.js',
     // './src/pseudoclassical.js',
     // './src/pseudoclassical-auto.js',
 
-    // This file must always be the last one as it  closes the umd module.
+    // This file must always be the last one as it closes the umd module.
     './src/_footer',
   ],
   /* eslint-enable no-multi-spaces */

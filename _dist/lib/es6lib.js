@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.0-beta.10
+ * ES6lib v1.0.0-beta.11
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -302,25 +302,24 @@
      * Returns the ES6lib object.
      * (Prototypal Instantiation Pattern)
      *
-     * @constructor (arg1)
+     * @constructor ()
      * @public
-     * @param {String}        the argument to be saved as an object variable,
+     * @param {}              -,
      * @returns {Object}      returns the ES6lib object,
      * @since 0.0.0
      */
-    ES6lib = function(name) {
+    ES6lib = function() {
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '1.0.0-beta.10',
+        version: '1.0.0-beta.11',
       };
-      obj.name = name;
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '1.0.0-beta.10';
+    ES6lib.VERSION = '1.0.0-beta.11';
 
 
     // -- Private Static Methods -----------------------------------------------

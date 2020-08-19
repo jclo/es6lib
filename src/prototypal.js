@@ -70,19 +70,18 @@
    * Returns the ES6lib object.
    * (Prototypal Instantiation Pattern)
    *
-   * @constructor (arg1)
+   * @constructor ()
    * @public
-   * @param {String}        the argument to be saved as an object variable,
+   * @param {}              -,
    * @returns {Object}      returns the ES6lib object,
    * @since 0.0.0
    */
-  ES6lib = function(name) {
+  ES6lib = function() {
     const obj = Object.create(methods);
     obj._library = {
       name: '{{lib:name}}',
       version: '{{lib:version}}',
     };
-    obj.name = name;
     return obj;
   };
 

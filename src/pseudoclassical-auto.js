@@ -69,21 +69,20 @@
    * Returns the ES6lib object.
    * (Pseudoclassical Instantation Pattern with auto instantatiation - no need for new)
    *
-   * @constructor (arg1)
+   * @constructor ()
    * @public
-   * @param {String}        the argument to be saved as an object variable,
+   * @param {}              -,
    * @returns {Object}      returns the ES6lib object,
    * @since 0.0.0
    */
-  ES6lib = function(name) {
+  ES6lib = function() {
     if (this instanceof ES6lib) {
       this._library = {
         name: '{{lib:name}}',
         version: '{{lib:version}}',
       };
-      this.name = name;
     } else {
-      return new ES6lib(name);
+      return new ES6lib();
     }
     return null;
   };

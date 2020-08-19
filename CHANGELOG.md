@@ -21,6 +21,7 @@
   * Fixed a few minor issues,
   * Tenth release candidate,
   * Restructured the test set,
+  * Eleventh release candidate,
   * ...,
 
 

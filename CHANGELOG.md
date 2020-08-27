@@ -23,7 +23,7 @@
   * Restructured the test set,
   * Eleventh release candidate,
   * Updated the project dependencies,
-  * ...,
+  * Release.
 
 
 ### 0.0.12 (March 20, 2020)

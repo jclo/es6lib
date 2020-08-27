@@ -1,6 +1,6 @@
 ### HEAD
 
-### 1.0.0 (August 19, 2020)
+### 1.0.0 (August 27, 2020)
 
   * Fixed a few minor issues,
   * Removed a not useful feature from makedist.js,
@@ -22,6 +22,7 @@
   * Tenth release candidate,
   * Restructured the test set,
   * Eleventh release candidate,
+  * Updated the project dependencies,
   * ...,
 
 

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.1 (August 28, 2020)
+
+  * Updated es6lib.js script to simplify the project creation,
+  * ...,
+
+
 ### 1.0.0 (August 27, 2020)
 
   * Fixed a few minor issues,

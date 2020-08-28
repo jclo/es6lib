@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "minified": "_dist/lib/es6lib.min.js",

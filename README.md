@@ -32,24 +32,36 @@ You can easily get your first ES6Lib library running in a couple of minutes by j
 Then, you have to install the `es6lib` package globally. Open a terminal session and type the command line:
 
 ```bash
-npm install es6lib -g
+npm install @mobilabs/es6lib -g
 ```
 
 Or, if you don't have the rights to install es6lib globally, you can install it locally in your project. Open a terminal session, move to your working directory - the empty folder you created - and type the following command line:
 
 ```bash
-npm install es6lib
+npm install @mobilabs/es6lib
 ```
 
-Now populate your empty folder and create your first UMD library:
+Then, create a `package.json` file that contains at least:
+
+```json
+{
+  "name": "MyApp",
+  "scripts": {
+    "create": "./node_modules/es6lib/bin/es6lib.js populate --name ${npm_package_name} --author \"${npm_package_author_name}\" --acronym @@@ --email ${npm_package_author_email} --url ${npm_package_author_url} && npm install"
+  },
+  "author": {
+    "name": "John Doe",
+    "email": "jdo@johndoe.com",
+    "url": "http://www.johndoe.com/"
+  }
+}
+```
+Replace `MyApp` by your project name, fill `author` with your credentials and replace `@@@`, in the create script command line, by your `Github acronym`.
+
+And finally, type in the terminal:
 
 ```bash
-// populate
-es6lib populate -n myapp
-// Or, if you installed the package locally:
-./node_modules/.bin/es6lib populate -n myapp
-// Install Node.js packages
-npm install
+npm run create.
 ```
 
 Now your folder contains the following files:

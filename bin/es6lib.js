@@ -39,8 +39,8 @@ const fs    = require('fs')
 // -- Local Variables
 const boilerlib   = 'ES6lib'
     /* eslint-disable-next-line object-curly-newline */
-    , author = { name: 'John Doe', acronym: 'jdo', email: 'jdo@johndoe.com', url: 'http://www.johndoe.com' }
-    , copyright   = 'Copyright (c) 2020 {{author:name}} <{{author:email}}> ({{author:url}})'
+    , defAuthor   = { name: 'John Doe', acronym: 'jdo', email: 'jdo@johndoe.com', url: 'http://www.johndoe.com' }
+    , copyright   = `Copyright (c) ${new Date().getFullYear()} {{author:name}} <{{author:email}}> ({{author:url}})`
     , baseapp     = process.cwd()
     , baseboiler  = __dirname.replace('/bin', '')
     , { version } = require('../package.json')
@@ -54,12 +54,20 @@ const boilerlib   = 'ES6lib'
       version: [String, null],
       path,
       name: [String, null],
+      author: [String, null],
+      acronym: [String, null],
+      email: [String, null],
+      url: [String, null],
     }
     , shortOpts = {
       h: ['--help'],
       v: ['--version', version],
       p: ['--path'],
       n: ['--name'],
+      a: ['--author'],
+      c: ['--acronym'],
+      e: ['--email'],
+      u: ['--url'],
     }
     , parsed = nopt(opts, shortOpts, process.argv, 2)
     ;
@@ -155,6 +163,10 @@ function _help() {
     '-h, --help          output usage information',
     '-v, --version       output the version number',
     '-n, --name          the name of the app',
+    '-a, --author        the name of the author (ex. "John Doe")',
+    '-c, --acronym       the acronym of the author (ex. jdo)',
+    '-e, --email         the email address of the author (ex. jdo@johndoe.com)',
+    '-u, --url           the website of the author (ex. http://www.johndoe.com)',
     '',
   ].join('\n');
 
@@ -298,6 +310,8 @@ function _customize(source, dest, app, owner) {
   pack.private = obj.private;
   pack.husky = obj.husky;
 
+  pack.devDependencies['@mobilabs/es6lib'] = version;
+
   delete pack.dependencies.nopt;
   delete pack.dependencies.shelljs;
 
@@ -408,9 +422,34 @@ function _addTest(source, dest, folder, app) {
  * @returns {}        -,
  */
 function _populate(options) {
-  const app = !options.name || options.name === 'true'
-    ? 'myApp'
-    : options.name;
+  const app = options && options.name && options.name !== 'true'
+    ? options.name
+    : 'myApp';
+
+  let author;
+  if (!options || (!options.author && !options.acronym && !options.email && !options.url)) {
+    author = defAuthor;
+  } else {
+    author = {
+      name: 'Unknown', acronym: 'undefined', email: 'undefined', url: 'undefined',
+    };
+  }
+
+  author.name = options && options.author && options.author !== 'true'
+    ? options.author
+    : author.name;
+
+  author.acronym = options && options.acronym && options.acronym !== 'true'
+    ? options.acronym
+    : author.acronym;
+
+  author.email = options && options.email && options.email !== 'true'
+    ? options.email
+    : author.email;
+
+  author.url = options && options.url && options.url !== 'true'
+    ? options.url
+    : author.url;
 
   const resp = _isFolderEmpty(baseapp);
   if (!resp) {

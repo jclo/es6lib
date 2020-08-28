@@ -4,7 +4,7 @@
 
   * Updated es6lib.js script to simplify the project creation,
   * Fixed a build issue,
-  * ...,
+  * Release.
 
 
 ### 1.0.0 (August 27, 2020)

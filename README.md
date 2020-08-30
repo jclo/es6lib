@@ -47,16 +47,17 @@ Then, create a `package.json` file that contains at least:
 {
   "name": "MyApp",
   "scripts": {
-    "create": "./node_modules/es6lib/bin/es6lib.js populate --name ${npm_package_name} --author \"${npm_package_author_name}\" --acronym @@@ --email ${npm_package_author_email} --url ${npm_package_author_url} && npm install"
+    "create": "es6lib populate --name ${npm_package_name} --author \"${npm_package_writer_name}\" --acronym ${npm_package_writer_acronym} --email ${npm_package_writer_email} --url ${npm_package_writer_url} && npm install"
   },
-  "author": {
+  "writer": {
     "name": "John Doe",
+    "acronym": "jdo",
     "email": "jdo@johndoe.com",
     "url": "http://www.johndoe.com/"
   }
 }
 ```
-Replace `MyApp` by your project name, fill `author` with your credentials and replace `@@@`, in the create script command line, by your `Github acronym`.
+Replace `MyApp` by your project name and fill `writer` with your credentials.
 
 And finally, type in the terminal:
 

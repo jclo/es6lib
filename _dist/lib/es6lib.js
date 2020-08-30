@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.1
+ * ES6lib v1.0.2
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -312,14 +312,14 @@
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '1.0.1',
+        version: '1.0.2',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '1.0.1';
+    ES6lib.VERSION = '1.0.2';
 
 
     // -- Private Static Methods -----------------------------------------------
@@ -346,8 +346,8 @@
      * (must not be deleted)
      *
      * Nota:
-     * Running ES6lib in noConflict mode, returns the ES6lib variable to its
-     * _ previous owner.
+     * Running ES6lib in noConflict mode, returns the ES6lib variable to
+     * its previous owner.
      *
      * @method ()
      * @public
@@ -382,6 +382,7 @@
 
       /**
        * Returns a string.
+       * (must be deleted)
        *
        * @method ()
        * @public
@@ -395,6 +396,7 @@
 
       /**
        * Returns an array.
+       * (must be deleted)
        *
        * @method ()
        * @public

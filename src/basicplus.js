@@ -88,8 +88,8 @@
      * (must not be deleted)
      *
      * Nota:
-     * Running ES6lib in noConflict mode, returns the ES6lib variable to its
-     * _ previous owner.
+     * Running ES6lib in noConflict mode, returns the ES6lib variable to
+     * its previous owner.
      *
      * @function ()
      * @public
@@ -128,6 +128,7 @@
 
     /**
      * Returns a string.
+     * (must be deleted)
      *
      * @method ()
      * @public
@@ -141,6 +142,7 @@
 
     /**
      * Returns an array.
+     * (must be deleted)
      *
      * @method ()
      * @public

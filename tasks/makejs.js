@@ -1,9 +1,10 @@
-/* eslint  one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0 */
+/* eslint  one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0
+  object-curly-newline: 0 */
 
 'use strict';
 
 // -- Vendor Modules
-const { src, dest, series } = require('gulp')
+const { src, dest, series, parallel } = require('gulp')
     , del     = require('del')
     , concat  = require('gulp-concat')
     , replace = require('gulp-replace')
@@ -13,19 +14,19 @@ const { src, dest, series } = require('gulp')
 // -- Local Modules
 const pack   = require('../package.json')
     , config = require('./config')
-   ;
+    ;
 
 
 // -- Local Constants
-const destination  = config.libdir
-    , { ES6GLOB }  = config
-    , source       = config.src
-    , { libname }  = config
-    , { name }     = config
-    , head         = source[0]
-    , core         = source.slice(1, -1)
-    , foot         = source[source.length - 1]
-    , { version }  = pack
+const destination = config.libdir
+    , { ES6GLOB } = config
+    , source      = config.src
+    , { libname } = config
+    , { name }    = config
+    , head        = source[0]
+    , core        = source.slice(1, -1)
+    , foot        = source[source.length - 1]
+    , { version } = pack
     ;
 
 
@@ -57,8 +58,8 @@ function docore() {
   ;
 }
 
-// Creates the library.
-function dolib() {
+// Create the UMD Module.
+function doumdlib() {
   return src([head, `${destination}/core.js`, foot])
     .pipe(replace('{{lib:es6:define}}\n', ''))
     .pipe(replace('{{lib:es6:link}}', 'this'))
@@ -70,15 +71,15 @@ function dolib() {
   ;
 }
 
-// Creates the es6 module.
+// Creates the ES6 module.
 function domodule() {
-  let exportm = '\n// -- Export\n';
-  exportm += `export default ${ES6GLOB}.${libname};`;
+  let exportM = '\n// -- Export\n';
+  exportM += `export default ${ES6GLOB}.${libname};`;
 
   return src([head, `${destination}/core.js`, foot])
     .pipe(replace('{{lib:es6:define}}', `const ${ES6GLOB} = {};`))
     .pipe(replace('{{lib:es6:link}}', ES6GLOB))
-    .pipe(replace('{{lib:es6:export}}', exportm))
+    .pipe(replace('{{lib:es6:export}}', exportM))
     .pipe(concat(`${name}.mjs`))
     // fix the blanck lines we indented too:
     .pipe(replace(/\s{2}\n/g, '\n'))
@@ -94,4 +95,8 @@ function delcore(done) {
 
 
 // -- Gulp Public Task(s)
-module.exports = series(clean, docore, dolib, domodule, delcore);
+module.exports = series(
+  clean, docore,
+  parallel(doumdlib, domodule),
+  delcore,
+);

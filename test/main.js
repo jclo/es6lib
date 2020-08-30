@@ -23,5 +23,5 @@ const libname = 'ES6lib';
 
 // -- Main
 describe('Test ES6lib:', () => {
-  testlib(ES6lib, libname, pack.version);
+  testlib(ES6lib, libname, pack.version, 'without new');
 });

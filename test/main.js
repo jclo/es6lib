@@ -8,7 +8,7 @@
 
 
 // -- Local Modules
-const ES6lib  = require('../index.js')
+const ES6lib  = require('../index')
     , pack    = require('../package.json')
     , testlib = require('./int/libprototypal')
     ;

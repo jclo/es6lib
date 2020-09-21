@@ -1,5 +1,12 @@
 ### HEAD
 
+### 1.0.3 (September 21, 2020)
+
+  * Updated the project dependencies,
+  * Made some changes to the README,
+  * ...,
+
+
 ### 1.0.2 (August 30, 2020)
 
   * Fixed a few typos and commented the test suite,

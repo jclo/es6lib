@@ -29,25 +29,14 @@ ES6lib uses [Travis CI](https://travis-ci.org) for continuous integration and [C
 
 You can easily get your first ES6Lib library running in a couple of minutes by just typing a few command lines. But first, you need to create an empty folder. It will contain your library.
 
-Then, you have to install the `es6lib` package globally. Open a terminal session and type the command line:
-
-```bash
-npm install @mobilabs/es6lib -g
-```
-
-Or, if you don't have the rights to install es6lib globally, you can install it locally in your project. Open a terminal session, move to your working directory - the empty folder you created - and type the following command line:
-
-```bash
-npm install @mobilabs/es6lib
-```
-
-Then, create a `package.json` file that contains at least:
+Then, you just need to create a `package.json` file that contains:
 
 ```json
 {
-  "name": "MyApp",
+  "name": "NameOfYourProject",
   "scripts": {
-    "create": "es6lib populate --name ${npm_package_name} --author \"${npm_package_writer_name}\" --acronym ${npm_package_writer_acronym} --email ${npm_package_writer_email} --url ${npm_package_writer_url} && npm install"
+    "create": "npm install @mobilabs/es6lib && npm run populate",
+    "populate": "es6lib populate --name ${npm_package_name} --author \"${npm_package_writer_name}\" --acronym ${npm_package_writer_acronym} --email ${npm_package_writer_email} --url ${npm_package_writer_url} && npm install && npm run build && npm run test && npm run report"
   },
   "writer": {
     "name": "John Doe",
@@ -57,7 +46,7 @@ Then, create a `package.json` file that contains at least:
   }
 }
 ```
-Replace `MyApp` by your project name and fill `writer` with your credentials.
+Replace `NameOfYourProject` by your project name and fill `writer` with your credentials.
 
 And finally, type in the terminal:
 
@@ -65,7 +54,7 @@ And finally, type in the terminal:
 npm run create.
 ```
 
-Now your folder contains the following files:
+That's almost all! When the script has been executed, your folder contains the following files:
 
 ```bash
 Your project Folder

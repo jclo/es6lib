@@ -28,4 +28,4 @@ Then, run:
 
 ## Default
 
-By default, the `functional-shared` pattern is active.
+By default, the `prototypal` pattern is active.

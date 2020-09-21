@@ -40,7 +40,7 @@ module.exports = function(ES6lib, libname, version, type) {
 
 
       // -- This section must not be modified --
-      // NAME, VERSION, _library, _setTestMode, noConflict
+      // NAME, VERSION, _setTestMode, noConflict
       describe('Check the owned generic custom properties:', () => {
         it(`Expects ES6lib to own the property "NAME" whose value is "${libname}".`, () => {
           expect(ES6lib).to.own.property('NAME').that.is.equal(libname);

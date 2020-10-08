@@ -149,10 +149,13 @@ const npmignore = [
 // -- Private Functions --------------------------------------------------------
 
 /**
- * Displays help message.
+ * Dispays the help message.
  *
  * @function ()
  * @private
+ * @param {}           -,
+ * @returns {}         -,
+ * @since 0.0.0
  */
 function _help() {
   const message = ['',
@@ -330,6 +333,7 @@ function _customize(source, dest, app, owner, boilerlib) {
 
   pack.devDependencies[`@mobilabs/${boilerlib.toLocaleLowerCase()}`] = version;
 
+  delete pack.dependencies['@mobilabs/kasar'];
   delete pack.dependencies.nopt;
   delete pack.dependencies.shelljs;
 

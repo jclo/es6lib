@@ -1,5 +1,12 @@
 ### HEAD
 
+### 1.0.4 (October 8, 2020)
+
+  * Updated the project dependencies,
+  * Added @mobilabs/kasar for the documentation,
+  * ...,
+
+
 ### 1.0.3 (September 21, 2020)
 
   * Updated the project dependencies,

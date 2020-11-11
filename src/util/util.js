@@ -2,8 +2,8 @@
  *
  * A ...
  *
- * util.js is just a literal object that contains a set of functions. It
- * can't be intantiated.
+ * util.js is just a literal object that contains a set of functions.
+ * It can't be instantiated.
  *
  * Private Functions:
  *  . _getString                  returns a string,

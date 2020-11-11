@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.0.5
+ * ES6lib v1.0.6
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -58,8 +58,8 @@
    * the public static or object methods when the Javascript VM browses the
    * library from the top to the bottom.
    *
-   * extend.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
+   * extend.js is just a literal object that contains a set of functions.
+   * It can't be instantiated.
    *
    * Private Functions:
    *  . none,
@@ -127,8 +127,8 @@
    *
    * A ...
    *
-   * util.js is just a literal object that contains a set of functions. It
-   * can't be intantiated.
+   * util.js is just a literal object that contains a set of functions.
+   * It can't be instantiated.
    *
    * Private Functions:
    *  . _getString                  returns a string,
@@ -312,14 +312,14 @@
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '1.0.5',
+        version: '1.0.6',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '1.0.5';
+    ES6lib.VERSION = '1.0.6';
 
 
     // -- Private Static Methods -----------------------------------------------

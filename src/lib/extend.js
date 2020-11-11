@@ -4,8 +4,8 @@
  * the public static or object methods when the Javascript VM browses the
  * library from the top to the bottom.
  *
- * extend.js is just a literal object that contains a set of functions. It
- * can't be intantiated.
+ * extend.js is just a literal object that contains a set of functions.
+ * It can't be instantiated.
  *
  * Private Functions:
  *  . none,

@@ -3,6 +3,7 @@
 ### 1.0.7 (January 26, 2021)
 
   * Updated the project dependencies,
+  * Updated travis.yml,
   * ...,
 
 

@@ -4,7 +4,7 @@
 
   * Updated the project dependencies,
   * Updated travis.yml,
-  * ...,
+  * Release.
 
 
 ### 1.0.6 (November 11, 2020)

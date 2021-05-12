@@ -1,5 +1,6 @@
 *
 !_dist/**/*
+!.husky/pre-commit
 !bin
 !src/**/*
 !tasks/**/*

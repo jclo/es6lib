@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.10 (May 2, 2021)
+
+  * Fixed a wrong configuration of .npmignore,
+  * ...,
+
+
 ### 1.0.9 (May 12, 2021)
 
   * Updated the project to comply with Husky v6,

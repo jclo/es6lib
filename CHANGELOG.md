@@ -3,6 +3,7 @@
 ### 1.0.9 (May 12, 2021)
 
   * Updated the project to comply with Husky v6,
+  * Fixed a release version issue,
   * ...,
 
 

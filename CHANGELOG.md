@@ -4,7 +4,7 @@
 
   * Updated the project to comply with Husky v6,
   * Fixed a release version issue,
-  * ...,
+  * Release.
 
 
 ### 1.0.8 (May 12, 2021)

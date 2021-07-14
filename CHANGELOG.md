@@ -2,6 +2,12 @@
 
 ### 1.0.10 (May 2, 2021)
 
+  * Updated the project dependencies,
+  * ...
+
+
+### 1.0.10 (May 2, 2021)
+
   * Fixed a wrong configuration of .npmignore,
   * Release.
 

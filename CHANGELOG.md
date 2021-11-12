@@ -3,6 +3,7 @@
 ### 1.0.13 (November 12, 2021)
 
   * Fixed typos in the README.md file w.r.t the badges,
+  * Fixed remaining typos,
   * ...,
 
 

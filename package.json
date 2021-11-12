@@ -50,7 +50,6 @@
   },
   "homepage": "https://github.com/jclo/es6lib",
   "dependencies": {
-    "@mobilabs/kasar": "^1.0.6",
     "nopt": "^5.0.0",
     "shelljs": "^0.8.4"
   },

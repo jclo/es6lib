@@ -178,8 +178,8 @@ Enjoy!
 [coveralls-image]: https://img.shields.io/coveralls/jclo/es6lib/master.svg?&logo=coveralls
 [dependencies-image]: https://david-dm.org/jclo/es6lib/status.svg?theme=shields.io
 [devdependencies-image]: https://david-dm.org/jclo/es6lib/dev-status.svg?theme=shields.io
-[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib.svg?style=flat-square
-[license-image]: https://img.shields.io/npm/l/@mobilabs/es6lib.svg?style=flat-square
+[npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib.svg
+[license-image]: https://img.shields.io/npm/l/@mobilabs/es6lib.svg
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/es6lib
 [release-url]: https://github.com/jclo/es6lib/tags

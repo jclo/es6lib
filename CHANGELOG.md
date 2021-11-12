@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.0.13 (November 12, 2021)
+
+  * Fixed typos in the README.md file w.r.t the badges,
+  * ...,
+
+
 ### 1.0.12 (November 12, 2021)
 
   * Updated the project dependencies,

@@ -6,7 +6,7 @@
   * Fixed remaining typos,
   * Updated the project dependencies,
   * Updated the copyright,
-  * ...,
+  * Release.
 
 
 ### 1.0.12 (November 12, 2021)

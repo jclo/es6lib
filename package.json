@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "minified": "_dist/lib/es6lib.min.js",
@@ -51,16 +51,16 @@
   "homepage": "https://github.com/jclo/es6lib",
   "dependencies": {
     "nopt": "^5.0.0",
-    "shelljs": "^0.8.4"
+    "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "chai": "^4.3.4",
+    "chai": "^4.3.5",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "del": "^6.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-import": "^2.25.4",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-connect": "^5.7.0",
@@ -68,7 +68,7 @@
     "gulp-replace": "^1.1.3",
     "gulp-uglify-es": "^3.0.0",
     "husky": "^7.0.4",
-    "mocha": "^9.1.3",
+    "mocha": "^9.2.0",
     "nyc": "^15.1.0",
     "open": "^8.4.0",
     "opener": "^1.5.2"

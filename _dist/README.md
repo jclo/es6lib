@@ -36,9 +36,9 @@ Then, you just need to create a `package.json` file that contains:
   "name": "NameOfYourProject",
   "scripts": {
     "create": "npm install @mobilabs/es6lib && npm run populate",
-    "populate": "es6lib populate --name ${npm_package_name} --author \"${npm_package_writer_name}\" --acronym ${npm_package_writer_acronym} --email ${npm_package_writer_email} --url ${npm_package_writer_url} && npm install && npm run build && npm run test && npm run report"
+    "populate": "es6lib populate --name $npm_package_name --author $npm_package_config_name --acronym $npm_package_config_acronym --email $npm_package_config_email --url $npm_package_config_url && npm install && npm run build && npm run test && npm run report"
   },
-  "writer": {
+  "config": {
     "name": "John Doe",
     "acronym": "jdo",
     "email": "jdo@johndoe.com",

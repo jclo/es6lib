@@ -4,7 +4,7 @@
 
   * Updated the project dependencies,
   * Trying to reactivate Travis CI,
-  * ...,
+  * Release.
 
 
 ### 1.0.13 (January 26, 2022)

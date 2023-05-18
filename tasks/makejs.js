@@ -96,7 +96,8 @@ function delcore(done) {
 
 // -- Gulp Public Task(s)
 module.exports = series(
-  clean, docore,
+  clean,
+  docore,
   parallel(doumdlib, domodule),
   delcore,
 );

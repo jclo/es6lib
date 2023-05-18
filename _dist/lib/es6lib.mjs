@@ -1,9 +1,9 @@
 /*! ****************************************************************************
- * ES6lib v1.0.13
+ * ES6lib v1.0.13.x
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2022 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr/).
+ * Copyright (c) 2023 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr/).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
  * Built from {{boiler:name}} v{{boiler:name:version}}.
@@ -313,14 +313,14 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '1.0.13',
+        version: '1.0.13.x',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '1.0.13';
+    ES6lib.VERSION = '1.0.13.x';
 
 
     // -- Private Static Methods -----------------------------------------------

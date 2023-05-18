@@ -3,6 +3,7 @@
 ### 1.0.14 (May 18, 2023)
 
   * Updated the project dependencies,
+  * Trying to reactivate Travis CI,
   * ...,
 
 

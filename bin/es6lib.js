@@ -269,7 +269,7 @@ function _addSkeleton(base, app, owner, cright) {
  * @returns {}              -,
  */
 function _duplicate(source, dest) {
-  const dupFiles = ['.eslintrc', '.travis.yml', 'gulpfile.js'];
+  const dupFiles = ['.eslintrc', '.travis.yml'];
 
   for (let i = 0; i < dupFiles.length; i++) {
     process.stdout.write(`  copied ${dupFiles[i]}\n`);
@@ -303,22 +303,23 @@ function _customize(source, dest, app, owner, boilerlib) {
   pack.unpkg = `_dist/lib/${app.toLowerCase()}.mjs`;
   pack.module = `_dist/lib/${app.toLowerCase()}.min.mjs`;
   pack.bin = {};
-  pack.scripts = {
-    build: obj.scripts.build,
-    watch: obj.scripts.watch,
-    dev: obj.scripts.dev,
-    test: obj.scripts.test,
-    'display-coverage': obj.scripts['display-coverage'],
-    'check-coverage': obj.scripts['check-coverage'],
-    'report-coverage': obj.scripts['report-coverage'],
-    report: obj.scripts.report,
-    makedist: obj.scripts.makedist,
-    app: obj.scripts.app,
-    makeprivate: obj.scripts.makeprivate,
-    makelib: obj.scripts.makelib,
-    prepare: obj.scripts.prepare,
-    doc: obj.scripts.doc,
-  };
+  // pack.scripts = {
+  //   build: obj.scripts.build,
+  //   watch: obj.scripts.watch,
+  //   dev: obj.scripts.dev,
+  //   test: obj.scripts.test,
+  //   'display-coverage': obj.scripts['display-coverage'],
+  //   'check-coverage': obj.scripts['check-coverage'],
+  //   'report-coverage': obj.scripts['report-coverage'],
+  //   report: obj.scripts.report,
+  //   makedist: obj.scripts.makedist,
+  //   app: obj.scripts.app,
+  //   makeprivate: obj.scripts.makeprivate,
+  //   makelib: obj.scripts.makelib,
+  //   prepare: obj.scripts.prepare,
+  //   doc: obj.scripts.doc,
+  // };
+  pack.scripts = obj.scripts;
   pack.repository = obj.repository;
   pack.repository.url = `https://github.com/${owner.acronym}/${app.toLowerCase()}.git`;
   pack.keywords = ['ES6'];

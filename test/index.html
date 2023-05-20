@@ -1,0 +1,59 @@
+<!-- x -->
+<!doctype html>
+<html class="no-js" lang="">
+  <head>
+    <meta charset="utf-8">
+    <title>View ES6lib</title>
+    <meta name="description" content="{{app:description}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="">
+    <meta name="theme-color" content="#2196f3">
+    <style>
+      /* - */
+    </style>
+
+    <!-- <script src='./lib/view.js'></script> -->
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        /* global Pixi */
+        'use strict';
+        //
+      });
+    </script>
+  </head>
+
+  <body>
+    <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated and unsupported</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to benefit of all the features of this web App.</p>
+    <![endif]-->
+
+    <!-- Warning message if Javascript isn't enabled -->
+    <noscript>
+      <p style="text-align:center;padding-top:3em;">
+        We are sorry, but this website doesn't work properly without JavaScript enabled!
+      </p>
+    </noscript>
+
+    <!-- Add your site or application content here -->
+    <div id="app"></div>
+
+    <!-- Add your scripts here -->
+    <script type="module">
+      import ES6lib from '../lib/es6lib.mjs';
+
+      console.log(ES6lib.VERSION);
+      console.log(Object.keys(ES6lib));
+
+      const lib = ES6lib();
+      console.log(lib.getString());
+      console.log(lib.getArray());
+
+      const el = document.getElementById('app');
+      el.append(`Es6lib $v${ES6lib.VERSION}`);
+      el.append(`   ... ${lib.getString()}`);
+      el.append(`   ... ${lib.getArray()}`);
+
+    </script>
+  </body>
+</html>

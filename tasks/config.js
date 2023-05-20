@@ -58,6 +58,12 @@ module.exports = {
   ],
   /* eslint-enable no-multi-spaces */
 
+  webfiles: [
+    // These are the files to copy to the root path of the web app,
+    './README.md',
+    './LICENSE.md',
+  ],
+
   get license() {
     return ['/*! ****************************************************************************',
       ` * ${libname} v${pack.version}`,

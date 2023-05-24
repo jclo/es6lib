@@ -5,7 +5,7 @@
   * Fixed commit text saying committed 1.0.0 instead of 1.1.0,
   * Added a build script template,
   * Removed main of fs.xxxSync from npm build scripts,
-  * ...,
+  * Release.
  
 
 ### 1.1.0 (May 24,2023)

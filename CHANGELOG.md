@@ -2,6 +2,12 @@
 
 ### 1.1.0 (May 24,2023)
 
+  * Fixed commit text saying commiitted 1.0.0 instead of 1.1.0,
+  * ...,
+ 
+
+### 1.1.0 (May 24,2023)
+
   * Updated and standardized npm scripts,
   * Release.
 

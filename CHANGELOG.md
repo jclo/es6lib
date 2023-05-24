@@ -3,7 +3,7 @@
 ### 1.1.0 (May 24,2023)
 
   * Updated and standardized npm scripts,
-  * ...,
+  * Release.
 
 
 ### 1.0.15 (May 20,2023)

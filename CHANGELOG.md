@@ -1,8 +1,10 @@
 ### HEAD
 
-### 1.1.0 (May 24,2023)
+### 1.1.1 (May 24,2023)
 
-  * Fixed commit text saying commiitted 1.0.0 instead of 1.1.0,
+  * Fixed commit text saying committed 1.0.0 instead of 1.1.0,
+  * Added a build script template,
+  * Removed main of fs.xxxSync from npm build scripts,
   * ...,
  
 

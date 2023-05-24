@@ -12,7 +12,7 @@
  *  . _docore                     creates the content of the library,
  *  . _doumdlib                   creates the UMD Module,
  *  . _domodule                   creates the ES6 module,
- *  . _delgeneric                 removes the temp file(s),
+ *  . _delcore                    removes the temp file(s),
  *
  *
  * Public Static Methods:
@@ -93,7 +93,6 @@ function _help() {
   ].join('\n');
 
   process.stdout.write(`${message}\n`);
-  process.exit(0);
 }
 
 /**
@@ -119,7 +118,7 @@ function _clean() {
 /**
  * Creates the content of the library.
  *
- * @function (arg1)
+ * @function ()
  * @private
  * @param {}              -,
  * @returns {}            -,
@@ -253,7 +252,7 @@ function _delcore() {
  * @returns {}         -,
  * @since 0.0.0
  */
-async function run() {
+function run() {
   if (parsed.help) {
     _help();
     return;

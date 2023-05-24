@@ -1,16 +1,14 @@
 #!/usr/bin/env node
 /* *****************************************************************************
  *
- * Creates a private npm package.
+ * Does ...
  *
- * dep:private script creates a npm package not to be published but used
- * locally.
+ * build:template script is a framework to build npm build scripts;
  *
  * Private Functions:
  *  . _help                       displays the help message,
  *  . _clean                      removes the previous build,
- *  . _copyindex                  copies the modified index,
- *  . _copypackagejson            copies the modified package.json,
+ *  . _dosomething                creates something,
  *
  *
  * Public Static Methods:
@@ -31,7 +29,6 @@
 
 // -- Vendor Modules
 const fs   = require('fs')
-    , path = require('path')
     , nopt = require('nopt')
     ;
 
@@ -52,10 +49,7 @@ const VERSION = '0.0.0-alpha.0'
       v: ['--version', VERSION],
     }
     , parsed = nopt(opts, shortOpts, process.argv, 2)
-    , tmppriv      = './private_repo/tmp'
-    , { name }     = config
-    , { index }    = config
-    , { distlink } = config
+    , destination = config.libdir
     ;
 
 
@@ -77,7 +71,7 @@ function _help() {
   const message = ['',
     'Usage: command [options]',
     '',
-    '                     creates a private npm package to be used locally',
+    '                     creates something from something',
     '',
     'Options:',
     '',
@@ -103,10 +97,10 @@ function _clean() {
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
   return new Promise((resolve) => {
-    fs.rm(tmppriv, { force: true, recursive: true }, (err1) => {
+    fs.rm(destination, { force: true, recursive: true }, (err1) => {
       if (err1) throw new Error(err1);
 
-      fs.mkdir(tmppriv, { recursive: true }, (err2) => {
+      fs.mkdir(destination, { recursive: true }, (err2) => {
         if (err2) throw new Error(err2);
 
         const d2 = new Date() - d1;
@@ -118,7 +112,7 @@ function _clean() {
 }
 
 /**
- * Copies the modified index.
+ * Creates something else.
  *
  * @function (arg1)
  * @private
@@ -126,26 +120,21 @@ function _clean() {
  * @returns {}            -,
  * @since 0.0.0
  */
-function _copyindex(done) {
+function _doparallel1(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mcopyindex\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdoparallel1\x1b[89m\x1b[0m\'...\n');
 
-  fs.readFile(index, 'utf8', (err1, data) => {
-    if (err1) throw new Error(err1);
+  fs.writeFile(`${destination}/generic1.js`, 'bla bla', { encoding: 'utf8' }, (err) => {
+    if (err) throw new Error(err);
 
-    const content = data.replace(`./lib/${name}`, distlink);
-    fs.writeFile(`${tmppriv}/${path.basename(index)}`, content, { encoding: 'utf8' }, (err2) => {
-      if (err2) throw new Error(err2);
-
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mcopyindex\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-      done();
-    });
+    const d2 = new Date() - d1;
+    process.stdout.write(`Finished '\x1b[36mdodoparallel1\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    done();
   });
 }
 
 /**
- * Copies the modified package.json.
+ * Creates something else.
  *
  * @function (arg1)
  * @private
@@ -153,29 +142,53 @@ function _copyindex(done) {
  * @returns {}            -,
  * @since 0.0.0
  */
-function _copypackagejson(done) {
+function _doparallel2(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mcopypackagejson\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdoparallel2\x1b[89m\x1b[0m\'...\n');
 
-  fs.readFile('./package.json', 'utf8', (err1, data) => {
-    if (err1) throw new Error(err1);
+  fs.writeFile(`${destination}/generic2.js`, 'bla bla', { encoding: 'utf8' }, (err) => {
+    if (err) throw new Error(err);
 
-    const obj = JSON.parse(data);
-    obj.main = distlink;
-    obj.bin = {};
-    obj.scripts = {};
-    obj.dependencies = {};
-    obj.devDependencies = {};
-    obj.private = true;
-    obj.husky = {};
+    const d2 = new Date() - d1;
+    process.stdout.write(`Finished '\x1b[36mdodoparallel2\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    done();
+  });
+}
 
-    fs.writeFile(`${tmppriv}/package.json`, JSON.stringify(obj, null, 2), { encooding: 'utf8' }, (err2) => {
-      if (err2) throw new Error(err2);
+/**
+ * Removes the temp file(s).
+ *
+ * @function (arg1)
+ * @private
+ * @param {Function}      the function to call at the completion,
+ * @returns {}            -,
+ * @since 0.0.0
+ */
+function _delgeneric(done) {
+  const d1 = new Date();
+  process.stdout.write('Starting \'\x1b[36mdelgeneric\x1b[89m\x1b[0m\'...\n');
 
+  /**
+   * Wait all the processes are completed.
+   */
+  let pending = 2;
+  function _next() {
+    pending -= 1;
+    if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mcopypackagejson\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mdelgeneric\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
-    });
+    }
+  }
+
+  fs.unlink(`${destination}/generic1.js`, (err) => {
+    if (err) throw new Error(err);
+    _next();
+  });
+
+  fs.unlink(`${destination}/generic2.js`, (err) => {
+    if (err) throw new Error(err);
+    _next();
   });
 }
 
@@ -205,7 +218,7 @@ async function run() {
   }
 
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdep:private\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mbuild:js:dev\x1b[89m\x1b[0m\'...\n');
 
   let pending = PENDING;
   /**
@@ -214,14 +227,16 @@ async function run() {
   function done() {
     pending -= 1;
     if (!pending) {
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mdep:private\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      _delgeneric(() => {
+        const d2 = new Date() - d1;
+        process.stdout.write(`Finished '\x1b[36mbuild:js:dev\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      });
     }
   }
 
   await _clean();
-  _copyindex(done);
-  _copypackagejson(done);
+  _doparallel1(done);
+  _doparallel2(done);
 }
 
 

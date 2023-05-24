@@ -84,7 +84,6 @@ function _help() {
   ].join('\n');
 
   process.stdout.write(`${message}\n`);
-  process.exit(0);
 }
 
 /**
@@ -93,17 +92,22 @@ function _help() {
  * @function ()
  * @private
  * @param {}              -,
- * @returns {}            -,
+ * @returns {Object}      returns a promise,
  * @since 0.0.0
  */
 function _clean() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
-  fs.rmSync(dist, { force: true, recursive: true });
+  return new Promise((resolve) => {
+    fs.rm(dist, { force: true, recursive: true }, (err) => {
+      if (err) throw new Error(err);
 
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      const d2 = new Date() - d1;
+      process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      resolve();
+    });
+  });
 }
 
 /**
@@ -119,15 +123,25 @@ function _doskeleton(done) {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mdoskeleton\x1b[89m\x1b[0m\'...\n');
 
+  /**
+   * Wait all processes completed;
+   */
+  let pending = webfiles.length;
+  function _next() {
+    pending -= 1;
+    if (!pending) {
+      const d2 = new Date() - d1;
+      process.stdout.write(`Finished '\x1b[36mdoskeleton\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      done();
+    }
+  }
+
   let filename;
   for (let i = 0; i < webfiles.length; i++) {
     filename = path.basename(webfiles[i]);
     fs.cp(webfiles[i], `${dist}/${filename}`, (err) => {
       if (err) throw new Error(err);
-
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mdoskeleton\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-      done();
+      _next();
     });
   }
 }
@@ -144,11 +158,12 @@ function _doskeleton(done) {
  * @returns {}            -,
  * @since 0.0.0
  */
-function run() {
+async function run() {
   const PENDING = 1;
 
   if (parsed.help) {
     _help();
+    return;
   }
 
   if (parsed.version) {
@@ -171,7 +186,7 @@ function run() {
     }
   }
 
-  _clean();
+  await _clean();
   _doskeleton(done);
 }
 

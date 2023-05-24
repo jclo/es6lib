@@ -89,7 +89,6 @@ function _help() {
   ].join('\n');
 
   process.stdout.write(`${message}\n`);
-  process.exit(0);
 }
 
 /**
@@ -105,11 +104,19 @@ function _clean() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
-  fs.rmSync(`${dist}/lib`, { force: true, recursive: true });
-  fs.mkdirSync(`${dist}/lib`, { recursive: true });
+  return new Promise((resolve) => {
+    fs.rm(`${dist}/lib`, { force: true, recursive: true }, (err1) => {
+      if (err1) throw new Error(err1);
 
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      fs.mkdir(`${dist}/lib`, { recursive: true }, (err2) => {
+        if (err2) throw new Error(err2);
+
+        const d2 = new Date() - d1;
+        process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+        resolve();
+      });
+    });
+  });
 }
 
 /**
@@ -244,11 +251,12 @@ function _makeminifiedm(done) {
  * @returns {}            -,
  * @since 0.0.0
  */
-function run() {
+async function run() {
   const PENDING = 4;
 
   if (parsed.help) {
     _help();
+    return;
   }
 
   if (parsed.version) {
@@ -271,7 +279,7 @@ function run() {
     }
   }
 
-  _clean();
+  await _clean();
   _copydev(done);
   _copydevm(done);
   _makeminified(done);

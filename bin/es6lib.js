@@ -269,7 +269,7 @@ function _addSkeleton(base, app, owner, cright) {
  * @returns {}              -,
  */
 function _duplicate(source, dest) {
-  const dupFiles = ['.eslintrc', '.travis.yml'];
+  const dupFiles = ['.eslintrc', '.travis.yml', 'rmdstore.sh'];
 
   for (let i = 0; i < dupFiles.length; i++) {
     process.stdout.write(`  copied ${dupFiles[i]}\n`);

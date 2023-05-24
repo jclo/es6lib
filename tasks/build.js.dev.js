@@ -1,10 +1,38 @@
-/* eslint one-var: 0, import/no-extraneous-dependencies: 0, semi-style: 0,
-  object-curly-newline: 0 */
+#!/usr/bin/env node
+/* *****************************************************************************
+ *
+ * Creates the JS bundle.
+ *
+ * build:js.dev script creates the JS bundle from ./public/src/main.js by importing
+ * all the linked src files;
+ *
+ * Private Functions:
+ *  . _help                       displays the help message,
+ *  . _clean                      removes the previous build,
+ *  . _docore                     creates the content of the library,
+ *  . _doumdlib                   creates the UMD Module,
+ *  . _domodule                   creates the ES6 module,
+ *  . _delgeneric                 removes the temp file(s),
+ *
+ *
+ * Public Static Methods:
+ *  . run                         executes the script,
+ *
+ *
+ * @namespace    -
+ * @dependencies none
+ * @exports      -
+ * @author       -
+ * @since        0.0.0
+ * @version      -
+ * ************************************************************************** */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
 'use strict';
 
 // -- Vendor Modules
-const fs = require('fs')
+const fs   = require('fs')
+    , nopt = require('nopt')
     ;
 
 
@@ -15,7 +43,17 @@ const pack   = require('../package.json')
 
 
 // -- Local Constants
-const destination = config.libdir
+const VERSION = '0.0.0-alpha.0'
+    , opts = {
+      help: [Boolean, false],
+      version: [String, null],
+    }
+    , shortOpts = {
+      h: ['--help'],
+      v: ['--version', VERSION],
+    }
+    , parsed = nopt(opts, shortOpts, process.argv, 2)
+    , destination = config.libdir
     , { ES6GLOB } = config
     , source      = config.src
     , { libname } = config
@@ -30,15 +68,46 @@ const destination = config.libdir
 // -- Local Variables
 
 
-// -- Private Tasks
+// -- Private Functions --------------------------------------------------------
 
 /**
- * Removes the previous version.
+ * Dispays the help message.
+ *
+ * @function ()
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
  */
-function clean() {
+function _help() {
+  const message = ['',
+    'Usage: command [options]',
+    '',
+    '                     creates the js bundle from ./public/src/main.js',
+    '',
+    'Options:',
+    '',
+    '-h, --help           output usage information',
+    '-v, --version        output the version number',
+    '',
+  ].join('\n');
+
+  process.stdout.write(`${message}\n`);
+  process.exit(0);
+}
+
+/**
+ * Removes the previous build.
+ *
+ * @function ()
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
+ */
+function _clean() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
-
 
   fs.rmSync(destination, { force: true, recursive: true });
   fs.mkdirSync(destination, { recursive: true });
@@ -47,11 +116,16 @@ function clean() {
   process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
 }
 
-
 /**
- * Creates the content.
+ * Creates the content of the library.
+ *
+ * @function (arg1)
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
  */
-function docore() {
+function _docore() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mdocore\x1b[89m\x1b[0m\'...\n');
 
@@ -80,11 +154,16 @@ function docore() {
   process.stdout.write(`Finished '\x1b[36mdocore\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
 }
 
-
 /**
- * Create the UMD Module.
+ * Creates the UMD Module.
+ *
+ * @function ()
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
  */
-function doumdlib() {
+function _doumdlib() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mdoumdlib\x1b[89m\x1b[0m\'...\n');
 
@@ -108,11 +187,16 @@ function doumdlib() {
   process.stdout.write(`Finished '\x1b[36mdoumdlib\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
 }
 
-
 /**
  * Creates the ES6 module.
+ *
+ * @function ()
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
  */
-function domodule() {
+function _domodule() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mdomodule\x1b[89m\x1b[0m\'...\n');
 
@@ -139,11 +223,16 @@ function domodule() {
   process.stdout.write(`Finished '\x1b[36mdomodule\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
 }
 
-
 /**
  * Removes the temp file(s).
+ *
+ * @function ()
+ * @private
+ * @param {}              -,
+ * @returns {}            -,
+ * @since 0.0.0
  */
-function delcore() {
+function _delcore() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mdelcore\x1b[89m\x1b[0m\'...\n');
   fs.unlinkSync(`${destination}/core.js`);
@@ -153,17 +242,44 @@ function delcore() {
 }
 
 
-// -- Public Task(s)
-const d1 = new Date();
-process.stdout.write('Starting \'\x1b[36mbuild:js:dev\x1b[89m\x1b[0m\'...\n');
-clean();
-docore();
-doumdlib();
-domodule();
-delcore();
+// -- Main ---------------------------------------------------------------------
 
-const d2 = new Date() - d1;
-process.stdout.write(`Finished '\x1b[36mbuild:js:dev\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+/**
+ * Executes the script.
+ *
+ * @function ()
+ * @puublic
+ * @param {}           -,
+ * @returns {}         -,
+ * @since 0.0.0
+ */
+async function run() {
+  if (parsed.help) {
+    _help();
+    return;
+  }
+
+  if (parsed.version) {
+    process.stdout.write(`version: ${parsed.version}\n`);
+    return;
+  }
+
+  const d1 = new Date();
+  process.stdout.write('Starting \'\x1b[36mbuild:js:dev\x1b[89m\x1b[0m\'...\n');
+
+  _clean();
+  _docore();
+  _doumdlib();
+  _domodule();
+  _delcore();
+
+  const d2 = new Date() - d1;
+  process.stdout.write(`Finished '\x1b[36mbuild:js:dev\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+}
+
+
+// Start script.
+run();
 
 
 // -- oOo --

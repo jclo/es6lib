@@ -3,7 +3,7 @@
 ### 1.1.2 (May 26, 2023)
 
   * Fixed a faw typos,
-  * ...,
+  * Release.
 
 
 ### 1.1.1 (May 24,2023)

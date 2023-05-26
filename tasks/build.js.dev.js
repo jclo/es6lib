@@ -75,20 +75,20 @@ const VERSION = '0.0.0-alpha.0'
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _help() {
   const message = ['',
     'Usage: command [options]',
     '',
-    '                     creates the js bundle from ./public/src/main.js',
+    '                       creates the js bundle from ./public/src/main.js',
     '',
     'Options:',
     '',
-    '-h, --help           output usage information',
-    '-v, --version        output the version number',
+    '-h, --help             output usage information',
+    '-v, --version          output the version number',
     '',
   ].join('\n');
 
@@ -100,8 +100,8 @@ function _help() {
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _clean() {
@@ -120,8 +120,8 @@ function _clean() {
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _docore() {
@@ -158,8 +158,8 @@ function _docore() {
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _doumdlib() {
@@ -191,8 +191,8 @@ function _doumdlib() {
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _domodule() {
@@ -227,8 +227,8 @@ function _domodule() {
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _delcore() {
@@ -248,8 +248,8 @@ function _delcore() {
  *
  * @function ()
  * @puublic
- * @param {}           -,
- * @returns {}         -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function run() {

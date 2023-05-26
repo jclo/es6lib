@@ -71,20 +71,20 @@ const VERSION = '0.0.0-alpha.0'
  *
  * @function ()
  * @private
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _help() {
   const message = ['',
     'Usage: command [options]',
     '',
-    '                     creates the js production files',
+    '                       creates the js production files',
     '',
     'Options:',
     '',
-    '-h, --help           output usage information',
-    '-v, --version        output the version number',
+    '-h, --help             output usage information',
+    '-v, --version          output the version number',
     '',
   ].join('\n');
 
@@ -124,8 +124,8 @@ function _clean() {
  *
  * @function (arg1)
  * @private
- * @param {Function}      the function to call at the completion,
- * @returns {}            -,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _copydev(done) {
@@ -152,8 +152,8 @@ function _copydev(done) {
  *
  * @function (arg1)
  * @private
- * @param {Function}      the function to call at the completion,
- * @returns {}            -,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _copydevm(done) {
@@ -180,8 +180,8 @@ function _copydevm(done) {
  *
  * @function (arg1)
  * @private
- * @param {Function}      the function to call at the completion,
- * @returns {}            -,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _makeminified(done) {
@@ -212,8 +212,8 @@ function _makeminified(done) {
  *
  * @function (arg1)
  * @private
- * @param {Function}      the function to call at the completion,
- * @returns {}            -,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
  * @since 0.0.0
  */
 function _makeminifiedm(done) {
@@ -247,8 +247,8 @@ function _makeminifiedm(done) {
  *
  * @function ()
  * @puublic
- * @param {}              -,
- * @returns {}            -,
+ * @param {}                -,
+ * @returns {}              -,
  * @since 0.0.0
  */
 async function run() {

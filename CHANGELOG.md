@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.1.2 (May 26, 2023)
+
+  * Fixed a faw typos,
+  * ...,
+
+
 ### 1.1.1 (May 24,2023)
 
   * Fixed commit text saying committed 1.0.0 instead of 1.1.0,

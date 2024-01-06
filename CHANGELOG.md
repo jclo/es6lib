@@ -4,7 +4,7 @@
 
   * Fixed a few typos,
   * Updated the project dependencies,
-  * ...,
+  * Release,
 
 
 ### 1.1.2 (May 26, 2023)

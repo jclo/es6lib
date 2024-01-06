@@ -75,22 +75,21 @@
   },
   "homepage": "https://github.com/jclo/es6lib",
   "dependencies": {
-    "nopt": "^7.1.0",
+    "nopt": "^7.2.0",
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
-    "chai": "^4.3.7",
+    "chai": "^4.4.0",
     "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
-    "eslint": "^8.41.0",
+    "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.27.5",
-    "http-server": "^14.1.1",
+    "eslint-plugin-import": "^2.29.1",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.0.2",
     "nyc": "^15.1.0",
-    "terser": "^5.17.4"
+    "terser": "^5.26.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,8 +1,15 @@
 ### HEAD
 
+### 1.2.0 (January 6, 2024)
+
+  * Fixed a few typos,
+  * Updated the project dependencies,
+  * ...,
+
+
 ### 1.1.2 (May 26, 2023)
 
-  * Fixed a faw typos,
+  * Fixed a few typos,
   * Release.
 
 

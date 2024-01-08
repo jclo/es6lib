@@ -1,5 +1,11 @@
 ### HEAD
 
+### 1.2.x (January 8, 2024)
+
+  * Removed Travis-CI,
+  * ...,
+
+
 ### 1.2.0 (January 6, 2024)
 
   * Fixed a few typos,

@@ -29,11 +29,10 @@
     "build:prod": "npm run build:js:prod",
 
     "testing": " --- TESTING --- ",
-    "test": "cross-env NODE_ENV=test nyc --reporter=lcov mocha ./test/main.js",
+    "test": "cross-env NODE_ENV=test c8 --reporter=lcov mocha ./test/main.js",
     "display:coverage": "open -a safari ./coverage/lcov-report/index.html",
-    "check:coverage": "nyc check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
-    "report:coverage": "nyc report --reporter=text-lcov | coveralls",
-    "report": "nyc report",
+    "check:coverage": "c8 check-coverage --statements 100 --branches 100 --functions 100 --lines 100",
+    "report": "c8 report",
 
     "serving": " --- SERVING --- ",
     "server:dev": "http-server --port 8080",
@@ -79,8 +78,8 @@
     "shelljs": "^0.8.5"
   },
   "devDependencies": {
+    "c8": "^9.0.0",
     "chai": "^4.4.0",
-    "coveralls": "^3.1.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
@@ -88,7 +87,6 @@
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.2",
-    "nyc": "^15.1.0",
     "terser": "^5.26.0"
   },
   "publishConfig": {

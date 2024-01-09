@@ -1,8 +1,10 @@
 ### HEAD
 
-### 1.2.x (January 8, 2024)
+### 1.2.x (January 9, 2024)
 
   * Removed Travis-CI,
+  * Replaced nyc by c8 as nyc doesn't work properly with mocha and node v18,
+  * Added Github Actions as CI instead of Travis-CI,
   * ...,
 
 

@@ -2,12 +2,10 @@
 
 [![NPM version][npm-image]][npm-url]
 [![GitHub last commit][commit-image]][commit-url]
-[![Travis CI][travis-image]][travis-url]
+[![Github workflow][ci-image]][ci-url]
 [![Test coverage][coveralls-image]][coveralls-url]
 [![npm bundle size][npm-bundle-size-image]][npm-bundle-size-url]
 [![License][license-image]](LICENSE.md)
-<!-- [![Dependencies status][dependencies-image]][dependencies-url]
-[![Dev Dependencies status][devdependencies-image]][devdependencies-url] -->
 
 ES6lib is a template for writing ES6 Javascript libraries and ES6 modules that run on both Node.js and ECMAScript 2015 (ES6) compliant browsers.
 
@@ -18,11 +16,11 @@ The ES6lib build produces two libraries:
 
 This template does not include a transpiler like babel or a module bundler like browserify/webpack or rollup. It relies on Npm scripts to build your library from the source files. Thus, it keeps your library pure (without extra code due to the transpiler or the module bundler).
 
-This template is useful if your library is intended to run on ECMAScript 2015 (ES6) compliant browser.
+This template is useful if your library is intended to run on ECMAScript 2015 (ES6) compliant browser and it is made of just a few files.
 
 ES6lib relies on [Mocha](https://mochajs.org) and [Chai](http://chaijs.com) for unitary testing. It relies on [Istanbul](https://gotwarlost.github.io/istanbul/) for code coverage.
 
-ES6lib uses [Travis CI](https://travis-ci.com) for continuous integration and [Coveralls.io](https://coveralls.io) to display test coverage.
+ES6lib uses [Github Actions](https://docs.github.com/en/actions) for continuous integration and [Coveralls.io](https://coveralls.io) to display test coverage.
 
 
 ## Quick Startup
@@ -58,6 +56,9 @@ That's almost all! When the script has been executed, your folder contains the f
 
 ```bash
 Your project Folder
+      |_ .github
+      |     |_ workflows
+      |           |_ ci.yml    // Github Workflow file (if you use it),
       |_ lib
       |   |_ lib.js            // Your built ES6 UMD library,
       |   |_ lib.mjs           // Your built ES6 Module,   
@@ -73,7 +74,6 @@ Your project Folder
       |_ .eslintrc            // A Configuration file for the ESLint linter tool (if you use it),
       |_ .gitignore           // Files that Git must ignore (if you use git),
       |_ .npmignore           // Files that are ignored by npm publish,
-      |_ .travis.yml          // A configuration file for Travis CI (if you use it),
       |_ .CHANGELOG.md        // The changes between your different versions,
       |_ index.js             // The link to your ES5 library,
       |_ LICENSE.md           // The license that applies to your library (here MIT),
@@ -173,19 +173,15 @@ Enjoy!
 [npm-image]: https://img.shields.io/npm/v/@mobilabs/es6lib.svg?logo=npm&logoColor=fff&label=NPM+package
 [release-image]: https://img.shields.io/github/release/jclo/es6lib.svg?include_prereleases
 [commit-image]: https://img.shields.io/github/last-commit/jclo/es6lib.svg?logo=github
-[travis-image]: https://img.shields.io/travis/com/jclo/es6lib.svg?logo=travis-ci&logoColor=fff
+[ci-image]: https://github.com/jclo/es6lib/actions/workflows/ci.yml/badge.svg
 [coveralls-image]: https://img.shields.io/coveralls/jclo/es6lib/master.svg?&logo=coveralls
-[dependencies-image]: https://david-dm.org/jclo/es6lib/status.svg?theme=shields.io
-[devdependencies-image]: https://david-dm.org/jclo/es6lib/dev-status.svg?theme=shields.io
 [npm-bundle-size-image]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib.svg
 [license-image]: https://img.shields.io/npm/l/@mobilabs/es6lib.svg
 
 [npm-url]: https://www.npmjs.com/package/@mobilabs/es6lib
 [release-url]: https://github.com/jclo/es6lib/tags
 [commit-url]: https://github.com/jclo/es6lib/commits/master
-[travis-url]: https://app.travis-ci.com/jclo/es6lib?branch=main
+[ci-url]: https://github.com/jclo/es6lib/actions/workflows/ci.yml
 [coveralls-url]: https://coveralls.io/github/jclo/es6lib?branch=master
-[dependencies-url]: https://david-dm.org/jclo/es6lib
-[devdependencies-url]: https://david-dm.org/jclo/es6lib?type=dev
 [license-url]: http://opensource.org/licenses/MIT
 [npm-bundle-size-url]: https://img.shields.io/bundlephobia/minzip/@mobilabs/es6lib

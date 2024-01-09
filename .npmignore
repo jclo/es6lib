@@ -1,5 +1,6 @@
 *
 !_dist/**/*
+!.github/**/*
 !.husky/pre-commit
 !bin
 !src/**/*

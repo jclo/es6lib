@@ -2,6 +2,12 @@
 
 ### 2.0.0 (January 9, 2024)
 
+  * Fixed an issue into .npmignore (.github),
+  * ...,
+
+
+### 2.0.0 (January 9, 2024)
+
   * Removed Travis-CI,
   * Replaced nyc by c8 as nyc doesn't work properly with mocha and node v18,
   * Added Github Actions as CI instead of Travis-CI,

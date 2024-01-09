@@ -1,9 +1,9 @@
 ### HEAD
 
-### 2.0.0 (January 9, 2024)
+### 2.0.1 (January 9, 2024)
 
   * Fixed an issue into .npmignore (.github),
-  * ...,
+  * Release.
 
 
 ### 2.0.0 (January 9, 2024)

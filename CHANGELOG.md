@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.0.2 (January 9, 2024)
+
+  * Fixed an issue in ./bin/eslib.js that prevented the creation of a .github folder,
+  * ...,
+
+
 ### 2.0.1 (January 9, 2024)
 
   * Fixed an issue into .npmignore (.github),

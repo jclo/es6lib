@@ -8,7 +8,6 @@
 !test/**/*
 !.eslintignore
 !.eslintrc
-!.travis.yml
 !gulpfile.js
 !index.js
 !rmdstore.sh

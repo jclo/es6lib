@@ -438,8 +438,7 @@ function _addHuskyHook(source, dest, folder) {
  * @returns {}              -,
  */
 function _addGithub(source, dest, folder) {
-  shell.mkdir('-p', `${dest}/${folder}`);
-  shell.cp('-r', `${source}/${folder}/`, `${dest}/${folder}/.`);
+  shell.cp('-r', `${source}/${folder}`, `${dest}/.`);
 }
 
 /**

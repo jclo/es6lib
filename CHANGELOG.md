@@ -3,7 +3,7 @@
 ### 2.0.2 (January 9, 2024)
 
   * Fixed an issue in ./bin/eslib.js that prevented the creation of a .github folder,
-  * ...,
+  * Release.
 
 
 ### 2.0.1 (January 9, 2024)
@@ -39,7 +39,7 @@
   * Added a build script template,
   * Removed main of fs.xxxSync from npm build scripts,
   * Release.
- 
+
 
 ### 1.1.0 (May 24,2023)
 

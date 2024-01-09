@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v1.2.0
+ * ES6lib v2.0.0
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -15,7 +15,7 @@ const $__ES6GLOB = {};
 (function(root, factory) {
   'use strict';
 
-  /* istanbul ignore next */
+  /* c8 ignore start */
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
     define([''], factory);
@@ -30,6 +30,7 @@ const $__ES6GLOB = {};
     /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
+  /* c8 ignore stop */
 }($__ES6GLOB, (root) => {
   'use strict';
 
@@ -313,14 +314,14 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '1.2.0',
+        version: '2.0.0',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '1.2.0';
+    ES6lib.VERSION = '2.0.0';
 
 
     // -- Private Static Methods -----------------------------------------------

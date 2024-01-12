@@ -3,7 +3,7 @@
 ### 2.0.3 (January 12, 2024)
 
   * Improved bin/es6lib.js script,
-  * ...,
+  * Release.
 
 
 ### 2.0.2 (January 9, 2024)

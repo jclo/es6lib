@@ -89,6 +89,14 @@
     "nodemon": "^3.0.2",
     "terser": "^5.26.0"
   },
+  "c8": {
+    "include": [
+      "index.js",
+      "lib/**/*.js"
+    ],
+    "exclude": [],
+    "all": false
+  },
   "publishConfig": {
     "access": "public"
   },

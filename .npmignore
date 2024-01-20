@@ -4,7 +4,7 @@
 !.husky/pre-commit
 !bin
 !src/**/*
-!tasks/**/*
+!scripts/**/*
 !test/**/*
 !.eslintignore
 !.eslintrc

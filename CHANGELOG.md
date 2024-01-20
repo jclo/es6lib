@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.1.1 (January 20, 2024)
+
+  * Fixed an issue that prevented to copy scripts,
+  * ...,
+
+
 ### 2.1.0 (January 20, 2024)
 
   * Renamed tasks as scripts,

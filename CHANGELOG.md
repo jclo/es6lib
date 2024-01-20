@@ -3,7 +3,7 @@
 ### 2.1.1 (January 20, 2024)
 
   * Fixed an issue that prevented to copy scripts,
-  * ...,
+  * Release.
 
 
 ### 2.1.0 (January 20, 2024)

@@ -1,6 +1,6 @@
 {
   "name": "@mobilabs/es6lib",
-  "version": "2.0.3",
+  "version": "2.0.3x",
   "description": "A template for writing pure ES6 Javascript libraries",
   "main": "index.js",
   "minified": "_dist/lib/es6lib.min.js",
@@ -13,8 +13,8 @@
     "general": " --- GENERAL ---",
 
     "build:js": " --- JAVASCRIPT --- ",
-    "build:js:dev": "node tasks/build.js.dev.js $1",
-    "build:js:prod": "node tasks/build.js.prod.js $1",
+    "build:js:dev": "node scripts/build.js.dev.js $1",
+    "build:js:prod": "node scripts/build.js.prod.js $1",
 
     "build:css": " --- CSS --- ",
 
@@ -24,7 +24,7 @@
     "build:dev": "npm run build:js:dev",
 
     "build:production": " --- BUILD (PRODUCTION) --- ",
-    "build:skeleton:prod": "node tasks/build.skeleton.prod.js $1",
+    "build:skeleton:prod": "node scripts/build.skeleton.prod.js $1",
     "prebuild:prod": "npm run build:dev && npm run build:skeleton:prod",
     "build:prod": "npm run build:js:prod",
 
@@ -44,7 +44,8 @@
 
     "deployment": " --- DEPLOYMENT --- ",
     "dep:prod": "rm -rf _dist-$npm_package_version && npm run build:prod && cp -r _dist _dist-$npm_package_version",
-    "dep:private": "npm run build:prod && node tasks/dep.private.js && sh tasks/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "dep:private:package": "npm run build:prod && node scripts/dep.private.js && sh scripts/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "dep:npm:private:package": "npm pack && sh scripts/dep.npm.private.sh ${npm_package_name} ${npm_package_version} @mobilabs",
 
     "others": " --- OTHERS ---",
     "prepare": "husky install",

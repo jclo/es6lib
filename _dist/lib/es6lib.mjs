@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v2.0.3
+ * ES6lib v2.0.3x
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -314,14 +314,14 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '2.0.3',
+        version: '2.0.3x',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '2.0.3';
+    ES6lib.VERSION = '2.0.3x';
 
 
     // -- Private Static Methods -----------------------------------------------

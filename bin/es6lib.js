@@ -142,7 +142,6 @@ const index = [
 const gitignore = [
   '.DS_Store',
   '',
-  '.nyc_output',
   'coverage',
   'node_modules',
   ''].join('\n');
@@ -314,6 +313,7 @@ function _customize(source, dest, app, owner, boilerlib) {
   pack.scripts = obj.scripts;
   pack.scripts['check:coverage'] = 'c8 check-coverage --statements 100 --branches 100 --functions 100 --lines 100';
   delete pack.scripts['dep:private:package'];
+  delete pack.scripts['dep:npm:private:package'];
 
   pack.repository = obj.repository;
   pack.repository.url = `https://github.com/${owner.acronym}/${app.toLowerCase()}.git`;

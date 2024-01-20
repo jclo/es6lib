@@ -61,13 +61,13 @@ Your project Folder
       |           |_ ci.yml    // Github Workflow file (if you use it),
       |_ lib
       |   |_ lib.js            // Your built ES6 UMD library,
-      |   |_ lib.mjs           // Your built ES6 Module,   
+      |   |_ lib.mjs           // Your built ES6 Module,
+      |_ scripts
+      |   |_ ...              // The scripts to build your project,
       |_ src
       |   |_ _footer           // The UMD footer,
       |   |_ _header           // The UMD header,
       |   |_ ...               // The core or your library,
-      |_ tasks
-      |   |_ ...              // The tasks to build your project,
       |_  test
       |     |_ main.js        // Your Mocha, Chai test file,
       |_ .eslintignore        // Files to be ignored by ESLint,

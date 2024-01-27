@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.1.3 (January 27, 2024)
+
+  * Fixed a few minor things,
+  * ...,
+
+
 ### 2.1.1 (January 20, 2024)
 
   * Fixed an issue that prevented to copy scripts,

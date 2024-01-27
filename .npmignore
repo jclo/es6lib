@@ -3,8 +3,8 @@
 !.github/**/*
 !.husky/pre-commit
 !bin
-!src/**/*
 !scripts/**/*
+!src/**/*
 !test/**/*
 !.eslintignore
 !.eslintrc

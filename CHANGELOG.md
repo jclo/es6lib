@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.1.3 (January 27, 2024)
+
+  * Fixed a regression in bin/es6lib.js,
+  * ...,
+
+
 ### 2.1.2 (January 27, 2024)
 
   * Fixed a few minor things,

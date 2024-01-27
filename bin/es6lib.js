@@ -572,32 +572,32 @@ function _run() {
 
   if (parsed.boilerlib) {
     process.stdout.write(`boilerlib: ${parsed.boilerlib}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.name) {
     process.stdout.write(`name: ${parsed.name}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.author) {
     process.stdout.write(`author: ${parsed.author}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.acronym) {
     process.stdout.write(`acronym: ${parsed.acronym}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.email) {
     process.stdout.write(`email: ${parsed.email}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.url) {
     process.stdout.write(`url: ${parsed.url}\n`);
-    return;
+    if (!parsed.argv.remain[0]) return;
   }
 
   if (parsed.argv.remain[0] === 'populate') {

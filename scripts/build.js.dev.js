@@ -9,10 +9,10 @@
  * Private Functions:
  *  . _help                       displays the help message,
  *  . _clean                      removes the previous build,
- *  . _docore                     creates the content of the library,
- *  . _doumdlib                   creates the UMD Module,
- *  . _domodule                   creates the ES6 module,
- *  . _delcore                    removes the temp file(s),
+ *  . _doES6                      creates the ES6 module,
+ *  . _doUMD                      creates the UMD library,
+ *  . _doLib                      creates one UMD/ES6 library,
+ *  . _doLibs                     creates all UMD/ES6 libraries,
  *
  *
  * Public Static Methods:
@@ -55,12 +55,9 @@ const VERSION     = '0.0.0-alpha.0'
     , parsed      = nopt(opts, shortOpts, process.argv, 2)
     , destination = config.libdir
     , { ES6GLOB } = config
-    , source      = config.src
+    , { src }     = config
     , { libname } = config
     , { name }    = config
-    , head        = source[0]
-    , core        = source.slice(1, -1)
-    , foot        = source[source.length - 1]
     , { version } = pack
     ;
 
@@ -98,45 +95,136 @@ function _help() {
 /**
  * Removes the previous build.
  *
- * @function ()
+ * @function (arg1)
  * @private
- * @param {}                -,
+ * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
-function _clean() {
+function _clean(done) {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
-  fs.rmSync(destination, { force: true, recursive: true });
-  fs.mkdirSync(destination, { recursive: true });
+  return new Promise((resolve) => {
+    fs.rm(destination, { force: true, recursive: true }, (err1) => {
+      if (err1) throw new Error(err1);
 
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      fs.mkdir(destination, { recursive: true }, (err2) => {
+        if (err2) throw new Error(err2);
+
+        const d2 = new Date() - d1;
+        process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+        resolve();
+        if (done) done();
+      });
+    });
+  });
 }
 
 /**
- * Creates the content of the library.
+ * Creates the ES6 module.
  *
- * @function ()
+ * @function (arg1, arg2, arg3, arg4)
  * @private
- * @param {}                -,
+ * @param {String}          the header of the library,
+ * @param {String}          the content of the library,
+ * @param {String}          the footer of the library,
+ * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
-function _docore() {
+function _doES6(head, core, foot, done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdocore\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdo:es6\x1b[89m\x1b[0m\'...\n');
 
-  let src = '';
+  let exportM = '\n// -- Export\n';
+  exportM += `export default ${ES6GLOB}.${libname};`;
+
+  let lib = head;
+  lib += '\n';
+  lib += core;
+  lib += '\n';
+  lib += foot;
+
+  lib = lib
+    .replace('{{lib:es6:define}}', `const ${ES6GLOB} = {};`)
+    .replace('{{lib:es6:link}}', ES6GLOB)
+    .replace('{{lib:es6:export}}', exportM)
+    // fix the blanck lines we indented too:
+    .replace(/\s{2}\n/g, '\n')
+  ;
+
+  fs.writeFile(`${destination}/${name}.mjs`, lib, { encoding: 'utf8' }, (err) => {
+    if (err) throw new Error(err);
+    const d2 = new Date() - d1;
+    process.stdout.write(`Finished '\x1b[36mdo:es6\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    done();
+  });
+}
+
+/**
+ * Creates the UMD library.
+ *
+ * @function (arg1, arg2, arg3, arg4)
+ * @private
+ * @param {String}          the header of the library,
+ * @param {String}          the content of the library,
+ * @param {String}          the footer of the library,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _doUMD(head, core, foot, done) {
+  const d1 = new Date();
+  process.stdout.write("Starting '\x1b[36mdo:umd\x1b[89m\x1b[0m'...\n");
+
+  let lib = head;
+  lib += '\n';
+  lib += core;
+  lib += '\n';
+  lib += foot;
+
+  lib = lib
+    .replace('{{lib:es6:define}}\n', '')
+    .replace('{{lib:es6:link}}', 'this')
+    .replace('{{lib:es6:export}}\n', '')
+    // fix the blanck lines we indented too:
+    .replace(/\s{2}\n/g, '\n')
+  ;
+
+  fs.writeFile(`${destination}/${name}.js`, lib, { encoding: 'utf8' }, (err) => {
+    if (err) throw new Error(err);
+    const d2 = new Date() - d1;
+    process.stdout.write(`Finished '\x1b[36mdo:umd\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    done();
+  });
+}
+
+/**
+ * Creates one UMD/ES6 library.
+ *
+ * @function (arg1, arg2)
+ * @private
+ * @param {Array}           the files defining the library,
+ * @param {Function}        the function to call at the completion,
+ * @returns {}              -,
+ * @since 0.0.0
+ */
+function _doLib(source, done) {
+  const head = fs.readFileSync(source[0])
+      , core = source.slice(1, -1)
+      , foot = fs.readFileSync(source[source.length - 1])
+      ;
+
+  let content = '';
   for (let i = 0; i < core.length; i++) {
-    src += fs.readFileSync(core[i]);
+    content += fs.readFileSync(core[i]);
     if (i < core.length - 1) {
-      src += '\n';
+      content += '\n';
     }
   }
 
-  src = src
+  content = content
     .replace(/{{lib:name}}/g, libname)
     .replace(/{{lib:version}}/g, version)
     // remove the extra global and 'use strict':
@@ -147,97 +235,47 @@ function _docore() {
     // indent each other lines with 2 spaces:
     .replace(/\n/g, '\n  ')
   ;
+  // For testing purpose:
+  // fs.writeFileSync(`${destination}/${name}-${suffix}-core.js`, src);
 
-  fs.writeFileSync(`${destination}/core.js`, src);
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mdocore\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+  /**
+   * Waits until completion.
+   */
+  let count = 2;
+  function _next() {
+    count -= 1;
+    if (!count) {
+      done();
+    }
+  }
+  _doUMD(head, content, foot, _next);
+  _doES6(head, content, foot, _next);
 }
 
 /**
- * Creates the UMD Module.
+ * Creates all UMD/ES6 libraries.
  *
- * @function ()
+ * @function (arg1)
  * @private
- * @param {}                -,
+ * @param {Function}        the function to call at the completion,
  * @returns {}              -,
  * @since 0.0.0
  */
-function _doumdlib() {
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdoumdlib\x1b[89m\x1b[0m\'...\n');
+function _doLibs(done) {
+  let pending = 1;
+  /**
+   * Waits until completion.
+   */
+  function _next() {
+    pending -= 1;
+    if (!pending) {
+      done();
+    }
+  }
 
-  let src = '';
-  src = fs.readFileSync(head);
-  src += '\n';
-  src += fs.readFileSync(`${destination}/core.js`);
-  src += '\n';
-  src += fs.readFileSync(foot);
-
-  src = src
-    .replace('{{lib:es6:define}}\n', '')
-    .replace('{{lib:es6:link}}', 'this')
-    .replace('{{lib:es6:export}}\n', '')
-    // fix the blanck lines we indented too:
-    .replace(/\s{2}\n/g, '\n')
-  ;
-
-  fs.writeFileSync(`${destination}/${name}.js`, src);
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mdoumdlib\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-}
-
-/**
- * Creates the ES6 module.
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-function _domodule() {
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdomodule\x1b[89m\x1b[0m\'...\n');
-
-  let exportM = '\n// -- Export\n';
-  exportM += `export default ${ES6GLOB}.${libname};`;
-
-  let src = '';
-  src = fs.readFileSync(head);
-  src += '\n';
-  src += fs.readFileSync(`${destination}/core.js`);
-  src += '\n';
-  src += fs.readFileSync(foot);
-
-  src = src
-    .replace('{{lib:es6:define}}', `const ${ES6GLOB} = {};`)
-    .replace('{{lib:es6:link}}', ES6GLOB)
-    .replace('{{lib:es6:export}}', exportM)
-    // fix the blanck lines we indented too:
-    .replace(/\s{2}\n/g, '\n')
-  ;
-
-  fs.writeFileSync(`${destination}/${name}.mjs`, src);
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mdomodule\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-}
-
-/**
- * Removes the temp file(s).
- *
- * @function ()
- * @private
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-function _delcore() {
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdelcore\x1b[89m\x1b[0m\'...\n');
-  fs.unlinkSync(`${destination}/core.js`);
-
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mdelcore\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+  _doLib(src, () => {
+    _next();
+  });
 }
 
 
@@ -266,14 +304,12 @@ function run() {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mbuild:js:dev\x1b[89m\x1b[0m\'...\n');
 
-  _clean();
-  _docore();
-  _doumdlib();
-  _domodule();
-  _delcore();
-
-  const d2 = new Date() - d1;
-  process.stdout.write(`Finished '\x1b[36mbuild:js:dev\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+  _clean(() => {
+    _doLibs(() => {
+      const d2 = new Date() - d1;
+      process.stdout.write(`Finished '\x1b[36mbuild:js:dev\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    });
+  });
 }
 
 

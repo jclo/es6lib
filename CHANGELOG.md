@@ -3,7 +3,7 @@
 ### 2.2.0 (January 28, 2024)
 
   * Updated build scripts to support projects generating multiple libs,
-  * ...,
+  * Release.
 
 
 ### 2.1.3 (January 27, 2024)

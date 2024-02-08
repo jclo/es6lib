@@ -12,18 +12,18 @@
   "scripts": {
     "general": " --- GENERAL ---",
 
-    "build:js": " --- JAVASCRIPT --- ",
+    "build:js": " --- BUILDING JAVASCRIPT --- ",
     "build:js:dev": "node scripts/build.js.dev.js $1",
     "build:js:prod": "node scripts/build.js.prod.js $1",
 
-    "build:css": " --- CSS --- ",
+    "build:css": " --- BUILDING CSS --- ",
 
-    "build:generic": " --- BUILD (GENERIC) --- ",
+    "build:generic": " --- BUILDING (GENERIC) --- ",
 
-    "build:development": " --- BUILD (DEVELOPMENT) --- ",
+    "build:development": " --- BUILDING (DEVELOPMENT) --- ",
     "build:dev": "npm run build:js:dev",
 
-    "build:production": " --- BUILD (PRODUCTION) --- ",
+    "build:production": " --- BUILDING (PRODUCTION) --- ",
     "build:skeleton:prod": "node scripts/build.skeleton.prod.js $1",
     "prebuild:prod": "npm run build:dev && npm run build:skeleton:prod",
     "build:prod": "npm run build:js:prod",
@@ -42,14 +42,13 @@
     "watch:js": "nodemon --watch './src/**/*.js' --exec npm run build:dev",
     "watch": "npm run watch:js",
 
-    "deployment": " --- DEPLOYMENT --- ",
+    "deployment": " --- DEPLOYING --- ",
     "dep:prod": "rm -rf _dist-$npm_package_version && npm run build:prod && cp -r _dist _dist-$npm_package_version",
     "dep:private:package": "npm run build:prod && node scripts/dep.private.js && sh scripts/compress.sh ${npm_package_name} ${npm_package_version} @mobilabs",
-    "dep:npm:private:package": "npm pack && sh scripts/dep.npm.private.sh ${npm_package_name} ${npm_package_version} @mobilabs",
+    "dep:npm:private:package": "npm run build:prod && npm pack && sh scripts/dep.npm.private.sh ${npm_package_name} ${npm_package_version} @mobilabs",
 
     "others": " --- OTHERS ---",
-    "prepare": "husky install",
-    "doc": ""
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -85,6 +84,7 @@
     "eslint": "^8.56.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.29.1",
+    "http-server": "^14.1.1",
     "husky": "^8.0.3",
     "mocha": "^10.2.0",
     "nodemon": "^3.0.2",

@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.2.1 (February 8, 2024)
+
+  * Added an http server package,
+  * ...,
+
+
 ### 2.2.0 (January 28, 2024)
 
   * Updated build scripts to support projects generating multiple libs,

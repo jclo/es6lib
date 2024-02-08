@@ -3,7 +3,7 @@
 ### 2.2.1 (February 8, 2024)
 
   * Added an http server package,
-  * ...,
+  * Release.
 
 
 ### 2.2.0 (January 28, 2024)

@@ -3,7 +3,7 @@
 ### 2.2.2 (February 10, 2024)
 
   * Fixed a few typos in the build scripts,
-  * ...,
+  * Release.
 
 
 ### 2.2.1 (February 8, 2024)

@@ -1,3 +1,18 @@
+/** ************************************************************************
+ *
+ * Configuration file.
+ *
+ *
+ *
+ * @namespace    -
+ * @dependencies none
+ * @exports      -
+ * @author       -
+ * @since        0.0.0
+ * @version      -
+ * ********************************************************************** */
+/* eslint one-var: 0, semi-style: 0 */
+
 /* eslint one-var: 0, semi-style: 0 */
 
 'use strict';

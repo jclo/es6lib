@@ -3,7 +3,7 @@
  *
  * Does ...
  *
- * build:template script is a framework to build npm build scripts;
+ * build:template script is a framework to build npm build scripts.
  *
  * Private Functions:
  *  . _help                       displays the help message,
@@ -86,13 +86,13 @@ function _help() {
 /**
  * Removes the previous build.
  *
- * @function ()
+ * @function ([arg1])
  * @private
- * @param {}                -,
+ * @param {Function}        the function to call at the completion,
  * @returns {Object}        returns a promise,
  * @since 0.0.0
  */
-function _clean() {
+function _clean(done) {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
@@ -106,6 +106,7 @@ function _clean() {
         const d2 = new Date() - d1;
         process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
         resolve();
+        if (done) done();
       });
     });
   });
@@ -122,13 +123,13 @@ function _clean() {
  */
 function _doparallel1(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdoparallel1\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdo:parallel1\x1b[89m\x1b[0m\'...\n');
 
   fs.writeFile(`${destination}/generic1.js`, 'bla bla', { encoding: 'utf8' }, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mdodoparallel1\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mdo:doparallel1\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }
@@ -144,13 +145,13 @@ function _doparallel1(done) {
  */
 function _doparallel2(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdoparallel2\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdo:parallel2\x1b[89m\x1b[0m\'...\n');
 
   fs.writeFile(`${destination}/generic2.js`, 'bla bla', { encoding: 'utf8' }, (err) => {
     if (err) throw new Error(err);
 
     const d2 = new Date() - d1;
-    process.stdout.write(`Finished '\x1b[36mdodoparallel2\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+    process.stdout.write(`Finished '\x1b[36mdo:parallel2\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
     done();
   });
 }
@@ -166,7 +167,7 @@ function _doparallel2(done) {
  */
 function _delgeneric(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdelgeneric\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mdel:generic\x1b[89m\x1b[0m\'...\n');
 
   /**
    * Wait all the processes are completed.
@@ -176,7 +177,7 @@ function _delgeneric(done) {
     pending -= 1;
     if (!pending) {
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mdelgeneric\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mdel:generic\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     }
   }
@@ -193,55 +194,58 @@ function _delgeneric(done) {
 }
 
 
-// -- Main ---------------------------------------------------------------------
+// -- Public Static Methods ----------------------------------------------------
 
-/**
- * Executes the script.
- *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-async function run() {
-  const PENDING = 2;
+const Lib = {
 
-  if (parsed.help) {
-    _help();
-    return;
-  }
-
-  if (parsed.version) {
-    process.stdout.write(`version: ${parsed.version}\n`);
-    return;
-  }
-
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mbuild:xxx:yyy\x1b[89m\x1b[0m\'...\n');
-
-  let pending = PENDING;
   /**
-   * Executes done until completion.
-   */
-  function done() {
-    pending -= 1;
-    if (!pending) {
-      _delgeneric(() => {
-        const d2 = new Date() - d1;
-        process.stdout.write(`Finished '\x1b[36mbuild:xxx:yyy\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
-      });
+   * Executes the script.
+   *
+   * @method ()
+   * @public
+   * @param {}                -,
+   * @returns {}              -,
+   * @since 0.0.0
+  */
+  async run() {
+    const PENDING = 2;
+
+    if (parsed.help) {
+      _help();
+      return;
     }
-  }
 
-  await _clean();
-  _doparallel1(done);
-  _doparallel2(done);
-}
+    if (parsed.version) {
+      process.stdout.write(`version: ${parsed.version}\n`);
+      return;
+    }
+
+    const d1 = new Date();
+    process.stdout.write('Starting \'\x1b[36mbuild:xxx:yyy\x1b[89m\x1b[0m\'...\n');
+
+    let pending = PENDING;
+    /**
+     * Executes done until completion.
+     */
+    function done() {
+      pending -= 1;
+      if (!pending) {
+        _delgeneric(() => {
+          const d2 = new Date() - d1;
+          process.stdout.write(`Finished '\x1b[36mbuild:xxx:yyy\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+        });
+      }
+    }
+
+    await _clean();
+    _doparallel1(done);
+    _doparallel2(done);
+  },
+};
 
 
-// Start script.
-run();
+// -- Where the script starts --------------------------------------------------
+Lib.run();
 
 
 // -- oOo --

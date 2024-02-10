@@ -92,13 +92,13 @@ function _help() {
 /**
  * Removes the previous build.
  *
- * @function ()
+ * @function ([arg1])
  * @private
- * @param {}                -,
+ * @param {Function}        the function to call at the completion,
  * @returns {Object}        returns a promise,
  * @since 0.0.0
  */
-function _clean() {
+function _clean(done) {
   const d1 = new Date();
   process.stdout.write('Starting \'\x1b[36mclean\x1b[89m\x1b[0m\'...\n');
 
@@ -112,6 +112,7 @@ function _clean() {
         const d2 = new Date() - d1;
         process.stdout.write(`Finished '\x1b[36mclean\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
         resolve();
+        if (done) done();
       });
     });
   });
@@ -155,7 +156,7 @@ function _copyindex(done) {
  */
 function _copypackagejson(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mcopypackagejson\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mcopy:package:json\x1b[89m\x1b[0m\'...\n');
 
   fs.readFile('./package.json', 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
@@ -173,60 +174,63 @@ function _copypackagejson(done) {
       if (err2) throw new Error(err2);
 
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mcopypackagejson\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mcopy:package:json\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     });
   });
 }
 
 
-// -- Main ---------------------------------------------------------------------
+// -- Public Static Methods ----------------------------------------------------
 
-/**
- * Executes the script.
- *
- * @function ()
- * @public
- * @param {}                -,
- * @returns {}              -,
- * @since 0.0.0
- */
-async function run() {
-  const PENDING = 2;
+const Lib = {
 
-  if (parsed.help) {
-    _help();
-    return;
-  }
-
-  if (parsed.version) {
-    process.stdout.write(`version: ${parsed.version}\n`);
-    return;
-  }
-
-  const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mdep:private\x1b[89m\x1b[0m\'...\n');
-
-  let pending = PENDING;
   /**
-   * Executes done until completion.
-   */
-  function done() {
-    pending -= 1;
-    if (!pending) {
-      const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mdep:private\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+   * Executes the script.
+   *
+   * @method ()
+   * @public
+   * @param {}                -,
+   * @returns {}              -,
+   * @since 0.0.0
+  */
+  async run() {
+    const PENDING = 2;
+
+    if (parsed.help) {
+      _help();
+      return;
     }
-  }
 
-  await _clean();
-  _copyindex(done);
-  _copypackagejson(done);
-}
+    if (parsed.version) {
+      process.stdout.write(`version: ${parsed.version}\n`);
+      return;
+    }
+
+    const d1 = new Date();
+    process.stdout.write('Starting \'\x1b[36mdep:private\x1b[89m\x1b[0m\'...\n');
+
+    let pending = PENDING;
+    /**
+     * Executes done until completion.
+     */
+    function done() {
+      pending -= 1;
+      if (!pending) {
+        const d2 = new Date() - d1;
+        process.stdout.write(`Finished '\x1b[36mdep:private\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      }
+    }
+
+    await _clean();
+    _copyindex(done);
+    _copypackagejson(done);
+  },
+};
 
 
-// Start script.
-run();
+// -- Where the script starts --------------------------------------------------
+Lib.run();
 
 
 // -- oOo --

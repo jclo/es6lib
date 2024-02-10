@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.2.2 (February 10, 2024)
+
+  * Fixed a few typos in the build scripts,
+  * ...,
+
+
 ### 2.2.1 (February 8, 2024)
 
   * Added an http server package,

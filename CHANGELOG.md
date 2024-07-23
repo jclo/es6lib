@@ -1,6 +1,6 @@
 ### HEAD
 
-### 2.2.x (July 23, 2024)
+### 2.3.0 (July 23, 2024)
 
   * Updated the project dependencies,
   * ...

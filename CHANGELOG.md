@@ -1,5 +1,11 @@
 ### HEAD
 
+### 2.2.x (July 23, 2024)
+
+  * Updated the project dependencies,
+  * ...
+
+
 ### 2.2.2 (February 10, 2024)
 
   * Fixed a few typos in the build scripts,

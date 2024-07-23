@@ -1,11 +1,9 @@
 #!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
 
 npm run build:dev
 npm run build:prod
 npm test
 npm run check:coverage
 npm run report
-
 
 # -- oOo ---

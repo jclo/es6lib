@@ -129,7 +129,7 @@ function _clean(done) {
  */
 function _copyindex(done) {
   const d1 = new Date();
-  process.stdout.write('Starting \'\x1b[36mcopyindex\x1b[89m\x1b[0m\'...\n');
+  process.stdout.write('Starting \'\x1b[36mcopy:index\x1b[89m\x1b[0m\'...\n');
 
   fs.readFile(index, 'utf8', (err1, data) => {
     if (err1) throw new Error(err1);
@@ -139,7 +139,7 @@ function _copyindex(done) {
       if (err2) throw new Error(err2);
 
       const d2 = new Date() - d1;
-      process.stdout.write(`Finished '\x1b[36mcopyindex\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
+      process.stdout.write(`Finished '\x1b[36mcopy:index\x1b[89m\x1b[0m' after \x1b[35m${d2} ms\x1b[89m\x1b[0m\n`);
       done();
     });
   });

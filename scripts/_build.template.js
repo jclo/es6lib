@@ -29,6 +29,7 @@
 
 // -- Vendor Modules
 const fs   = require('fs')
+    , path = require('path')
     , nopt = require('nopt')
     ;
 

@@ -13,13 +13,12 @@
  * ********************************************************************** */
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Vendor Modules
 
 
 // -- Local Modules
-const pack = require('../package.json');
+import pack from '../package.json' with { type: 'json'};
 
 
 // -- Local Constants
@@ -33,7 +32,7 @@ const libname = 'ES6lib'
 
 // -- Main
 
-module.exports = {
+export default {
   ES6GLOB: '$__ES6GLOB',
   dist: './_dist',
   libdir: './lib',

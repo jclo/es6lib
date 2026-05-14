@@ -2,11 +2,9 @@
 /* global describe, it */
 /* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const { expect } = require('chai')
-    ;
+import { expect } from 'chai';
 
 
 // -- Local Modules
@@ -27,7 +25,7 @@ const LIBPROPS = 0
 
 
 // -- Main
-module.exports = function(ES6lib, libname, version, type) {
+export default function(ES6lib, libname, version, type) {
   describe('ES6lib introspection:', () => {
     describe('Test the nature of ES6lib:', () => {
       it('Expects ES6lib to be a function.', () => {

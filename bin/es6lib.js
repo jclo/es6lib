@@ -4,7 +4,7 @@
  *
  * The MIT License (MIT)
  *
- * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
+ * Copyright (c) 2026 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,29 +24,31 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0, curly: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const fs    = require('fs')
-    , nopt  = require('nopt')
-    , path  = require('path')
-    , shell = require('shelljs')
-    ;
+import fs from 'fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+import nopt from 'nopt';
+import path from 'path';
+import shell from 'shelljs';
 
 
 // -- Local Modules
+import pack from '../package.json' with { type: 'json' };
 
 
 // -- Local Constants
 const defBoilerLib  = 'ES6lib'
-    /* eslint-disable-next-line object-curly-newline */
+    , __filename = fileURLToPath(import.meta.url)
+    , __dirname = dirname(__filename)
     , defAuthor   = { name: 'John Doe', acronym: 'jdo', email: 'jdo@johndoe.com', url: 'http://www.johndoe.com' }
     , copyright   = `Copyright (c) ${new Date().getFullYear()} {{author:name}} <{{author:email}}> ({{author:url}})`
     , baseapp     = process.cwd()
     , baseboiler  = __dirname.replace('/bin', '')
-    , { version } = require('../package.json')
+    , { version } = pack
     , src         = 'src'
     , test        = 'test'
     , scripts     = 'scripts'
@@ -282,7 +284,7 @@ function _addSkeleton(base, app, owner, cright) {
  * @returns {}              -,
  */
 function _duplicate(source, dest) {
-  const dupFiles = ['.eslintrc', 'rmdstore.sh'];
+  const dupFiles = ['eslint.config.js', 'rmdstore.sh'];
 
   for (let i = 0; i < dupFiles.length; i++) {
     process.stdout.write(`  copied ${dupFiles[i]}\n`);
@@ -316,6 +318,7 @@ function _customize(source, dest, app, owner, boilerlib) {
   pack.unpkg = `_dist/lib/${app.toLowerCase()}.mjs`;
   pack.module = `_dist/lib/${app.toLowerCase()}.min.mjs`;
   pack.bin = {};
+  pack.type = 'module';
 
   pack.scripts = obj.scripts;
   pack.scripts['check:coverage'] = 'c8 check-coverage --statements 100 --branches 100 --functions 100 --lines 100';

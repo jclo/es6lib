@@ -1,9 +1,9 @@
 /*! ****************************************************************************
- * ES6lib v2.3.0
+ * ES6lib v3.0.0-beta.1.0
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
- * Copyright (c) 2024 Mobilabs <contact@mobilabs.fr> (http://www.mobilabs.fr/).
+ * Copyright (c) 2026 Mobilabs <contact@mobilabs.fr> (https://www.mobilabs.fr).
  * Released under the MIT license. You may obtain a copy of the License
  * at: http://www.opensource.org/licenses/mit-license.php).
  * Built from {{boiler:name}} v{{boiler:name:version}}.
@@ -314,14 +314,14 @@ const $__ES6GLOB = {};
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '2.3.0',
+        version: '3.0.0-beta.1.0',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '2.3.0';
+    ES6lib.VERSION = '3.0.0-beta.1.0';
 
 
     // -- Private Static Methods -----------------------------------------------

@@ -1,9 +1,15 @@
 ### HEAD
 
+### 3.0.O (May, 14, 2026)
+
+  * Updated the project to comply with ESM,
+  * ...,
+
+
 ### 2.3.0 (July 23, 2024)
 
   * Updated the project dependencies,
-  * ...
+  * Release.
 
 
 ### 2.2.2 (February 10, 2024)

@@ -26,20 +26,17 @@
  * @since        0.0.0
  * @version      -
  * ************************************************************************** */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0, curly: 0 */
 
-'use strict';
 
 // -- Vendor Modules
-const fs   = require('fs')
-    , nopt = require('nopt')
-    ;
+import fs from 'fs';
+import nopt from 'nopt';
 
 
 // -- Local Modules
-const pack   = require('../package.json')
-    , config = require('./config')
-    ;
+import pack from '../package.json' with { type: 'json' };
+import config from './config.js';
 
 
 // -- Local Constants

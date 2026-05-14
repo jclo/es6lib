@@ -2,16 +2,15 @@
 /* global describe */
 /* eslint one-var: 0, semi-style: 0 */
 
-'use strict';
 
 // -- Vendor Modules
 
 
 // -- Local Modules
-const ES6lib  = require('../index')
-    , pack    = require('../package.json')
-    , testlib = require('./int/libprototypal')
-    ;
+import ES6lib from '../index.js';
+// import ES6lib from '../lib/es6lib.mjs';
+import pack from '../package.json' with { type: 'json' };
+import testlib from './int/libprototypal.js';
 
 
 // -- Local Constants

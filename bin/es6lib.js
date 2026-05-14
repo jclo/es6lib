@@ -139,9 +139,8 @@ const changelog = [
 ].join('\n');
 
 const index = [
-  "'use strict';",
-  '',
-  "module.exports = require('./lib/{{lib:lowname}}');",
+  "import {{lib:name}} from './lib/{{lib:lowname}}.mjs';",
+  "export default {{lib:name}};",
   '',
 ].join('\n');
 
@@ -260,7 +259,7 @@ function _addSkeleton(base, app, owner, cright) {
   let s;
   for (let i = 0; i < newFiles[0].length; i++) {
     input = newFiles[0][i]
-      .replace('{{lib:name}}', app)
+      .replace(/{{lib:name}}/g, app)
       .replace('{{lib:lowname}}', app.toLowerCase())
       .replace('{{lib:copyright}}', cright)
       .replace('{{author:name}}', owner.name)

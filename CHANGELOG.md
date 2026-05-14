@@ -3,6 +3,7 @@
 ### 3.0.O (May, 14, 2026)
 
   * Updated the project to comply with ESM,
+  * Fixed a few issues in bin/es6lib.js,
   * ...,
 
 

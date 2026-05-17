@@ -7,7 +7,6 @@
 !src/**/*
 !test/**/*
 !.eslintignore
-!.eslint.config.js
-!gulpfile.js
+!eslint.config.js
 !index.js
 !rmdstore.sh

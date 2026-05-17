@@ -1,9 +1,10 @@
 ### HEAD
 
-### 3.0.O (May, 14, 2026)
+### 3.0.O (May, 17, 2026)
 
   * Updated the project to comply with ESM,
   * Fixed a few issues in bin/es6lib.js,
+  * Fixed a minor issue in .npmignore,
   * ...,
 
 

@@ -1,6 +1,6 @@
 // ESLint declarations:
 /* global describe, it */
-/* eslint one-var: 0, semi-style: 0, no-underscore-dangle: 0 */
+/* - */
 
 
 // -- Vendor Modules

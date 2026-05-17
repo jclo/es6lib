@@ -5,6 +5,7 @@
   * Updated the project to comply with ESM,
   * Fixed a few issues in bin/es6lib.js,
   * Fixed a minor issue in .npmignore,
+  * Cleaned up the ESlint directives,
   * ...,
 
 

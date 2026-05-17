@@ -24,9 +24,7 @@
  * @version      -
  * ************************************************************************ */
 /* global Tree, extend */
-/* eslint-disable no-underscore-dangle */
-
-'use strict';
+/* - */
 
 (function() {
   // START OF IIFE
@@ -107,4 +105,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable no-underscore-dangle */
+/* - */

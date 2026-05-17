@@ -24,9 +24,7 @@
  * @version      -
  * ************************************************************************ */
 /* global */
-/* - */
-
-'use strict';
+/* eslint-disable no-undef */
 
 (function() {
   // START OF IIFE
@@ -62,11 +60,10 @@
     const keys = Object.keys(methods);
 
     for (let i = 0; i < keys.length; i++) {
-      /* eslint-disable-next-line no-param-reassign */
       object[keys[i]] = methods[keys[i]];
     }
   };
 
   // END OF IIFE
 }());
-/* - */
+/* eslint-enable no-undef */

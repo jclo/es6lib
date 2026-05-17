@@ -11,7 +11,7 @@
  * @since        0.0.0
  * @version      -
  * ********************************************************************** */
-/* eslint one-var: 0, semi-style: 0 */
+/* - */
 
 
 // -- Vendor Modules
@@ -46,7 +46,6 @@ export default {
   // a core file and the footer file. The files 'basic.js', 'functional.js',
   // 'functional-shared.js', 'prototypal.js', 'pseudoclassical.js' and
   // 'pseudoclassical-auto.js' are mutually exclusives.
-  /* eslint-disable no-multi-spaces */
   src: [
     // These three files (_header, _head.js and extend.js) must be declared
     // in this order as they create the umd module, define the global
@@ -68,7 +67,6 @@ export default {
     // This file must always be the last one as it closes the umd module.
     './src/_footer',
   ],
-  /* eslint-enable no-multi-spaces */
 
   webfiles: [
     // These are the files to copy to the root path of the web app,

@@ -3,9 +3,8 @@
  * level of this module and are accessible to all. So, they are considered
  * as reserved words for this library.
  * ************************************************************************ */
-/* eslint-disable one-var, no-unused-vars, semi-style */
-
-'use strict';
+/* global */
+/* eslint-disable no-unused-vars */
 
 let ES6lib
   , extend
@@ -18,4 +17,4 @@ const Tree = {
   },
 };
 
-/* eslint-enable one-var, no-unused-vars, semi-style */
+/* eslint-enable no-unused-vars */

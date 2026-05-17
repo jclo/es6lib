@@ -13,11 +13,9 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
   /* c8 ignore stop */

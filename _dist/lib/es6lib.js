@@ -1,5 +1,5 @@
 /*! ****************************************************************************
- * ES6lib v3.0.0-beta.1.2
+ * ES6lib v3.0.0-beta.1.3
  *
  * A template for writing pure ES6 Javascript libraries.
  * (you can download it from npm or github repositories)
@@ -22,11 +22,9 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    /* eslint-disable-next-line no-param-reassign */
     module.exports = factory(root);
   } else {
     // Browser globals.
-    /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = factory(root);
   }
   /* c8 ignore stop */
@@ -38,7 +36,8 @@
    * level of this module and are accessible to all. So, they are considered
    * as reserved words for this library.
    * ************************************************************************ */
-  /* eslint-disable one-var, no-unused-vars, semi-style */
+  /* - */
+  /* eslint-disable no-unused-vars */
 
   let ES6lib
     , extend
@@ -51,7 +50,7 @@
     },
   };
 
-  /* eslint-enable one-var, no-unused-vars, semi-style */
+  /* eslint-enable no-unused-vars */
 
   /** **************************************************************************
    *
@@ -79,7 +78,7 @@
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* - */
+  /* eslint-disable no-undef */
 
   (function() {
     // START OF IIFE
@@ -115,14 +114,13 @@
       const keys = Object.keys(methods);
 
       for (let i = 0; i < keys.length; i++) {
-        /* eslint-disable-next-line no-param-reassign */
         object[keys[i]] = methods[keys[i]];
       }
     };
 
     // END OF IIFE
   }());
-  /* - */
+  /* eslint-enable no-undef */
 
   /** **************************************************************************
    *
@@ -150,7 +148,7 @@
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable no-underscore-dangle */
+  /* - */
 
   (function() {
     // START OF IIFE
@@ -231,7 +229,7 @@
 
     // END OF IIFE
   }());
-  /* eslint-enable no-underscore-dangle */
+  /* - */
 
   /** **************************************************************************
    *
@@ -272,7 +270,7 @@
    * @version      -
    * ************************************************************************ */
   /* - */
-  /* eslint-disable one-var, semi-style, no-underscore-dangle */
+  /* eslint-disable no-undef */
 
   (function() {
     // START OF IIFE
@@ -286,15 +284,9 @@
 
 
     // -- Local Constants
-    // Saves the previous value of the library variable, so that it can be
-    // restored later on, if noConflict is used.
-    const previousES6lib = root.ES6lib
-        ;
 
 
     // -- Local Variables
-    let methods
-      ;
 
 
     // -- Public ---------------------------------------------------------------
@@ -313,14 +305,18 @@
       const obj = Object.create(methods);
       obj._library = {
         name: 'ES6lib',
-        version: '3.0.0-beta.1.2',
+        version: '3.0.0-beta.1.3',
       };
       return obj;
     };
 
     // Attaches constants to ES6lib that provide name and version of the lib.
     ES6lib.NAME = 'ES6lib';
-    ES6lib.VERSION = '3.0.0-beta.1.2';
+    ES6lib.VERSION = '3.0.0-beta.1.3';
+
+    // Saves the previous value of the library variable, so that it can be
+    // restored later on, if noConflict is used.
+    const previousES6lib = root.ES6lib;
 
 
     // -- Private Static Methods -----------------------------------------------
@@ -357,7 +353,6 @@
      * @since 0.0.0
      */
     ES6lib.noConflict = function() {
-      /* eslint-disable-next-line no-param-reassign */
       root.ES6lib = previousES6lib;
       return this;
     };
@@ -365,7 +360,7 @@
 
     // -- Public Methods -------------------------------------------------------
 
-    methods = {
+    const methods = {
 
       /**
        * Returns the library name and version.
@@ -412,7 +407,7 @@
 
     // END OF IIFE
   }());
-  /* eslint-enable one-var, semi-style, no-underscore-dangle */
+  /* eslint-enable no-undef */
 
   // Returns the library name:
   return ES6lib;

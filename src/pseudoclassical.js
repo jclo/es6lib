@@ -37,9 +37,7 @@
  * @version      -
  * ************************************************************************ */
 /* global Tree, root */
-/* eslint-disable one-var, semi-style, no-underscore-dangle */
-
-'use strict';
+/* eslint-disable no-undef */
 
 (function() {
   // START OF IIFE
@@ -53,10 +51,6 @@
 
 
   // -- Local Constants
-  // Saves the previous value of the library variable, so that it can be
-  // restored later on, if noConflict is used.
-  const previousES6lib = root.ES6lib
-      ;
 
 
   // -- Local Variables
@@ -87,6 +81,10 @@
   // Attaches constants to ES6lib that provide name and version of the lib.
   ES6lib.NAME = '{{lib:name}}';
   ES6lib.VERSION = '{{lib:version}}';
+
+  // Saves the previous value of the library variable, so that it can be
+  // restored later on, if noConflict is used.
+  const previousES6lib = root.ES6lib;
 
 
   // -- Private Static Methods -----------------------------------------------
@@ -123,7 +121,6 @@
    * @since 0.0.0
    */
   ES6lib.noConflict = function() {
-    /* eslint-disable-next-line no-param-reassign */
     root.ES6lib = previousES6lib;
     return this;
   };
@@ -178,4 +175,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable one-var, semi-style, no-underscore-dangle */
+/* eslint-enable no-undef */

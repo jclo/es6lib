@@ -29,9 +29,7 @@
  * @version      -
  * ************************************************************************ */
 /* global Tree, root */
-/* eslint-disable no-underscore-dangle */
-
-'use strict';
+/* eslint-disable no-undef */
 
 (function() {
   // START OF IIFE
@@ -96,7 +94,6 @@
      * @since 0.0.0
      */
     noConflict() {
-      /* eslint-disable-next-line no-param-reassign */
       root.ES6lib = previousES6lib;
       return this;
     },
@@ -150,4 +147,4 @@
 
   // END OF IIFE
 }());
-/* eslint-enable no-underscore-dangle */
+/* eslint-enable no-undef */
